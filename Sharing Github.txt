@@ -1,0 +1,15 @@
+
+Terminal sekmesinden new terminal açın
+1.Yerel Git Deposunu Sıfırdan Başlatın:
+git init
+
+2.Değişiklik Yapılan Tüm Dosyaları Listeye Ekleyin:
+git add .
+
+3.Dosyaları Bilgisayarınızda Onaylayın (Not Bırakın):
+git commit -m "Site guncellendi"
+
+4.GitHub Linkinizi Tanımlayın ve Kodları Gönderin:
+git remote add origin https://github.com
+git branch -M main
+git push -u origin main
