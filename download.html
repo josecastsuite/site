@@ -250,23 +250,23 @@
     <script src="assets/js/main.js"></script>
 
 <script type="module">
-import { initializePaddle } from 'https://cdn.paddle.com/paddle/v3/paddle.js';
+// Dökümandaki yapıyı düz tarayıcının çözebileceği ES Modül CDN linkine çevirdik
+import { initializePaddle } from 'https://cdn.jsdelivr.net/npm/@paddle/paddle-js/+esm';
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        // 1. Paddle senin API anahtarınla asenkron olarak başlıyor
+        // Senin attığın başlatma kodu (Birebir dökümandaki gibi)
         const paddle = await initializePaddle({  
             environment: 'production',  
             token: 'pdl_live_apikey_01krrp9a8e7pq7xj3xwe6p2t41_MmTh8QpFmXYJYP2cxa75B2_An6'
         });                    
 
-        // 2. JS yukarıdaki "buy-button" ID'li butonu buluyor ve tıklamayı dinliyor
         const buyButton = document.getElementById('buy-button');
         if (buyButton) {
             buyButton.addEventListener('click', (e) => {
-                e.preventDefault(); // Butonun sayfayı yukarı fırlatmasını engeller
+                e.preventDefault(); 
                 
-                // 3. Checkout senin Price ID'nle tetikleniyor
+                // Senin attığın checkout açma kodu (Ayarlarıyla birlikte)
                 paddle?.Checkout.open({  
                     settings: {
                         displayMode: "overlay",
@@ -281,7 +281,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
         }
     } catch (error) {
-        console.error("Paddle yüklenirken hata oluştu:", error);
+        console.error("Paddle başlatılırken bir sorun oluştu:", error);
     }
 });
 </script>
