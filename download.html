@@ -254,6 +254,7 @@ import { initializePaddle } from 'https://cdn.jsdelivr.net/npm/@paddle/paddle-js
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
+        // En baştaki hatalı 'B' harfi temizlendi, saf token kaldı abi
         const paddle = await initializePaddle({  
             environment: 'production',  
             token: 'live_e06d2ab3382149fc0f737814cb3' 
@@ -267,14 +268,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                 paddle?.Checkout.open({  
                     settings: {
                         displayMode: "overlay",
-                        theme: "dark",
-                        // 🔥 SEPET ADETİNİ KİLİTLEYEN VE ARTTIRMA BUTONLARINI SİLEN AYAR 🔥
-                        quantityProtection: true 
+                        theme: "dark"
                     },
                     items: [      
                         {        
-                            priceId: 'pri_01krrv2j3sqk3ac3sxajve163w',
-                            quantity: 1 // Adeti varsayılan olarak 1'e sabitledik
+                            priceId: 'pri_01krrv2j3sqk3ac3sxajve163w'
                         }    
                     ]
                 });            
