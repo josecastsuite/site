@@ -33,15 +33,15 @@
 
     /* 🔥 FOOTER IKON ANİMASYON DÜZELTMESİ 🔥 */
     #footer .icons a.custom-footer-icon {
-        color: #888888 !important; /* Normalde sönük gri dursun */
+        color: #888888 !important;
         font-size: 1.5em !important;
-        transition: all 0.3s ease-in-out !important; /* Yumuşak geçiş animasyonu */
+        transition: all 0.3s ease-in-out !important;
         display: inline-block;
     }
     
     #footer .icons a.custom-footer-icon:hover {
-        color: #00d2ff !important; /* Üstüne gelince JoseCast mavisi parlasın */
-        transform: scale(1.2); /* Üstüne gelince hafif büyüsün */
+        color: #00d2ff !important;
+        transform: scale(1.2);
     }
 
     /* 🚀 ANA İNDİRME BUTONU ANİMASYONU 🚀 */
@@ -57,21 +57,18 @@
         text-transform: uppercase;
         letter-spacing: 1px;
         box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
-        transition: all 0.3s ease-in-out !important; /* Animasyon geçiş hızı */
+        transition: all 0.3s ease-in-out !important;
         border: 2px solid transparent !important;
-        cursor: pointer; /* Link yerine buton gibi davranacağı için imleç eklendi */
+        cursor: pointer;
     }
 
     .btn-download-main:hover {
-        background-color: #ffffff !important; /* Üstüne gelince beyaz olsun */
-        color: #00d2ff !important; /* Yazı neon maviye dönsün */
-        box-shadow: 0 0 30px rgba(0, 210, 255, 0.8) !important; /* Parlama efekti artsın */
-        transform: translateY(-3px); /* Hafifçe yukarı kalksın */
+        background-color: #ffffff !important;
+        color: #00d2ff !important;
+        box-shadow: 0 0 30px rgba(0, 210, 255, 0.8) !important;
+        transform: translateY(-3px);
     }
 </style>
-
-<script src="https://cdn.paddle.com/paddle/v3/paddle.js"></script>
-
     </head>
 <body class="no-sidebar is-preload page-inner" style="background-color: #1e2226 !important;">
     <div id="page-wrapper" style="background-color: #1e2226 !important;">
@@ -102,33 +99,14 @@
                                     Professional Foundry Simulation & Preliminary Design Tool
                                 </p>
 
-                                <a onclick="openPaddleCheckout()" class="btn-download-main">
+                                <a id="buy-button" class="btn-download-main">
                                    Get a lifetime license for just $100
                                 </a>
-                                <p style="margin-top: 15px; font-size: 0.9em; color: #cccccc !important ; font-weight: 600;">
-                                    🔒 Secure Payment Process via Paddle
+                                
+                                <p style="margin-top: 20px; font-size: 1em; color: #ff3333 !important; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 0 10px rgba(255, 51, 51, 0.65), 0 0 20px rgba(255, 51, 51, 0.4);">
+                                    ⚠️ IMPORTANT: The download link is NOT automated. Your secure standalone package will be manually prepared and delivered to your payment email address within 24 hours.
                                 </p>
                             </header>
-
-                            <section style="margin-bottom: 40px; background-color: rgba(0, 0, 0, 0.4) !important; border-left: 4px solid #00d2ff; padding: 30px; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-                                <h3 style="color: #ffffff !important; font-weight: 800; margin-bottom: 20px; display: flex; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
-                                    <span style="font-size: 1.5em; margin-right: 10px;">⚠️</span> Legal Disclaimer & Terms of Use
-                                </h3>
-                                <p style="margin-bottom: 15px; line-height: 1.7; font-size: 1em; color: #cccccc !important;">
-                                Josecast Suite is software developed to guide engineers during the casting simulation and preliminary design stages. The data provided constitutes preliminary design results based on theoretical metallurgical models and logarithmic calculations.
-                                </p>
-                                <ul style="list-style-type: none; padding: 0; margin: 0; font-size: 1em;">
-                                    <li style="margin-bottom: 15px; line-height: 1.7; color: #cccccc !important;">
-                                        <strong style="color: #ffffff !important;">Variables:</strong> Calculated temperatures and superheat values are presented based on standard parameters. However, field conditions unique to each foundry—such as charge material, lining type, ladle transfer time, inoculant effect, and ambient humidity—can directly impact the results.
-                                    </li>
-                                    <li style="margin-bottom: 15px; line-height: 1.7; color: #cccccc !important;">
-                                        <strong style="color: #ffffff !important;">Verification:</strong> Therefore, the presented results should not be considered "final and absolute truth"; users are advised to verify/calibrate these data according to their own operating conditions, experiences, and specific recipes.
-                                    </li>
-                                    <li style="line-height: 1.7; color: #cccccc !important;">
-                                        <strong style="color: #ffffff !important;">Liability:</strong> The software and its developer cannot be held responsible for casting defects, faulty productions, or financial losses that may occur as a result of using the software.
-                                    </li>
-                                </ul>
-                            </section>
 
                             <div style="display: flex; flex-wrap: wrap; gap: 30px; margin-bottom: 40px;">
                                 <div style="flex: 1; min-width: 300px; background-color: rgba(0, 0, 0, 0.4) !important; padding: 30px; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(0, 210, 255, 0.1);">
@@ -151,7 +129,6 @@
                             </div>
 
                             <div style="display: flex; flex-wrap: wrap; gap: 30px; margin-bottom: 40px; background-color: rgba(0, 0, 0, 0.4) !important; padding: 30px; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(0, 210, 255, 0.1);">
-                                
                                 <div style="flex: 1; min-width: 300px;">
                                     <h3 style="color: #ffffff !important; font-weight: 800; border-bottom: 2px solid #00d2ff; padding-bottom: 10px; margin-bottom: 20px;">📦 What's Included?</h3>
                                     <ul style="padding-left: 20px; margin-bottom: 0; font-size: 1em; line-height: 1.7; color: #cccccc !important;">
@@ -159,7 +136,6 @@
                                         <li><strong style="color:#fff;">License:</strong> Lifetime access linked directly to your email address.</li>
                                     </ul>
                                 </div>
-
                                 <div style="flex: 1; min-width: 300px;">
                                     <h3 style="color: #ffffff !important; font-weight: 800; border-bottom: 2px solid #00d2ff; padding-bottom: 10px; margin-bottom: 20px;">💻 System Requirements</h3>
                                     <ul style="padding-left: 20px; margin-bottom: 0; font-size: 1em; line-height: 1.7; color: #cccccc !important;">
@@ -169,8 +145,27 @@
                                         <li><strong style="color:#fff;">Dependencies:</strong> None. Highly optimized standalone environment.</li>
                                     </ul>
                                 </div>
-
                             </div>
+
+                            <section style="margin-bottom: 40px; background-color: rgba(0, 0, 0, 0.4) !important; border-left: 4px solid #00d2ff; padding: 30px; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                                <h3 style="color: #ffffff !important; font-weight: 800; margin-bottom: 20px; display: flex; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
+                                    <span style="font-size: 1.5em; margin-right: 10px;">⚠️</span> Legal Disclaimer & Terms of Use
+                                </h3>
+                                <p style="margin-bottom: 15px; line-height: 1.7; font-size: 1em; color: #cccccc !important;">
+                                Josecast Suite is software developed to guide engineers during the casting simulation and preliminary design stages. The data provided constitutes preliminary design results based on theoretical metallurgical models and logarithmic calculations.
+                                </p>
+                                <ul style="list-style-type: none; padding: 0; margin: 0; font-size: 1em;">
+                                    <li style="margin-bottom: 15px; line-height: 1.7; color: #cccccc !important;">
+                                        <strong style="color: #ffffff !important;">Variables:</strong> Calculated temperatures and superheat values are presented based on standard parameters. However, field conditions unique to each foundry—such as charge material, lining type, ladle transfer time, inoculant effect, and ambient humidity—can directly impact the results.
+                                    </li>
+                                    <li style="margin-bottom: 15px; line-height: 1.7; color: #cccccc !important;">
+                                        <strong style="color: #ffffff !important;">Verification:</strong> Therefore, the presented results should not be considered "final and absolute truth"; users are advised to verify/calibrate these data according to their own operating conditions, experiences, and specific recipes.
+                                    </li>
+                                    <li style="line-height: 1.7; color: #cccccc !important;">
+                                        <strong style="color: #ffffff !important;">Liability:</strong> The software and its developer cannot be held responsible for casting defects, faulty productions, or financial losses that may occur as a result of using the software.
+                                    </li>
+                                </ul>
+                            </section>
 
                             <section style="margin-bottom: 30px; background-color: rgba(0, 0, 0, 0.4) !important; padding: 40px; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(0, 210, 255, 0.1);">
                                 <h3 style="color: #ffffff !important; font-weight: 900; text-align: center; margin-bottom: 40px; letter-spacing: 1px;">FREQUENTLY ASKED QUESTIONS</h3>
@@ -205,80 +200,86 @@
         <div style="clear: both; margin-bottom: -40px !important; padding-bottom: 0 !important;"></div>
 
         <div id="footer" style="padding: 8px 0; margin: 0; background: #0d0f12; clear: both; border-top: 1px solid rgba(0, 210, 255, 0.1); width: 100%;">
-    <div style="width: 100%; padding: 0 30px; display: flex; align-items: center; justify-content: flex-end; gap: 20px;">
-  <div style="text-align: left !important; display: block !important; width: 100% !important; margin: 0 !important; padding: 0 !important;">
-    <p style="font-size: 0.85em; opacity: 0.8; margin: 20px 0 0 0 !important; padding: 0 !important; text-align: left !important;">
-        Powered by 
-        <a href="https://www.cloudflare.com" target="_blank" style="text-decoration: none; color: inherit; font-weight: bold;">Cloudflare</a> 
-        & 
-        <a href="https://www.paddle.com" target="_blank" style="text-decoration: none; color: inherit; font-weight: bold;">Paddle</a>
-    </p>
-    </div>      
-    
-    <div style="color: #555555; font-size: 0.7em; font-weight: 600; letter-spacing: 1px; border-right: 1px solid rgba(255,255,255,0.1); padding-right: 20px; white-space: nowrap !important; display: inline-block;">
-    &copy; 2026 JOSECAST 
-    <span style="margin: 0 8px; opacity: 0.4;">|</span>
-    <a href="terms.html" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='inherit'">Terms</a>
-    <span style="margin: 0 8px; opacity: 0.4;">|</span>
-    <a href="privacy.html" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='inherit'">Privacy</a>
-    <span style="margin: 0 8px; opacity: 0.4;">|</span>
-    <a href="refund.html" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='inherit'">Refund</a>
-    </div>
+            <div style="width: 100%; padding: 0 30px; display: flex; align-items: center; justify-content: flex-end; gap: 20px;">
+                <div style="text-align: left !important; display: block !important; width: 100% !important; margin: 0 !important; padding: 0 !important;">
+                    <p style="font-size: 0.85em; opacity: 0.8; margin: 20px 0 0 0 !important; padding: 0 !important; text-align: left !important;">
+                        Powered by 
+                        <a href="https://www.cloudflare.com" target="_blank" style="text-decoration: none; color: inherit; font-weight: bold;">Cloudflare</a> 
+                        & 
+                        <a href="https://www.paddle.com" target="_blank" style="text-decoration: none; color: inherit; font-weight: bold;">Paddle</a>
+                    </p>
+                </div>      
+                
+                <div style="color: #555555; font-size: 0.7em; font-weight: 600; letter-spacing: 1px; border-right: 1px solid rgba(255,255,255,0.1); padding-right: 20px; white-space: nowrap !important; display: inline-block;">
+                    &copy; 2026 JOSECAST 
+                    <span style="margin: 0 8px; opacity: 0.4;">|</span>
+                    <a href="terms.html" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='inherit'">Terms</a>
+                    <span style="margin: 0 8px; opacity: 0.4;">|</span>
+                    <a href="privacy.html" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='inherit'">Privacy</a>
+                    <span style="margin: 0 8px; opacity: 0.4;">|</span>
+                    <a href="refund.html" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='inherit'">Refund</a>
+                </div>
 
-        <h3 style="color: #ffffff; margin: 0; font-size: 0.8em; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; white-space: nowrap; opacity: 0.9;">
-            FOLLOW JOSECAST
-        </h3>
+                <h3 style="color: #ffffff; margin: 0; font-size: 0.8em; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; white-space: nowrap; opacity: 0.9;">
+                    FOLLOW JOSECAST
+                </h3>
 
-        <div style="display: flex; gap: 10px;">
-            <a href="https://www.linkedin.com/company/josecast-suite" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; background-color: #1a1e22; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 2px; color: #888888; font-size: 1em; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#00d2ff'; this.style.color='#00d2ff';" onmouseout="this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.color='#888888';">
-                <i class="icon brands fa-linkedin-in" style="background: none; border: none; margin: 0; padding: 0;"></i>
-            </a>
-            
-            <a href="https://www.linkedin.com/company/josecast-suite" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; background-color: #1a1e22; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 2px; color: #888888; font-size: 1em; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#00d2ff'; this.style.color='#00d2ff';" onmouseout="this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.color='#888888';">
-                <i class="icon brands fa-facebook-f" style="background: none; border: none; margin: 0; padding: 0;"></i>
-            </a>
-        </div>
-
-    </div>
-</div>
-    </div>
-</div>
-
-                        </article>
-                    </div>
+                <div style="display: flex; gap: 10px;">
+                    <a href="https://www.linkedin.com/company/josecast-suite" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; background-color: #1a1e22; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 2px; color: #888888; font-size: 1em; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#00d2ff'; this.style.color='#00d2ff';" onmouseout="this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.color='#888888';">
+                        <i class="icon brands fa-linkedin-in" style="background: none; border: none; margin: 0; padding: 0;"></i>
+                    </a>
+                    
+                    <a href="https://www.linkedin.com/company/josecast-suite" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; background-color: #1a1e22; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 2px; color: #888888; font-size: 1em; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#00d2ff'; this.style.color='#00d2ff';" onmouseout="this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.color='#888888';">
+                        <i class="icon brands fa-facebook-f" style="background: none; border: none; margin: 0; padding: 0;"></i>
+                    </a>
                 </div>
             </div>
         </div>
 
-        <script src="assets/js/jquery.min.js"></script>
-            <script src="assets/js/jquery.dropotron.min.js"></script>
-            <script src="assets/js/jquery.scrolly.min.js"></script>
-            <script src="assets/js/jquery.scrollex.min.js"></script>
-            <script src="assets/js/browser.min.js"></script>
-            <script src="assets/js/breakpoints.min.js"></script>
-            <script src="assets/js/util.js"></script>
-            <script src="assets/js/main.js"></script>
+    </div>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.dropotron.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
 
 <script type="module">
-import { initializePaddle } from 'https://cdn.paddle.com/paddle/v3/paddle.js';
+import { initializePaddle } from 'https://cdn.jsdelivr.net/npm/@paddle/paddle-js/+esm';
 
-// Senin panelden aldığın API KEY (Client-Side Token) buraya yapışıyor abi
-const paddle = await initializePaddle({  
-  environment: 'production',  
-  token: 'pdl_live_apikey_01krrp9a8e7pq7xj3xwe6p2t41_MmTh8QpFmXYJYP2cxa75B2_An6' // <--- Elindeki o uzun "API KEY" / "Client-Side Token" değerini tırnakların içine aynen yapıştır
-});                    
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const paddle = await initializePaddle({  
+            environment: 'production',  
+            token: 'live_e06d2ab3382149fc0f737814cb3' 
+        });                    
 
-// Butona tıklandığında senin checkout açma kodun tetikleniyor
-document.getElementById('buy-button').addEventListener('click', () => {
-    paddle?.Checkout.open({  
-      items: [      
-          {        
-            priceId: 'pri_01krrv2j3sqk3ac3sxajve163w' // <--- Buraya da o 100 dolarlık ürünün Price ID'sini yazacaksın abi
-          }    
-        ]
-    });            
+        const buyButton = document.getElementById('buy-button');
+        if (buyButton) {
+            buyButton.addEventListener('click', (e) => {
+                e.preventDefault(); 
+                
+                paddle?.Checkout.open({  
+                    settings: {
+                        displayMode: "overlay",
+                        theme: "dark"
+                    },
+                    items: [      
+                        {        
+                            priceId: 'pri_01krrv2j3sqk3ac3sxajve163w'
+                        }    
+                    ]
+                });            
+            });
+        }
+    } catch (error) {
+        console.error("Paddle başlatılırken bir sorun oluştu:", error);
+    }
 });
 </script>
 
-    </body>
+</body>
 </html>
