@@ -249,34 +249,37 @@
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
 
-<script src="https://cdn.paddle.com/paddle/v3/paddle.js"></script>
+<script type="module">
+import { initializePaddle } from 'https://cdn.paddle.com/paddle/v3/paddle.js';
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Sayfa yüklenince global Paddle nesnesini senin anahtarınla başlatıyoruz
-    Paddle.Initialize({ 
-        environment: 'production', 
-        token: 'pdl_live_apikey_01krrp9a8e7pq7xj3xwe6p2t41_MmTh8QpFmXYJYP2cxa75B2_An6' 
-    });
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        // Buraya 1. adımda aldığın "live_client_" ile başlayan anahtarı çakıyorsun abi
+        const paddle = await initializePaddle({  
+            environment: 'production',  
+            token: 'Blive_e06d2ab3382149fc0f737814cb3' 
+        });                    
 
-    const buyButton = document.getElementById('buy-button');
-    if (buyButton) {
-        buyButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            
-            // 2. Tıklanınca dökümandaki gibi checkout'u tetikliyoruz
-            Paddle.Checkout.open({
-                settings: {
-                    displayMode: "overlay",
-                    theme: "dark"
-                },
-                items: [
-                    {
-                        priceId: 'pri_01krrv2j3sqk3ac3sxajve163w'
-                    }
-                ]
+        const buyButton = document.getElementById('buy-button');
+        if (buyButton) {
+            buyButton.addEventListener('click', (e) => {
+                e.preventDefault(); 
+                
+                paddle?.Checkout.open({  
+                    settings: {
+                        displayMode: "overlay",
+                        theme: "dark"
+                    },
+                    items: [      
+                        {        
+                            priceId: 'pri_01krrv2j3sqk3ac3sxajve163w' // Bu Price ID aynen kalıyor, bunda sorun yok
+                        }    
+                    ]
+                });            
             });
-        });
+        }
+    } catch (error) {
+        console.error("Paddle başlatılırken bir sorun oluştu:", error);
     }
 });
 </script>
