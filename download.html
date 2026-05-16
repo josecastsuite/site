@@ -33,15 +33,15 @@
 
     /* 🔥 FOOTER IKON ANİMASYON DÜZELTMESİ 🔥 */
     #footer .icons a.custom-footer-icon {
-        color: #888888 !important; /* Normalde sönük gri dursun */
+        color: #888888 !important;
         font-size: 1.5em !important;
-        transition: all 0.3s ease-in-out !important; /* Yumuşak geçiş animasyonu */
+        transition: all 0.3s ease-in-out !important;
         display: inline-block;
     }
     
     #footer .icons a.custom-footer-icon:hover {
-        color: #00d2ff !important; /* Üstüne gelince JoseCast mavisi parlasın */
-        transform: scale(1.2); /* Üstüne gelince hafif büyüsün */
+        color: #00d2ff !important;
+        transform: scale(1.2);
     }
 
     /* 🚀 ANA İNDİRME BUTONU ANİMASYONU 🚀 */
@@ -57,21 +57,18 @@
         text-transform: uppercase;
         letter-spacing: 1px;
         box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
-        transition: all 0.3s ease-in-out !important; /* Animasyon geçiş hızı */
+        transition: all 0.3s ease-in-out !important;
         border: 2px solid transparent !important;
-        cursor: pointer; /* Link yerine buton gibi davranacağı için imleç eklendi */
+        cursor: pointer;
     }
 
     .btn-download-main:hover {
-        background-color: #ffffff !important; /* Üstüne gelince beyaz olsun */
-        color: #00d2ff !important; /* Yazı neon maviye dönsün */
-        box-shadow: 0 0 30px rgba(0, 210, 255, 0.8) !important; /* Parlama efekti artsın */
-        transform: translateY(-3px); /* Hafifçe yukarı kalksın */
+        background-color: #ffffff !important;
+        color: #00d2ff !important;
+        box-shadow: 0 0 30px rgba(0, 210, 255, 0.8) !important;
+        transform: translateY(-3px);
     }
 </style>
-
-<script src="https://cdn.paddle.com/paddle/v3/paddle.js"></script>
-
     </head>
 <body class="no-sidebar is-preload page-inner" style="background-color: #1e2226 !important;">
     <div id="page-wrapper" style="background-color: #1e2226 !important;">
@@ -102,7 +99,7 @@
                                     Professional Foundry Simulation & Preliminary Design Tool
                                 </p>
 
-                                <a onclick="openPaddleCheckout()" class="btn-download-main">
+                                <a id="buy-button" class="btn-download-main">
                                    Get a lifetime license for just $100
                                 </a>
                                 <p style="margin-top: 15px; font-size: 0.9em; color: #cccccc !important ; font-weight: 600;">
@@ -205,77 +202,71 @@
         <div style="clear: both; margin-bottom: -40px !important; padding-bottom: 0 !important;"></div>
 
         <div id="footer" style="padding: 8px 0; margin: 0; background: #0d0f12; clear: both; border-top: 1px solid rgba(0, 210, 255, 0.1); width: 100%;">
-    <div style="width: 100%; padding: 0 30px; display: flex; align-items: center; justify-content: flex-end; gap: 20px;">
-  <div style="text-align: left !important; display: block !important; width: 100% !important; margin: 0 !important; padding: 0 !important;">
-    <p style="font-size: 0.85em; opacity: 0.8; margin: 20px 0 0 0 !important; padding: 0 !important; text-align: left !important;">
-        Powered by 
-        <a href="https://www.cloudflare.com" target="_blank" style="text-decoration: none; color: inherit; font-weight: bold;">Cloudflare</a> 
-        & 
-        <a href="https://www.paddle.com" target="_blank" style="text-decoration: none; color: inherit; font-weight: bold;">Paddle</a>
-    </p>
-    </div>      
-    
-    <div style="color: #555555; font-size: 0.7em; font-weight: 600; letter-spacing: 1px; border-right: 1px solid rgba(255,255,255,0.1); padding-right: 20px; white-space: nowrap !important; display: inline-block;">
-    &copy; 2026 JOSECAST 
-    <span style="margin: 0 8px; opacity: 0.4;">|</span>
-    <a href="terms.html" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='inherit'">Terms</a>
-    <span style="margin: 0 8px; opacity: 0.4;">|</span>
-    <a href="privacy.html" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='inherit'">Privacy</a>
-    <span style="margin: 0 8px; opacity: 0.4;">|</span>
-    <a href="refund.html" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='inherit'">Refund</a>
-    </div>
+            <div style="width: 100%; padding: 0 30px; display: flex; align-items: center; justify-content: flex-end; gap: 20px;">
+                <div style="text-align: left !important; display: block !important; width: 100% !important; margin: 0 !important; padding: 0 !important;">
+                    <p style="font-size: 0.85em; opacity: 0.8; margin: 20px 0 0 0 !important; padding: 0 !important; text-align: left !important;">
+                        Powered by 
+                        <a href="https://www.cloudflare.com" target="_blank" style="text-decoration: none; color: inherit; font-weight: bold;">Cloudflare</a> 
+                        & 
+                        <a href="https://www.paddle.com" target="_blank" style="text-decoration: none; color: inherit; font-weight: bold;">Paddle</a>
+                    </p>
+                </div>      
+                
+                <div style="color: #555555; font-size: 0.7em; font-weight: 600; letter-spacing: 1px; border-right: 1px solid rgba(255,255,255,0.1); padding-right: 20px; white-space: nowrap !important; display: inline-block;">
+                    &copy; 2026 JOSECAST 
+                    <span style="margin: 0 8px; opacity: 0.4;">|</span>
+                    <a href="terms.html" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='inherit'">Terms</a>
+                    <span style="margin: 0 8px; opacity: 0.4;">|</span>
+                    <a href="privacy.html" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='inherit'">Privacy</a>
+                    <span style="margin: 0 8px; opacity: 0.4;">|</span>
+                    <a href="refund.html" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='inherit'">Refund</a>
+                </div>
 
-        <h3 style="color: #ffffff; margin: 0; font-size: 0.8em; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; white-space: nowrap; opacity: 0.9;">
-            FOLLOW JOSECAST
-        </h3>
+                <h3 style="color: #ffffff; margin: 0; font-size: 0.8em; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; white-space: nowrap; opacity: 0.9;">
+                    FOLLOW JOSECAST
+                </h3>
 
-        <div style="display: flex; gap: 10px;">
-            <a href="https://www.linkedin.com/company/josecast-suite" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; background-color: #1a1e22; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 2px; color: #888888; font-size: 1em; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#00d2ff'; this.style.color='#00d2ff';" onmouseout="this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.color='#888888';">
-                <i class="icon brands fa-linkedin-in" style="background: none; border: none; margin: 0; padding: 0;"></i>
-            </a>
-            
-            <a href="https://www.linkedin.com/company/josecast-suite" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; background-color: #1a1e22; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 2px; color: #888888; font-size: 1em; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#00d2ff'; this.style.color='#00d2ff';" onmouseout="this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.color='#888888';">
-                <i class="icon brands fa-facebook-f" style="background: none; border: none; margin: 0; padding: 0;"></i>
-            </a>
-        </div>
-
-    </div>
-</div>
-    </div>
-</div>
-
-                        </article>
-                    </div>
+                <div style="display: flex; gap: 10px;">
+                    <a href="https://www.linkedin.com/company/josecast-suite" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; background-color: #1a1e22; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 2px; color: #888888; font-size: 1em; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#00d2ff'; this.style.color='#00d2ff';" onmouseout="this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.color='#888888';">
+                        <i class="icon brands fa-linkedin-in" style="background: none; border: none; margin: 0; padding: 0;"></i>
+                    </a>
+                    
+                    <a href="https://www.linkedin.com/company/josecast-suite" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; background-color: #1a1e22; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 2px; color: #888888; font-size: 1em; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#00d2ff'; this.style.color='#00d2ff';" onmouseout="this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.color='#888888';">
+                        <i class="icon brands fa-facebook-f" style="background: none; border: none; margin: 0; padding: 0;"></i>
+                    </a>
                 </div>
             </div>
         </div>
 
-        <script src="assets/js/jquery.min.js"></script>
-            <script src="assets/js/jquery.dropotron.min.js"></script>
-            <script src="assets/js/jquery.scrolly.min.js"></script>
-            <script src="assets/js/jquery.scrollex.min.js"></script>
-            <script src="assets/js/browser.min.js"></script>
-            <script src="assets/js/breakpoints.min.js"></script>
-            <script src="assets/js/util.js"></script>
-            <script src="assets/js/main.js"></script>
+    </div>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.dropotron.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
 
 <script type="module">
 import { initializePaddle } from 'https://cdn.paddle.com/paddle/v3/paddle.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        // 1. Paddle'ı senin orijinal api key parametrenle başlatıyoruz
+        // 1. Paddle senin API anahtarınla asenkron olarak başlıyor
         const paddle = await initializePaddle({  
             environment: 'production',  
             token: 'pdl_live_apikey_01krrp9a8e7pq7xj3xwe6p2t41_MmTh8QpFmXYJYP2cxa75B2_An6'
         });                    
 
-        // 2. Sayfa yüklendiği için artık butonu kesin buluyoruz ve tıklamayı bağlıyoruz
+        // 2. JS yukarıdaki "buy-button" ID'li butonu buluyor ve tıklamayı dinliyor
         const buyButton = document.getElementById('buy-button');
         if (buyButton) {
             buyButton.addEventListener('click', (e) => {
-                e.preventDefault(); // Sayfa zıplamasını engelle
+                e.preventDefault(); // Butonun sayfayı yukarı fırlatmasını engeller
                 
+                // 3. Checkout senin Price ID'nle tetikleniyor
                 paddle?.Checkout.open({  
                     settings: {
                         displayMode: "overlay",
@@ -295,5 +286,5 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 </script>
 
-    </body>
+</body>
 </html>
