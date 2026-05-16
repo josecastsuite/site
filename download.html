@@ -249,39 +249,34 @@
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
 
-<script type="module">
-import { initializePaddle } from 'https://cdn.jsdelivr.net/npm/@paddle/paddle-js/+esm';
+<script src="https://cdn.paddle.com/paddle/v3/paddle.js"></script>
 
-document.addEventListener('DOMContentLoaded', async () => {
-    try {
-        // 1. Paddle dökümandaki gibi senin canlı API Key değerinle başlatılıyor
-        const paddle = await initializePaddle({  
-            environment: 'production',  
-            token: 'pdl_live_apikey_01krrp9a8e7pq7xj3xwe6p2t41_MmTh8QpFmXYJYP2cxa75B2_An6'
-        });                    
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Sayfa yüklenince global Paddle nesnesini senin anahtarınla başlatıyoruz
+    Paddle.Initialize({ 
+        environment: 'production', 
+        token: 'pdl_live_apikey_01krrp9a8e7pq7xj3xwe6p2t41_MmTh8QpFmXYJYP2cxa75B2_An6' 
+    });
 
-        // 2. Buton tıklaması yakalanıyor
-        const buyButton = document.getElementById('buy-button');
-        if (buyButton) {
-            buyButton.addEventListener('click', (e) => {
-                e.preventDefault(); 
-                
-                // 3. Checkout ekranı senin ürününün gerçek Price ID'si ile overlay olarak açılıyor
-                paddle?.Checkout.open({  
-                    settings: {
-                        displayMode: "overlay",
-                        theme: "dark"
-                    },
-                    items: [      
-                        {        
-                            priceId: 'pri_01krrv2j3sqk3ac3sxajve163w'
-                        }    
-                    ]
-                });            
+    const buyButton = document.getElementById('buy-button');
+    if (buyButton) {
+        buyButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // 2. Tıklanınca dökümandaki gibi checkout'u tetikliyoruz
+            Paddle.Checkout.open({
+                settings: {
+                    displayMode: "overlay",
+                    theme: "dark"
+                },
+                items: [
+                    {
+                        priceId: 'pri_01krrv2j3sqk3ac3sxajve163w'
+                    }
+                ]
             });
-        }
-    } catch (error) {
-        console.error("Paddle başlatılırken bir sorun oluştu:", error);
+        });
     }
 });
 </script>
