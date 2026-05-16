@@ -262,21 +262,36 @@
 <script type="module">
 import { initializePaddle } from 'https://cdn.paddle.com/paddle/v3/paddle.js';
 
-// Senin panelden aldığın API KEY (Client-Side Token) buraya yapışıyor abi
-const paddle = await initializePaddle({  
-  environment: 'production',  
-  token: 'pdl_live_apikey_01krrp9a8e7pq7xj3xwe6p2t41_MmTh8QpFmXYJYP2cxa75B2_An6' // <--- Elindeki o uzun "API KEY" / "Client-Side Token" değerini tırnakların içine aynen yapıştır
-});                    
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        // 1. Paddle'ı senin orijinal api key parametrenle başlatıyoruz
+        const paddle = await initializePaddle({  
+            environment: 'production',  
+            token: 'pdl_live_apikey_01krrp9a8e7pq7xj3xwe6p2t41_MmTh8QpFmXYJYP2cxa75B2_An6'
+        });                    
 
-// Butona tıklandığında senin checkout açma kodun tetikleniyor
-document.getElementById('buy-button').addEventListener('click', () => {
-    paddle?.Checkout.open({  
-      items: [      
-          {        
-            priceId: 'pri_01krrv2j3sqk3ac3sxajve163w' // <--- Buraya da o 100 dolarlık ürünün Price ID'sini yazacaksın abi
-          }    
-        ]
-    });            
+        // 2. Sayfa yüklendiği için artık butonu kesin buluyoruz ve tıklamayı bağlıyoruz
+        const buyButton = document.getElementById('buy-button');
+        if (buyButton) {
+            buyButton.addEventListener('click', (e) => {
+                e.preventDefault(); // Sayfa zıplamasını engelle
+                
+                paddle?.Checkout.open({  
+                    settings: {
+                        displayMode: "overlay",
+                        theme: "dark"
+                    },
+                    items: [      
+                        {        
+                            priceId: 'pri_01krrv2j3sqk3ac3sxajve163w'
+                        }    
+                    ]
+                });            
+            });
+        }
+    } catch (error) {
+        console.error("Paddle yüklenirken hata oluştu:", error);
+    }
 });
 </script>
 
