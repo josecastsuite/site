@@ -59,6 +59,7 @@
         box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
         transition: all 0.3s ease-in-out !important; /* Animasyon geçiş hızı */
         border: 2px solid transparent !important;
+        cursor: pointer; /* Link yerine buton gibi davranacağı için imleç eklendi */
     }
 
     .btn-download-main:hover {
@@ -68,6 +69,9 @@
         transform: translateY(-3px); /* Hafifçe yukarı kalksın */
     }
 </style>
+
+<script src="https://cdn.paddle.com/paddle/v3/paddle.js"></script>
+
     </head>
 <body class="no-sidebar is-preload page-inner" style="background-color: #1e2226 !important;">
     <div id="page-wrapper" style="background-color: #1e2226 !important;">
@@ -98,11 +102,11 @@
                                     Professional Foundry Simulation & Preliminary Design Tool
                                 </p>
 
-                                <a href="[PADDLE_KODU_VEYA_LINKI_BURAYA]" class="btn-download-main">
+                                <a onclick="openPaddleCheckout()" class="btn-download-main">
                                    Get a lifetime license for just $100
                                 </a>
                                 <p style="margin-top: 15px; font-size: 0.9em; color: #cccccc !important ; font-weight: 600;">
-                                    🔒 Secure Payment & Instant Delivery via Paddle
+                                    🔒 Secure Payment Process via Paddle
                                 </p>
                             </header>
 
@@ -128,20 +132,21 @@
 
                             <div style="display: flex; flex-wrap: wrap; gap: 30px; margin-bottom: 40px;">
                                 <div style="flex: 1; min-width: 300px; background-color: rgba(0, 0, 0, 0.4) !important; padding: 30px; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(0, 210, 255, 0.1);">
-                                    <h3 style="color: #ffffff !important; font-weight: 800; border-bottom: 2px solid #00d2ff; padding-bottom: 10px; margin-bottom: 20px;">⚡ 1. INSTANT DOWNLOAD</h3>
-                                    <p style="margin-bottom: 15px; line-height: 1.7; font-size: 1em; color: #cccccc !important;">As soon as your payment is confirmed, you will receive a secure fulfillment email:</p>
+                                    <h3 style="color: #ffffff !important; font-weight: 800; border-bottom: 2px solid #00d2ff; padding-bottom: 10px; margin-bottom: 20px;">⚡ 1. ORDER & DELIVERY</h3>
+                                    <p style="margin-bottom: 15px; line-height: 1.7; font-size: 1em; color: #cccccc !important;">Once your payment is successfully processed by Paddle:</p>
                                     <ul style="padding-left: 20px; margin-bottom: 20px; font-size: 1em; line-height: 1.7; color: #cccccc !important;">
-                                    <li><strong style="color: #ffffff !important;">Invoice & Download Link:</strong> Your official receipt and the secure "Download PRO CAST SUITE" button are delivered together. Click it, and the 400MB zip is on your computer in 30 seconds.</li>
+                                    <li><strong style="color: #ffffff !important;">License Verification:</strong> We will verify your payment and prepare your dedicated standalone package.</li>
+                                    <li><strong style="color: #ffffff !important;">Email Delivery:</strong> Your secure download link and official installation guide will be sent directly to your payment email address <strong style="color: #00d2ff;">within 24 hours</strong>.</li>
                                     </ul>
-                                    <p style="font-size: 1em; line-height: 1.7; font-weight: 600; color: #ffffff !important; margin: 0;">There is no need to open an account or set a password. Your email address = your license.</p>
+                                    <p style="font-size: 1em; line-height: 1.7; font-weight: 600; color: #ffffff !important; margin: 0;">Your email address will serve as your primary identifier for lifetime product updates.</p>
                                 </div>
                                 <div style="flex: 1; min-width: 300px; background-color: rgba(0, 0, 0, 0.4) !important; padding: 30px; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(0, 210, 255, 0.1);">
-                                    <h3 style="color: #ffffff !important; font-weight: 800; border-bottom: 2px solid #00d2ff; padding-bottom: 10px; margin-bottom: 20px;">🔐 2. NO FEAR OF LOSING IT</h3>
-                                    <p style="margin-bottom: 15px; line-height: 1.7; font-size: 1em; color: #cccccc !important;">Deleted the zip? Formatted your computer? Lost the email?</p>
+                                    <h3 style="color: #ffffff !important; font-weight: 800; border-bottom: 2px solid #00d2ff; padding-bottom: 10px; margin-bottom: 20px;">🔐 2. SECURE ACCESS</h3>
+                                    <p style="margin-bottom: 15px; line-height: 1.7; font-size: 1em; color: #cccccc !important;">Need to reinstall or downloaded the setup on a new machine?</p>
                                     <p style="margin-bottom: 15px; line-height: 1.7; font-size: 1em; color: #cccccc !important;">
-                                    Go to <strong style="color:#00d2ff;">paddle.net</strong>. Enter your email address or use the link in your receipt. All your purchases are right in front of you. PRO CAST SUITE → Download. 
+                                    You can always request a fresh copy or support directly by contacting us at <strong style="color:#00d2ff;">josecastsuite@gmail.com</strong> with your original invoice details.
                                     </p>
-                                    <p style="font-size: 1em; line-height: 1.7; font-weight: 600; color: #ffffff !important; margin: 0;">Lifetime. You can download it even in 2050. As long as we don't delete the product, the right is yours.</p>
+                                    <p style="font-size: 1em; line-height: 1.7; font-weight: 600; color: #ffffff !important; margin: 0;">Lifetime support. We ensure you retain access to your software environment permanently.</p>
                                 </div>
                             </div>
 
@@ -172,22 +177,22 @@
                                 
                                 <div style="margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px;">
                                     <h4 style="color: #ffffff !important; font-weight: 700; margin-bottom: 10px; font-size: 1.1em;">Q: Do I get an invoice? Can I expense it to my company?</h4>
-                                    <p style="margin: 0; line-height: 1.7; font-size: 1em; color: #cccccc !important;"><strong style="color:#fff;">A:</strong> Yes. A PDF invoice comes attached to your email after payment. It's legal and stamped. You can show it as an expense. Paddle handles the global tax structures.</p>
+                                    <p style="margin: 0; line-height: 1.7; font-size: 1em; color: #cccccc !important;"><strong style="color:#fff;">A:</strong> Yes. A PDF invoice comes attached to your email immediately after payment from Paddle. It's legal, officially stamped, and can be used for company accounting.</p>
                                 </div>
 
                                 <div style="margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px;">
-                                    <h4 style="color: #ffffff !important; font-weight: 700; margin-bottom: 10px; font-size: 1.1em;">Q: Are there installments?</h4>
-                                    <p style="margin: 0; line-height: 1.7; font-size: 1em; color: #cccccc !important;"><strong style="color:#fff;">A:</strong> Paddle supports global payment methods. If your credit card supports international installments, you can use it at checkout.</p>
+                                    <h4 style="color: #ffffff !important; font-weight: 700; margin-bottom: 10px; font-size: 1.1em;">Q: How and when will I receive the software download link?</h4>
+                                    <p style="margin: 0; line-height: 1.7; font-size: 1em; color: #cccccc !important;"><strong style="color:#fff;">A:</strong> After payment verification, your personalized download link and installation instructions will be sent manually by our team to your registered email address <strong style="color:#fff;">within 24 hours</strong>.</p>
                                 </div>
 
                                 <div style="margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px;">
                                     <h4 style="color: #ffffff !important; font-weight: 700; margin-bottom: 10px; font-size: 1.1em;">Q: Is there a refund?</h4>
-                                    <p style="margin: 0; line-height: 1.7; font-size: 1em; color: #cccccc !important;"><strong style="color:#fff;">A:</strong> Since it's a digital product, the general rule is no refunds. But if the file downloads corrupted or you experience a technical problem, write to <strong style="color:#00d2ff;">josecastsuite@gmail.com</strong>. I will solve it within 24 hours. I don't make trust an issue.</p>
+                                    <p style="margin: 0; line-height: 1.7; font-size: 1em; color: #cccccc !important;"><strong style="color:#fff;">A:</strong> Since it's a digital product, the general rule is no refunds. But if you experience any critical technical installation issue, write to <strong style="color:#00d2ff;">josecastsuite@gmail.com</strong>. We will resolve it or assist you within 24 hours.</p>
                                 </div>
 
                                 <div style="margin-bottom: 10px;">
-                                    <h4 style="color: #ffffff !important; font-weight: 700; margin-bottom: 10px; font-size: 1.1em;">Q: What if the email doesn't arrive?</h4>
-                                    <p style="margin: 0; line-height: 1.7; font-size: 1em; color: #cccccc !important;"><strong style="color:#fff;">A:</strong> 99% of the time it falls into spam. Check the "Promotions" tab in Gmail. If you can't find it, send an email, and I'll send a new link instantly.</p>
+                                    <h4 style="color: #ffffff !important; font-weight: 700; margin-bottom: 10px; font-size: 1.1em;">Q: What if the delivery email doesn't arrive within 24 hours?</h4>
+                                    <p style="margin: 0; line-height: 1.7; font-size: 1em; color: #cccccc !important;"><strong style="color:#fff;">A:</strong> Please check your spam folder or the "Promotions" tab in your inbox first. If it's still missing, contact us immediately at <strong style="color:#00d2ff;">josecastsuite@gmail.com</strong> with your order receipt, and we will send your secure package link instantly.</p>
                                 </div>
                             </section>
 
@@ -239,15 +244,10 @@
     </div>
 </div>
 
-
-</section>
-
-                            </div>
-
-                        </div>
+                        </article>
                     </div>
                 </div>
-
+            </div>
         </div>
 
         <script src="assets/js/jquery.min.js"></script>
@@ -258,6 +258,27 @@
             <script src="assets/js/breakpoints.min.js"></script>
             <script src="assets/js/util.js"></script>
             <script src="assets/js/main.js"></script>
+
+<script type="module">
+import { initializePaddle } from 'https://cdn.paddle.com/paddle/v3/paddle.js';
+
+// Senin panelden aldığın API KEY (Client-Side Token) buraya yapışıyor abi
+const paddle = await initializePaddle({  
+  environment: 'production',  
+  token: 'pdl_live_apikey_01krrp9a8e7pq7xj3xwe6p2t41_MmTh8QpFmXYJYP2cxa75B2_An6' // <--- Elindeki o uzun "API KEY" / "Client-Side Token" değerini tırnakların içine aynen yapıştır
+});                    
+
+// Butona tıklandığında senin checkout açma kodun tetikleniyor
+document.getElementById('buy-button').addEventListener('click', () => {
+    paddle?.Checkout.open({  
+      items: [      
+          {        
+            priceId: 'pri_01krrv2j3sqk3ac3sxajve163w' // <--- Buraya da o 100 dolarlık ürünün Price ID'sini yazacaksın abi
+          }    
+        ]
+    });            
+});
+</script>
 
     </body>
 </html>
