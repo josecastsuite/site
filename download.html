@@ -250,23 +250,23 @@
     <script src="assets/js/main.js"></script>
 
 <script type="module">
-// Dökümandaki yapıyı düz tarayıcının çözebileceği ES Modül CDN linkine çevirdik
 import { initializePaddle } from 'https://cdn.jsdelivr.net/npm/@paddle/paddle-js/+esm';
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        // Senin attığın başlatma kodu (Birebir dökümandaki gibi)
+        // 1. Paddle dökümandaki gibi senin canlı API Key değerinle başlatılıyor
         const paddle = await initializePaddle({  
             environment: 'production',  
             token: 'pdl_live_apikey_01krrp9a8e7pq7xj3xwe6p2t41_MmTh8QpFmXYJYP2cxa75B2_An6'
         });                    
 
+        // 2. Buton tıklaması yakalanıyor
         const buyButton = document.getElementById('buy-button');
         if (buyButton) {
             buyButton.addEventListener('click', (e) => {
                 e.preventDefault(); 
                 
-                // Senin attığın checkout açma kodu (Ayarlarıyla birlikte)
+                // 3. Checkout ekranı senin ürününün gerçek Price ID'si ile overlay olarak açılıyor
                 paddle?.Checkout.open({  
                     settings: {
                         displayMode: "overlay",
