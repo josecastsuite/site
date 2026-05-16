@@ -250,14 +250,14 @@
     <script src="assets/js/main.js"></script>
 
 <script type="module">
-import { initializePaddle } from 'https://cdn.paddle.com/paddle/v3/paddle.js';
+import { initializePaddle } from 'https://cdn.jsdelivr.net/npm/@paddle/paddle-js/+esm';
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        // Buraya 1. adımda aldığın "live_client_" ile başlayan anahtarı çakıyorsun abi
+        // En baştaki hatalı 'B' harfi temizlendi, saf token kaldı abi
         const paddle = await initializePaddle({  
             environment: 'production',  
-            token: 'Blive_e06d2ab3382149fc0f737814cb3' 
+            token: 'live_e06d2ab3382149fc0f737814cb3' 
         });                    
 
         const buyButton = document.getElementById('buy-button');
@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     },
                     items: [      
                         {        
-                            priceId: 'pri_01krrv2j3sqk3ac3sxajve163w' // Bu Price ID aynen kalıyor, bunda sorun yok
+                            priceId: 'pri_01krrv2j3sqk3ac3sxajve163w'
                         }    
                     ]
                 });            
