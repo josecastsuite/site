@@ -55,13 +55,14 @@
         display: inline-block;
         width: 100%;
         max-width: 550px;
-        background-color: #0e1114 !important; /* Arka plan koyu, yazı okunsun diye */
-        color: #00f2fe !important; /* Canlı neon turkuaz yazı */
-        padding: 20px 30px;
+        box-sizing: border-box; /* Mobilde taşmayı önleyen altın kural */
+        background-color: #0e1114 !important; 
+        color: #00f2fe !important; 
+        padding: 18px 20px; /* Mobilde dikey/yatay oran dengelendi */
         text-decoration: none;
         font-weight: 700;
-        font-size: 1.3em;
-        letter-spacing: 1px;
+        font-size: 1.2em; /* Küçük ekranlarda okunabilir ideal oran */
+        letter-spacing: 0.5px;
         border-radius: 8px;
         margin: 20px auto;
         position: relative;
@@ -70,16 +71,14 @@
         transition: all 0.3s ease;
         text-align: center;
         border: none !important;
+        word-break: break-word; /* Çok küçük ekranlarda mail adresini güvenle böler, mizanpajı korur */
     }
 
-    /* Butonun etrafındaki o renk değiştiren sihirli neon çerçeve çizgisi */
+    /* Neon çerçeve çizgisi - Absolute oranlar esnetildi */
     .btn-support-direct::before {
         content: '';
         position: absolute;
-        top: -3px;
-        left: -3px;
-        right: -3px;
-        bottom: -3px;
+        top: -3px; left: -3px; right: -3px; bottom: -3px;
         background: linear-gradient(45deg, #00f2fe, #4facfe, #00ff87, #b92b27, #1565c0, #7f00ff, #ff007f);
         background-size: 400% 400%;
         z-index: -1;
@@ -87,7 +86,7 @@
         animation: neonGradient 6s linear infinite;
     }
 
-    /* Butonun arkasındaki o yumuşak siber parlama/glow efekti */
+    /* Yumuşak siber parlama/glow efekti */
     .btn-support-direct::after {
         content: '';
         position: absolute;
@@ -95,23 +94,30 @@
         background: linear-gradient(45deg, #00f2fe, #4facfe, #00ff87, #b92b27, #1565c0, #7f00ff, #ff007f);
         background-size: 400% 400%;
         z-index: -2;
-        filter: blur(20px);
+        filter: blur(15px); /* Mobilde performansı düşürmemesi için hafif optimize edildi */
         opacity: 0.7;
         border-radius: 11px;
         animation: neonGradient 6s linear infinite;
         transition: opacity 0.3s ease;
     }
 
-    /* Üzerine gelince parlama şiddetini artır ve hafif büyüt */
     .btn-support-direct:hover {
-        transform: scale(1.02);
-        color: #ffffff !important; /* Hover olunca yazı beyaz parlasın */
+        transform: scale(1.01);
+        color: #ffffff !important; 
         box-shadow: 0 0 35px rgba(0, 242, 254, 0.6);
     }
     
     .btn-support-direct:hover::after {
         opacity: 1;
-        filter: blur(25px);
+        filter: blur(20px);
+    }
+
+    /* MOBİL İÇİN EKSTRA GARANTİ MEDİA QUERY */
+    @media screen and (max-width: 480px) {
+        .btn-support-direct {
+            font-size: 1em !important; /* Telefonlarda fontu hafif küçültür ki kutudan taşmasın */
+            padding: 15px 15px !important;
+        }
     }
 </style>
     </head>
@@ -246,7 +252,7 @@
                 </h3>
 
                 <div style="display: flex; gap: 10px;">
-                    <a href="https://www.linkedin.com/company/josecast-suite" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; background-color: #1a1e22; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 2px; color: #888888; font-size: 1em; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#00d2ff'; this.style.color='#00d2ff';" onmouseout="this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.color='#888888';">
+                    <a href="https://www.linkedin.com/company/josecast-suite" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; background-color: #1a1e22; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 2px; color: #888888; font-size: 1em; text-decoration: none; transition: all 0.3s ease; " onmouseover="this.style.borderColor='#00d2ff'; this.style.color='#00d2ff';" onmouseout="this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.color='#888888';">
                         <i class="icon brands fa-linkedin-in" style="background: none; border: none; margin: 0; padding: 0;"></i>
                     </a>
                 </div>
