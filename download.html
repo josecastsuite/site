@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>Download - JoseCast Suite</title>
+        <title>Contact - JoseCast Suite</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <link rel="stylesheet" href="assets/css/main.css" />
@@ -44,30 +44,128 @@
         transform: scale(1.2);
     }
 
-    /* ANA İNDİRME BUTONU ANİMASYONU */
-    .btn-download-main {
-        display: inline-block;
-        background-color: #00d2ff !important;
-        color: #1a1a1a !important;
-        font-weight: 900;
-        font-size: 1.2em;
-        padding: 18px 45px;
-        text-decoration: none;
-        border-radius: 4px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
-        transition: all 0.3s ease-in-out !important;
-        border: 2px solid transparent !important;
-        cursor: pointer;
+    /* GÖRSELDEKİ SİBER NEON DEGRADE PARLAMA ANİMASYONU */
+    @keyframes neonGradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
     }
 
-    .btn-download-main:hover {
-        background-color: #ffffff !important;
-        color: #00d2ff !important;
-        box-shadow: 0 0 30px rgba(0, 210, 255, 0.8) !important;
-        transform: translateY(-3px);
+    .btn-support-direct {
+        display: inline-block;
+        width: 100%;
+        max-width: 550px;
+        box-sizing: border-box;
+        background-color: #0e1114 !important; 
+        color: #00f2fe !important; 
+        padding: 18px 20px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.2em;
+        letter-spacing: 0.5px;
+        border-radius: 8px;
+        margin: 20px auto;
+        position: relative;
+        z-index: 1; /* Ana buton katmanı en üstte kalacak */
+        box-shadow: 0 0 25px rgba(0, 242, 254, 0.2);
+        transition: all 0.3s ease;
+        text-align: center;
+        border: none !important;
+        word-break: break-word;
+        cursor: pointer !important;
     }
+
+    /* Renkli Çerçeve Katmanı */
+    .btn-support-direct::before {
+        content: '';
+        position: absolute;
+        top: -3px; left: -3px; right: -3px; bottom: -3px;
+        background: linear-gradient(45deg, #00f2fe, #4facfe, #00ff87, #b92b27, #1565c0, #7f00ff, #ff007f);
+        background-size: 400% 400%;
+        z-index: -1;
+        border-radius: 11px;
+        animation: neonGradient 6s linear infinite;
+        pointer-events: none !important;
+    }
+
+    /* Arka Plan Parlama Efekti */
+    .btn-support-direct::after {
+        content: '';
+        position: absolute;
+        top: -3px; left: -3px; right: -3px; bottom: -3px;
+        background: linear-gradient(45deg, #00f2fe, #4facfe, #00ff87, #b92b27, #1565c0, #7f00ff, #ff007f);
+        background-size: 400% 400%;
+        z-index: -2;
+        filter: blur(15px);
+        opacity: 0.7;
+        border-radius: 11px;
+        animation: neonGradient 6s linear infinite;
+        transition: opacity 0.3s ease;
+        pointer-events: none !important;
+    }
+
+    .btn-support-direct:hover {
+        transform: scale(1.01);
+        color: #ffffff !important; 
+        box-shadow: 0 0 35px rgba(0, 242, 254, 0.6);
+        background-color: #050709 !important;
+    }
+    
+    .btn-support-direct:hover::after {
+        opacity: 1;
+        filter: blur(20px);
+    }
+
+    /* MOBİL RESPONSIVE AYARI */
+    @media screen and (max-width: 480px) {
+        .btn-support-direct {
+            font-size: 1em !important;
+            padding: 15px 15px !important;
+        }
+    }
+
+    /* MOBİLDE FOOTER'IN KESİLMESİNİ ENGELLEYEN RESPONSIVE KODU */
+    @media screen and (max-width: 768px) {
+        #footer {
+            padding: 30px 0 !important; /* Alta ve üste rahat nefes alma payı */
+        }
+        #footer-flex-container {
+            flex-direction: column !important; /* Elemanları alt alta dizer */
+            gap: 15px !important; /* Aralarındaki mesafeyi açar */
+            align-items: center !important; /* Hepsini merkeze hizalar */
+            justify-content: center !important;
+        }
+        #footer-text-left, #footer-text-right {
+            text-align: center !important; /* Mobilde yazıları ortalar */
+        }
+    }
+
+    /* MOBILE FIX - FOOTER + MAIL */
+    @media (max-width: 768px) {
+        #footer > div {
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: center !important;
+            gap: 15px !important;
+            padding: 0 15px !important;
+        }
+        #footer > div > div:first-child {
+            width: 100% !important;
+            text-align: center !important;
+            font-size: 0.8em !important;
+        }
+        a[href^="mailto:"], a[href^="mailto:"]:visited {
+            color: #00d2ff !important;
+            word-break: break-all !important;
+            font-size: 0.95em !important;
+        }
+        /* Siyah kutuyu daralt */
+        div[style*="background-color: rgba(0, 0, 0, 0.6)"] {
+            padding: 25px 20px !important;
+            min-width: unset !important;
+        }
+    }
+
 </style>
     </head>
 <body class="no-sidebar is-preload page-inner" style="background-color: #1e2226 !important;">
@@ -79,8 +177,8 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="features.html">Features</a></li>
                     <li><a href="method.html">Method</a></li>
-                    <li class="current"><a href="download.html">Download</a></li>
-                    <li><a href="Contact.html">Contact</a></li>
+                    <li><a href="download.html">Download</a></li>
+                    <li class="current"><a href="Contact.html">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -94,117 +192,78 @@
                         <article id="main" style="max-width: 900px; margin: 0 auto; background-color: transparent !important; color: #cccccc !important;">
                             
                             <header style="text-align: center; margin-bottom: 50px;">
-                                <h1 style="color: #ffffff !important; font-weight: 900; font-size: 2.5em; letter-spacing: -1px; margin-bottom: 5px; text-shadow: 0px 2px 10px rgba(0,0,0,0.5);">DOWNLOAD JOSECAST SUITE</h1>
-                                <p style="font-weight: 600; color: #00d2ff !important; font-size: 1.1em; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px;">
-                                    Professional Foundry Simulation & Preliminary Design Tool
+                                <h1 style="color: #ffffff !important; font-weight: 900; font-size: 2.5em; letter-spacing: -1px; margin-bottom: 5px; text-shadow: 0px 2px 10px rgba(0,0,0,0.5);">SUPPORT & ENGINEERING PROTOCOL</h1>
+                                <p style="font-weight: 600; color: #00d2ff !important; font-size: 1.1em; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">
+                                    Technical Inquiries & Operational Guidelines
                                 </p>
-
-                                <a id="buy-button" class="btn-download-main">
-                                   Get a lifetime license for just $100
-                                </a>
-                                
-                                <p style="margin-top: 20px; font-size: 1em; color: #00d2ff !important; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 0 10px rgba(0, 210, 255, 0.65);">
-                                    ⚡ AUTOMATED INSTANT DELIVERY: Your secure multi-part download links and private installation password will be delivered to your email instantly after purchase.
+                                <p style="font-size: 1.1em; color: #dddddd !important; font-weight: 500; max-width: 700px; margin: 0 auto; line-height: 1.7; text-shadow: 1px 1px 3px rgba(0,0,0,0.8);">
+                                 Josecast Suite is a high-performance tool developed by engineers for engineers. To prioritize ongoing algorithmic development and simulation accuracy, we utilize a strict pre-filtered communication protocol. Please review the comprehensive FAQ below before initiating direct contact.
                                 </p>
                             </header>
 
-                            <div style="display: flex; flex-wrap: wrap; gap: 30px; margin-bottom: 40px;">
-                                <div style="flex: 1; min-width: 300px; background-color: rgba(0, 0, 0, 0.4) !important; padding: 30px; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(0, 210, 255, 0.1);">
-                                    <h3 style="color: #ffffff !important; font-weight: 800; border-bottom: 2px solid #00d2ff; padding-bottom: 10px; margin-bottom: 20px;">⚡ 1. INSTANT DELIVERY</h3>
-                                    <p style="margin-bottom: 15px; line-height: 1.7; font-size: 1em; color: #cccccc !important;">Once your payment is successfully processed by Paddle:</p>
-                                    <ul style="padding-left: 20px; margin-bottom: 20px; font-size: 1em; line-height: 1.7; color: #cccccc !important;">
-                                    <li><strong style="color: #ffffff !important;">Automated Fulfillment:</strong> Our system processes your order immediately with zero manual delay.</li>
-                                    <li><strong style="color: #ffffff !important;">Email Dispatch:</strong> You will receive an automated delivery email containing your high-speed GitHub download links and secure access credentials <strong style="color: #00d2ff;">within seconds</strong>.</li>
-                                    </ul>
-                                    <p style="font-size: 1em; line-height: 1.7; font-weight: 600; color: #ffffff !important; margin: 0;">Your registered email address serves as your permanent identifier for lifetime product support.</p>
-                                </div>
-                                <div style="flex: 1; min-width: 300px; background-color: rgba(0, 0, 0, 0.4) !important; padding: 30px; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(0, 210, 255, 0.1);">
-                                    <h3 style="color: #ffffff !important; font-weight: 800; border-bottom: 2px solid #00d2ff; padding-bottom: 10px; margin-bottom: 20px;">🔐 2. SECURE ACCESS</h3>
-                                    <p style="margin-bottom: 15px; line-height: 1.7; font-size: 1em; color: #cccccc !important;">Need to reinstall or deploy the environment on a new workstation?</p>
-                                    <p style="margin-bottom: 15px; line-height: 1.7; font-size: 1em; color: #cccccc !important;">
-                                    You can always reference your original automated delivery email or contact us directly at <strong style="color:#00d2ff;">support@josecastsuite.com</strong> with your invoice details.
-                                    </p>
-                                    <p style="font-size: 1em; line-height: 1.7; font-weight: 600; color: #ffffff !important; margin: 0;">Lifetime technical support. We ensure your engineering environment remains permanently accessible.</p>
-                                </div>
-                            </div>
-
                             <section style="margin-bottom: 40px; background-color: rgba(0, 0, 0, 0.4) !important; border-left: 4px solid #00d2ff; padding: 30px; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-                                <h3 style="color: #ffffff !important; font-weight: 800; margin-bottom: 20px; display: flex; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
-                                    <span style="font-size: 1.5em; margin-right: 10px;">📦</span> Multi-Part Archive Extraction Guide
+                                <h3 style="color: #ffffff !important; font-weight: 800; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
+                                    ⚙️ Software & Technical Specs
                                 </h3>
-                                <div style="font-size: 0.95em; color: #cccccc !important; line-height: 1.7;">
-                                    <p style="margin-bottom: 15px; color: #cccccc !important;">To secure high-speed, reliable distribution, JoseCast Suite is deployed as a multi-part archive. Please follow these precise technical steps for extraction:</p>
-                                    <ol style="padding-left: 20px; margin-bottom: 0;">
-                                        <li style="margin-bottom: 8px;">Download all 3 separate archive parts from your delivery e-mail and save them into the <strong style="color: #ffffff;">exact same folder</strong> on your computer.</li>
-                                        <li style="margin-bottom: 8px;">Navigate to the folder, locate <strong style="color: #ffffff;">"Josecast_Suite_Setup.part1.rar"</strong>, right-click it, and select <strong style="color: #ffffff;">"Extract Here"</strong> using WinRAR.</li>
-                                        <li style="margin-bottom: 8px;">WinRAR will automatically scan, verify, and combine data from all three parts to compile a single standalone installation asset.</li>
-                                        <li style="margin-bottom: 0;"><strong style="color: #00d2ff;">Execute the extracted setup file (.exe) and enter the private installation password provided exclusively inside your automated delivery e-mail.</strong></li>
-                                    </ol>
-                                </div>
-                            </section>
-
-                            <div style="display: flex; flex-wrap: wrap; gap: 30px; margin-bottom: 40px; background-color: rgba(0, 0, 0, 0.4) !important; padding: 30px; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(0, 210, 255, 0.1);">
-                                <div style="flex: 1; min-width: 300px;">
-                                    <h3 style="color: #ffffff !important; font-weight: 800; border-bottom: 2px solid #00d2ff; padding-bottom: 10px; margin-bottom: 20px;">📦 What's Included?</h3>
-                                    <ul style="padding-left: 20px; margin-bottom: 0; font-size: 1em; line-height: 1.7; color: #cccccc !important;">
-                                        <li><strong style="color:#fff;">Setup Assets:</strong> JoseCast Suite multi-part high-speed direct deployment files.</li>
-                                        <li><strong style="color:#fff;">Commercial License:</strong> Lifetime environment credentials tied directly to your active e-mail address.</li>
-                                    </ul>
-                                </div>
-                                <div style="flex: 1; min-width: 300px;">
-                                    <h3 style="color: #ffffff !important; font-weight: 800; border-bottom: 2px solid #00d2ff; padding-bottom: 10px; margin-bottom: 20px;">💻 System Requirements</h3>
-                                    <ul style="padding-left: 20px; margin-bottom: 0; font-size: 1em; line-height: 1.7; color: #cccccc !important;">
-                                        <li><strong style="color:#fff;">OS:</strong> Windows 7 / Windows 10 / Windows 11</li>
-                                        <li><strong style="color:#fff;">Processor (CPU):</strong> Min. Intel Pentium 4 or equivalent</li>
-                                        <li><strong style="color:#fff;">Memory (RAM):</strong> Min. 1 GB RAM</li>
-                                        <li><strong style="color:#fff;">Dependencies:</strong> None. Highly optimized standalone binary execution.</li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <section style="margin-bottom: 40px; background-color: rgba(0, 0, 0, 0.4) !important; border-left: 4px solid #00d2ff; padding: 30px; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-                                <h3 style="color: #ffffff !important; font-weight: 800; margin-bottom: 20px; display: flex; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
-                                    <span style="font-size: 1.5em; margin-right: 10px;">⚠️</span> Legal Disclaimer & Terms of Use
-                                </h3>
-                                <p style="margin-bottom: 15px; line-height: 1.7; font-size: 1em; color: #cccccc !important;">
-                                Josecast Suite is software developed to guide engineers during the casting simulation and preliminary design stages. The data provided constitutes preliminary design results based on theoretical metallurgical models and logarithmic calculations.
-                                </p>
-                                <ul style="list-style-type: none; padding: 0; margin: 0; font-size: 1em;">
-                                    <li style="margin-bottom: 15px; line-height: 1.7; color: #cccccc !important;">
-                                        <strong style="color: #ffffff !important;">Variables:</strong> Calculated temperatures and superheat values are presented based on standard parameters. However, field conditions unique to each foundry—such as charge material, lining type, ladle transfer time, inoculant effect, and ambient humidity—can directly impact the results.
-                                    </li>
-                                    <li style="margin-bottom: 15px; line-height: 1.7; color: #cccccc !important;">
-                                        <strong style="color: #ffffff !important;">Verification:</strong> Therefore, the presented results should not be considered "final and absolute truth"; users are advised to verify/calibrate these data according to their own operating conditions, experiences, and specific recipes.
-                                    </li>
-                                    <li style="line-height: 1.7; color: #cccccc !important;">
-                                        <strong style="color: #ffffff !important;">Liability:</strong> The software and its developer cannot be held responsible for casting defects, faulty productions, or financial losses that may occur as a result of using the software.
-                                    </li>
-                                </ul>
-                            </section>
-
-                            <section style="margin-bottom: 30px; background-color: rgba(0, 0, 0, 0.4) !important; padding: 40px; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(0, 210, 255, 0.1);">
-                                <h3 style="color: #ffffff !important; font-weight: 900; text-align: center; margin-bottom: 40px; letter-spacing: 1px;">FREQUENTLY ASKED QUESTIONS</h3>
                                 
-                                <div style="margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px;">
-                                    <h4 style="color: #ffffff !important; font-weight: 700; margin-bottom: 10px; font-size: 1.1em;">Q: Do I get an invoice? Can I expense it to my company?</h4>
-                                    <p style="margin: 0; line-height: 1.7; font-size: 1em; color: #cccccc !important;"><strong style="color:#fff;">A:</strong> Yes. A formal PDF invoice is attached to your verification e-mail immediately following successful confirmation from Paddle. It is officially generated and structured for standard corporate accounting.</p>
+                                <div style="margin-bottom: 20px;">
+                                    <h4 style="color: #00d2ff !important; font-weight: 700; margin-bottom: 5px; font-size: 1.1em;">Q: Why is there no contact form?</h4>
+                                    <p style="margin: 0; line-height: 1.7; font-size: 1em; color: #cccccc !important;"><strong style="color:#fff;">A:</strong> To eliminate automated spam and low-priority inquiries. We prioritize direct, engineering-driven communication via our official corporate email for verified users.</p>
                                 </div>
 
-                                <div style="margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px;">
-                                    <h4 style="color: #ffffff !important; font-weight: 700; margin-bottom: 10px; font-size: 1.1em;">Q: How and when will I receive the software download link?</h4>
-                                    <p style="margin: 0; line-height: 1.7; font-size: 1em; color: #cccccc !important;"><strong style="color:#fff;">A:</strong> Delivery is fully automated and instant. As soon as Paddle confirms the payment transaction, our infrastructure automatically dispatches your dedicated multi-part download links and secure verification keys directly to your inbox within seconds.</p>
+                                <div style="margin-bottom: 20px;">
+                                    <h4 style="color: #00d2ff !important; font-weight: 700; margin-bottom: 5px; font-size: 1.1em;">Q: What are the system requirements?</h4>
+                                    <p style="margin: 0; line-height: 1.7; font-size: 1em; color: #cccccc !important;"><strong style="color:#fff;">A:</strong> Josecast is highly optimized for Windows environments. Designed with a low-footprint architecture, it runs exceptionally well on performance-oriented systems, including Windows LTSC, without requiring heavy dependencies.</p>
                                 </div>
 
-                                <div style="margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px;">
-                                    <h4 style="color: #ffffff !important; font-weight: 700; margin-bottom: 10px; font-size: 1.1em;">Q: Is there a refund?</h4>
-                                    <p style="margin: 0; line-height: 1.7; font-size: 1em; color: #cccccc !important;"><strong style="color:#fff;">A:</strong> Due to the digital distribution nature of this commercial engineering tool, all sales are final. However, if you experience a critical execution failure or environment installation roadblock, submit a ticket to <strong style="color:#00d2ff;">support@josecastsuite.com</strong>. We will resolve or assist within 24 hours.</p>
-                                </div>
-
-                                <div style="margin-bottom: 10px;">
-                                    <h4 style="color: #ffffff !important; font-weight: 700; margin-bottom: 10px; font-size: 1.1em;">Q: What if the delivery email doesn't arrive instantly?</h4>
-                                    <p style="margin: 0; line-height: 1.7; font-size: 1em; color: #cccccc !important;"><strong style="color:#fff;">A:</strong> Please audit your spam directory or the "Promotions" tab in your mail interface first. If it remains missing after 5 minutes, contact us immediately at <strong style="color:#00d2ff;">support@josecastsuite.com</strong> with your transactional receipt, and we will verify and dispatch credentials immediately.</p>
+                                <div style="margin-bottom: 0;">
+                                    <h4 style="color: #00d2ff !important; font-weight: 700; margin-bottom: 5px; font-size: 1.1em;">Q: How accurate are the simulation results?</h4>
+                                    <p style="margin: 0; line-height: 1.7; font-size: 1em; color: #cccccc !important;"><strong style="color:#fff;">A:</strong> Calculations are strictly based on theoretical metallurgical models (Bernoulli’s principle, Chvorinov’s rule). However, due to variable foundry conditions like charge material and ambient humidity, all results <strong>must be verified</strong> by a professional engineer before production.</p>
                                 </div>
                             </section>
+
+                            <section style="margin-bottom: 40px; background-color: rgba(0, 0, 0, 0.4) !important; padding: 30px; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(0, 210, 255, 0.1);">
+                                <h3 style="color: #ffffff !important; font-weight: 800; border-bottom: 2px solid #00d2ff; padding-bottom: 10px; margin-bottom: 20px;">
+                                    🔐 Licensing & Access
+                                </h3>
+
+                                <div style="margin-bottom: 20px;">
+                                    <h4 style="color: #ffffff !important; font-weight: 700; margin-bottom: 5px; font-size: 1.1em;">Q: Is there a trial version?</h4>
+                                    <p style="margin: 0; line-height: 1.7; font-size: 1em; color: #cccccc !important;"><strong style="color:#fff;">A:</strong> To maintain professional suite integrity, we do not offer trials. The simulation videos and technical documentation on our site provide a transparent view of the algorithm's capabilities.</p>
+                                </div>
+
+                                <div style="margin-bottom: 20px;">
+                                    <h4 style="color: #ffffff !important; font-weight: 700; margin-bottom: 5px; font-size: 1.1em;">Q: Are my suggestions for new features considered?</h4>
+                                    <p style="margin: 0; line-height: 1.7; font-size: 1em; color: #cccccc !important;"><strong style="color:#fff;">A:</strong> We highly value technical feedback that improves algorithmic accuracy. Suggestions are reviewed during our periodic development cycles, though individual replies are not guaranteed to keep the development office focused on core updates.</p>
+                                </div>
+                                
+                                <div style="margin-bottom: 0;">
+                                    <h4 style="color: #ffffff !important; font-weight: 700; margin-bottom: 5px; font-size: 1.1em;">Q: In which languages is technical support available?</h4>
+                                    <p style="margin: 0; line-height: 1.7; font-size: 1em; color: #cccccc !important;"><strong style="color:#fff;">A:</strong> We provide technical documentation and support in <strong>English and Turkish</strong> for international foundry operations.</p>
+                                </div>
+                            </section>
+
+                            <div style="margin-bottom: 40px; text-align: center; padding: 20px; background: rgba(255, 0, 0, 0.05); border: 1px solid rgba(255, 50, 50, 0.3); border-radius: 4px;">
+                                <h4 style="color: #ff5555 !important; font-weight: 800; letter-spacing: 1px; margin-bottom: 10px;">NOTICE OF LIABILITY</h4>
+                                <p style="font-size: 0.9em; color: #cccccc !important; margin: 0; line-height: 1.5;">
+                                    Josecast Suite is a decision-support tool. The developer shall not be held liable for any production defects, material losses, or engineering failures resulting from the application of simulation data. Final verification of all casting parameters remains the sole responsibility of the user.
+                                </p>
+                            </div>
+
+                            <div style="display: flex; flex-wrap: wrap; gap: 30px; margin-bottom: 20px; justify-content: center;">
+                                <div style="flex: 1; min-width: 300px; background-color: rgba(0, 0, 0, 0.6) !important; padding: 40px; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center;">
+                                    <h3 style="color: #ffffff !important; font-weight: 900; margin-bottom: 15px;">DIRECT COMMUNICATION</h3>
+                                    <p style="color: #aaaaaa !important; font-size: 0.9em; margin-bottom: 25px; text-align: center;">For critical bug reports, feature requests, or professional engineering networking.</p>
+                                    
+                                    <a href="mailto:support@josecastsuite.com" class="btn-support-direct">
+                                        📧 support@josecastsuite.com
+                                    </a>
+                                    
+                                    <p style="font-size: 0.85em; color: #ffffff !important; margin-top: 20px;">
+                                        <em>Response Protocol: Technical inquiries are reviewed within 48 business hours. Generic inquiries already covered in the FAQ will not receive a manual response.</em>
+                                    </p>
+                                </div>
+                            </div>
 
                         </article>
                     </div>
@@ -214,10 +273,11 @@
 
         <div style="clear: both; margin-bottom: -40px !important; padding-bottom: 0 !important;"></div>
 
-        <div id="footer" style="padding: 8px 0; margin: 0; background: #0d0f12; clear: both; border-top: 1px solid rgba(0, 210, 255, 0.1); width: 100%;">
-            <div style="width: 100%; padding: 0 30px; display: flex; align-items: center; justify-content: flex-end; gap: 20px;">
-                <div style="text-align: left !important; display: block !important; width: 100% !important; margin: 0 !important; padding: 0 !important;">
-                    <p style="font-size: 0.85em; opacity: 0.8; margin: 20px 0 0 0 !important; padding: 0 !important; text-align: left !important;">
+        <div id="footer" style="padding: 15px 0; margin: 0; background: #0d0f12; clear: both; border-top: 1px solid rgba(0, 210, 255, 0.1); width: 100%;">
+            <div id="footer-flex-container" style="width: 100%; padding: 0 30px; display: flex; align-items: center; justify-content: flex-end; gap: 20px; flex-wrap: wrap;">
+                
+                <div id="footer-text-left" style="text-align: left !important; flex: 1; min-width: 200px; margin: 0 !important; padding: 0 !important;">
+                    <p style="font-size: 0.85em; opacity: 0.8; margin: 5px 0 !important; padding: 0 !important; text-align: inherit;">
                         Powered by 
                         <a href="https://www.cloudflare.com" target="_blank" style="text-decoration: none; color: inherit; font-weight: bold;">Cloudflare</a> 
                         & 
@@ -225,7 +285,7 @@
                     </p>
                 </div>      
                 
-                <div style="color: #555555; font-size: 0.7em; font-weight: 600; letter-spacing: 1px; border-right: 1px solid rgba(255,255,255,0.1); padding-right: 20px; white-space: nowrap !important; display: inline-block;">
+                <div id="footer-text-right" style="color: #555555; font-size: 0.7em; font-weight: 600; letter-spacing: 1px; padding-right: 5px; display: inline-block;">
                     &copy; 2026 JOSECAST 
                     <span style="margin: 0 8px; opacity: 0.4;">|</span>
                     <a href="terms.html" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='inherit'">Terms</a>
@@ -240,10 +300,9 @@
                 </h3>
 
                 <div style="display: flex; gap: 10px;">
-                    <a href="https://www.linkedin.com/company/josecast-suite" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; background-color: #1a1e22; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 2px; color: #888888; font-size: 1em; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#00d2ff'; this.style.color='#00d2ff';" onmouseout="this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.color='#888888';">
+                    <a href="https://www.linkedin.com/company/josecast-suite" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; background-color: #1a1e22; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 2px; color: #888888; font-size: 1em; text-decoration: none; transition: all 0.3s ease; " onmouseover="this.style.borderColor='#00d2ff'; this.style.color='#00d2ff';" onmouseout="this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.color='#888888';">
                         <i class="icon brands fa-linkedin-in" style="background: none; border: none; margin: 0; padding: 0;"></i>
                     </a>
-
                 </div>
             </div>
         </div>
@@ -258,40 +317,6 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
-
-<script type="module">
-import { initializePaddle } from 'https://cdn.jsdelivr.net/npm/@paddle/paddle-js/+esm';
-
-document.addEventListener('DOMContentLoaded', async () => {
-    try {
-        const paddle = await initializePaddle({  
-            environment: 'production',  
-            token: 'live_e06d2ab3382149fc0f737814cb3' 
-        });                    
-
-        const buyButton = document.getElementById('buy-button');
-        if (buyButton) {
-            buyButton.addEventListener('click', (e) => {
-                e.preventDefault(); 
-                
-                paddle?.Checkout.open({  
-                    settings: {
-                        displayMode: "overlay",
-                        theme: "dark"
-                    },
-                    items: [      
-                        {        
-                            priceId: 'pri_01krrv2j3sqk3ac3sxajve163w'
-                        }    
-                    ]
-                });            
-            });
-        }
-    } catch (error) {
-        console.error("Paddle başlatılırken bir sorun oluştu:", error);
-    }
-});
-</script>
 
 </body>
 </html>
