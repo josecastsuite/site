@@ -31,7 +31,7 @@
         background-color: rgba(0, 210, 255, 0.05) !important;
     }
 
-    /* 🔥 FOOTER IKON ANİMASYON DÜZELTMESİ 🔥 */
+    /* FOOTER IKON ANİMASYON DÜZELTMESİ */
     #footer .icons a.custom-footer-icon {
         color: #888888 !important;
         font-size: 1.5em !important;
@@ -42,6 +42,76 @@
     #footer .icons a.custom-footer-icon:hover {
         color: #00d2ff !important;
         transform: scale(1.2);
+    }
+
+    /* GÖRSELDEKİ SİBER NEON DEGRADE PARLAMA ANİMASYONU */
+    @keyframes neonGradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .btn-support-direct {
+        display: inline-block;
+        width: 100%;
+        max-width: 550px;
+        background-color: #0e1114 !important; /* Arka plan koyu, yazı okunsun diye */
+        color: #00f2fe !important; /* Canlı neon turkuaz yazı */
+        padding: 20px 30px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.3em;
+        letter-spacing: 1px;
+        border-radius: 8px;
+        margin: 20px auto;
+        position: relative;
+        z-index: 1;
+        box-shadow: 0 0 25px rgba(0, 242, 254, 0.2);
+        transition: all 0.3s ease;
+        text-align: center;
+        border: none !important;
+    }
+
+    /* Butonun etrafındaki o renk değiştiren sihirli neon çerçeve çizgisi */
+    .btn-support-direct::before {
+        content: '';
+        position: absolute;
+        top: -3px;
+        left: -3px;
+        right: -3px;
+        bottom: -3px;
+        background: linear-gradient(45deg, #00f2fe, #4facfe, #00ff87, #b92b27, #1565c0, #7f00ff, #ff007f);
+        background-size: 400% 400%;
+        z-index: -1;
+        border-radius: 11px;
+        animation: neonGradient 6s linear infinite;
+    }
+
+    /* Butonun arkasındaki o yumuşak siber parlama/glow efekti */
+    .btn-support-direct::after {
+        content: '';
+        position: absolute;
+        top: -3px; left: -3px; right: -3px; bottom: -3px;
+        background: linear-gradient(45deg, #00f2fe, #4facfe, #00ff87, #b92b27, #1565c0, #7f00ff, #ff007f);
+        background-size: 400% 400%;
+        z-index: -2;
+        filter: blur(20px);
+        opacity: 0.7;
+        border-radius: 11px;
+        animation: neonGradient 6s linear infinite;
+        transition: opacity 0.3s ease;
+    }
+
+    /* Üzerine gelince parlama şiddetini artır ve hafif büyüt */
+    .btn-support-direct:hover {
+        transform: scale(1.02);
+        color: #ffffff !important; /* Hover olunca yazı beyaz parlasın */
+        box-shadow: 0 0 35px rgba(0, 242, 254, 0.6);
+    }
+    
+    .btn-support-direct:hover::after {
+        opacity: 1;
+        filter: blur(25px);
     }
 </style>
     </head>
@@ -90,7 +160,7 @@
 
                                 <div style="margin-bottom: 20px;">
                                     <h4 style="color: #00d2ff !important; font-weight: 700; margin-bottom: 5px; font-size: 1.1em;">Q: What are the system requirements?</h4>
-                                    <p style="margin: 0; line-height: 1.7; font-size: 1em; color: #cccccc !important;"><strong style="color:#fff;">A:</strong> Josecast is highly optimized for Windows environments. Designed with a low-footprint architecture, it runs exceptionally well on performance-oriented systems, including <strong>Windows LTSC</strong>, without requiring heavy dependencies.</p>
+                                    <p style="margin: 0; line-height: 1.7; font-size: 1em; color: #cccccc !important;"><strong style="color:#fff;">A:</strong> Josecast is highly optimized for Windows environments. Designed with a low-footprint architecture, it runs exceptionally well on performance-oriented systems, including Windows LTSC, without requiring heavy dependencies.</p>
                                 </div>
 
                                 <div style="margin-bottom: 0;">
@@ -127,22 +197,22 @@
                                 </p>
                             </div>
 
-                            <div style="display: flex; flex-wrap: wrap; gap: 30px; margin-bottom: 20px;">
+                            <div style="display: flex; flex-wrap: wrap; gap: 30px; margin-bottom: 20px; justify-content: center;">
                                 <div style="flex: 1; min-width: 300px; background-color: rgba(0, 0, 0, 0.6) !important; padding: 40px; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center;">
                                     <h3 style="color: #ffffff !important; font-weight: 900; margin-bottom: 15px;">DIRECT COMMUNICATION</h3>
                                     <p style="color: #aaaaaa !important; font-size: 0.9em; margin-bottom: 25px; text-align: center;">For critical bug reports, feature requests, or professional engineering networking.</p>
                                     
-                                    <a href="mailto:support@josecastsuite.com" style="display: block; background-color: transparent; border: 2px solid #00d2ff; color: #00d2ff !important; padding: 15px; text-decoration: none; font-weight: 700; font-size: 1.1em; border-radius: 4px; margin-bottom: 15px; transition: all 0.3s ease;">
+                                    <a href="mailto:support@josecastsuite.com" class="btn-support-direct">
                                         📧 support@josecastsuite.com
                                     </a>
                                     
-                                    <p style="font-size: 0.85em; color: #ffffff !important; margin: 0;">
+                                    <p style="font-size: 0.85em; color: #ffffff !important; margin-top: 20px;">
                                         <em>Response Protocol: Technical inquiries are reviewed within 48 business hours. Generic inquiries already covered in the FAQ will not receive a manual response.</em>
                                     </p>
                                 </div>
                             </div>
 
-                       </article>
+                        </article>
                     </div>
                 </div>
             </div>
@@ -151,61 +221,48 @@
         <div style="clear: both; margin-bottom: -40px !important; padding-bottom: 0 !important;"></div>
 
         <div id="footer" style="padding: 8px 0; margin: 0; background: #0d0f12; clear: both; border-top: 1px solid rgba(0, 210, 255, 0.1); width: 100%;">
-    <div style="width: 100%; padding: 0 30px; display: flex; align-items: center; justify-content: flex-end; gap: 20px;">
-  <div style="text-align: left !important; display: block !important; width: 100% !important; margin: 0 !important; padding: 0 !important;">
-    <p style="font-size: 0.85em; opacity: 0.8; margin: 20px 0 0 0 !important; padding: 0 !important; text-align: left !important;">
-        Powered by 
-        <a href="https://www.cloudflare.com" target="_blank" style="text-decoration: none; color: inherit; font-weight: bold;">Cloudflare</a> 
-        & 
-        <a href="https://www.paddle.com" target="_blank" style="text-decoration: none; color: inherit; font-weight: bold;">Paddle</a>
-    </p>
-    </div>      
-    
-    <div style="color: #555555; font-size: 0.7em; font-weight: 600; letter-spacing: 1px; border-right: 1px solid rgba(255,255,255,0.1); padding-right: 20px; white-space: nowrap !important; display: inline-block;">
-    &copy; 2026 JOSECAST 
-    <span style="margin: 0 8px; opacity: 0.4;">|</span>
-    <a href="terms.html" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='inherit'">Terms</a>
-    <span style="margin: 0 8px; opacity: 0.4;">|</span>
-    <a href="privacy.html" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='inherit'">Privacy</a>
-    <span style="margin: 0 8px; opacity: 0.4;">|</span>
-    <a href="refund.html" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='inherit'">Refund</a>
-    </div>
-
-        <h3 style="color: #ffffff; margin: 0; font-size: 0.8em; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; white-space: nowrap; opacity: 0.9;">
-            FOLLOW JOSECAST
-        </h3>
-
-        <div style="display: flex; gap: 10px;">
-            <a href="https://www.linkedin.com/company/josecast-suite" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; background-color: #1a1e22; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 2px; color: #888888; font-size: 1em; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#00d2ff'; this.style.color='#00d2ff';" onmouseout="this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.color='#888888';">
-                <i class="icon brands fa-linkedin-in" style="background: none; border: none; margin: 0; padding: 0;"></i>
-            </a>
-
-        </div>
-
-    </div>
-</div>
-    </div>
-</div>
-
-
-</section>
-
-                            </div>
-
-                        </div>
-                    </div>
+            <div style="width: 100%; padding: 0 30px; display: flex; align-items: center; justify-content: flex-end; gap: 20px;">
+                <div style="text-align: left !important; display: block !important; width: 100% !important; margin: 0 !important; padding: 0 !important;">
+                    <p style="font-size: 0.85em; opacity: 0.8; margin: 20px 0 0 0 !important; padding: 0 !important; text-align: left !important;">
+                        Powered by 
+                        <a href="https://www.cloudflare.com" target="_blank" style="text-decoration: none; color: inherit; font-weight: bold;">Cloudflare</a> 
+                        & 
+                        <a href="https://www.paddle.com" target="_blank" style="text-decoration: none; color: inherit; font-weight: bold;">Paddle</a>
+                    </p>
+                </div>      
+                
+                <div style="color: #555555; font-size: 0.7em; font-weight: 600; letter-spacing: 1px; border-right: 1px solid rgba(255,255,255,0.1); padding-right: 20px; white-space: nowrap !important; display: inline-block;">
+                    &copy; 2026 JOSECAST 
+                    <span style="margin: 0 8px; opacity: 0.4;">|</span>
+                    <a href="terms.html" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='inherit'">Terms</a>
+                    <span style="margin: 0 8px; opacity: 0.4;">|</span>
+                    <a href="privacy.html" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='inherit'">Privacy</a>
+                    <span style="margin: 0 8px; opacity: 0.4;">|</span>
+                    <a href="refund.html" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='inherit'">Refund</a>
                 </div>
 
+                <h3 style="color: #ffffff; margin: 0; font-size: 0.8em; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; white-space: nowrap; opacity: 0.9;">
+                    FOLLOW JOSECAST
+                </h3>
+
+                <div style="display: flex; gap: 10px;">
+                    <a href="https://www.linkedin.com/company/josecast-suite" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; background-color: #1a1e22; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 2px; color: #888888; font-size: 1em; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#00d2ff'; this.style.color='#00d2ff';" onmouseout="this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.color='#888888';">
+                        <i class="icon brands fa-linkedin-in" style="background: none; border: none; margin: 0; padding: 0;"></i>
+                    </a>
+                </div>
+            </div>
         </div>
 
-        <script src="assets/js/jquery.min.js"></script>
-            <script src="assets/js/jquery.dropotron.min.js"></script>
-            <script src="assets/js/jquery.scrolly.min.js"></script>
-            <script src="assets/js/jquery.scrollex.min.js"></script>
-            <script src="assets/js/browser.min.js"></script>
-            <script src="assets/js/breakpoints.min.js"></script>
-            <script src="assets/js/util.js"></script>
-            <script src="assets/js/main.js"></script>
+    </div>
 
-    </body>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.dropotron.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
+</body>
 </html>
