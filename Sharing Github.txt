@@ -13,3 +13,5 @@ git commit -m "Site guncellendi"
 git remote add origin https://github.com
 git branch -M main
 git push -u origin main
+
+235Y.F.a+
