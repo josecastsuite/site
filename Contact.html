@@ -55,26 +55,27 @@
         display: inline-block;
         width: 100%;
         max-width: 550px;
-        box-sizing: border-box; /* Mobilde taşmayı önleyen altın kural */
+        box-sizing: border-box;
         background-color: #0e1114 !important; 
         color: #00f2fe !important; 
-        padding: 18px 20px; /* Mobilde dikey/yatay oran dengelendi */
+        padding: 18px 20px;
         text-decoration: none;
         font-weight: 700;
-        font-size: 1.2em; /* Küçük ekranlarda okunabilir ideal oran */
+        font-size: 1.2em;
         letter-spacing: 0.5px;
         border-radius: 8px;
         margin: 20px auto;
         position: relative;
-        z-index: 1;
+        z-index: 1; /* Ana buton katmanı en üstte kalacak */
         box-shadow: 0 0 25px rgba(0, 242, 254, 0.2);
         transition: all 0.3s ease;
         text-align: center;
         border: none !important;
-        word-break: break-word; /* Çok küçük ekranlarda mail adresini güvenle böler, mizanpajı korur */
+        word-break: break-word;
+        cursor: pointer !important;
     }
 
-    /* Neon çerçeve çizgisi - Absolute oranlar esnetildi */
+    /* Renkli Çerçeve Katmanı */
     .btn-support-direct::before {
         content: '';
         position: absolute;
@@ -84,9 +85,10 @@
         z-index: -1;
         border-radius: 11px;
         animation: neonGradient 6s linear infinite;
+        pointer-events: none !important;
     }
 
-    /* Yumuşak siber parlama/glow efekti */
+    /* Arka Plan Parlama Efekti */
     .btn-support-direct::after {
         content: '';
         position: absolute;
@@ -94,17 +96,19 @@
         background: linear-gradient(45deg, #00f2fe, #4facfe, #00ff87, #b92b27, #1565c0, #7f00ff, #ff007f);
         background-size: 400% 400%;
         z-index: -2;
-        filter: blur(15px); /* Mobilde performansı düşürmemesi için hafif optimize edildi */
+        filter: blur(15px);
         opacity: 0.7;
         border-radius: 11px;
         animation: neonGradient 6s linear infinite;
         transition: opacity 0.3s ease;
+        pointer-events: none !important;
     }
 
     .btn-support-direct:hover {
         transform: scale(1.01);
         color: #ffffff !important; 
         box-shadow: 0 0 35px rgba(0, 242, 254, 0.6);
+        background-color: #050709 !important;
     }
     
     .btn-support-direct:hover::after {
@@ -112,11 +116,27 @@
         filter: blur(20px);
     }
 
-    /* MOBİL İÇİN EKSTRA GARANTİ MEDİA QUERY */
+    /* MOBİL RESPONSIVE AYARI */
     @media screen and (max-width: 480px) {
         .btn-support-direct {
-            font-size: 1em !important; /* Telefonlarda fontu hafif küçültür ki kutudan taşmasın */
+            font-size: 1em !important;
             padding: 15px 15px !important;
+        }
+    }
+
+    /* MOBİLDE FOOTER'IN KESİLMESİNİ ENGELLEYEN RESPONSIVE KODU */
+    @media screen and (max-width: 768px) {
+        #footer {
+            padding: 30px 0 !important; /* Alta ve üste rahat nefes alma payı */
+        }
+        #footer-flex-container {
+            flex-direction: column !important; /* Elemanları alt alta dizer */
+            gap: 15px !important; /* Aralarındaki mesafeyi açar */
+            align-items: center !important; /* Hepsini merkeze hizalar */
+            justify-content: center !important;
+        }
+        #footer-text-left, #footer-text-right {
+            text-align: center !important; /* Mobilde yazıları ortalar */
         }
     }
 </style>
@@ -226,10 +246,11 @@
 
         <div style="clear: both; margin-bottom: -40px !important; padding-bottom: 0 !important;"></div>
 
-        <div id="footer" style="padding: 8px 0; margin: 0; background: #0d0f12; clear: both; border-top: 1px solid rgba(0, 210, 255, 0.1); width: 100%;">
-            <div style="width: 100%; padding: 0 30px; display: flex; align-items: center; justify-content: flex-end; gap: 20px;">
-                <div style="text-align: left !important; display: block !important; width: 100% !important; margin: 0 !important; padding: 0 !important;">
-                    <p style="font-size: 0.85em; opacity: 0.8; margin: 20px 0 0 0 !important; padding: 0 !important; text-align: left !important;">
+        <div id="footer" style="padding: 15px 0; margin: 0; background: #0d0f12; clear: both; border-top: 1px solid rgba(0, 210, 255, 0.1); width: 100%;">
+            <div id="footer-flex-container" style="width: 100%; padding: 0 30px; display: flex; align-items: center; justify-content: flex-end; gap: 20px; flex-wrap: wrap;">
+                
+                <div id="footer-text-left" style="text-align: left !important; flex: 1; min-width: 200px; margin: 0 !important; padding: 0 !important;">
+                    <p style="font-size: 0.85em; opacity: 0.8; margin: 5px 0 !important; padding: 0 !important; text-align: inherit;">
                         Powered by 
                         <a href="https://www.cloudflare.com" target="_blank" style="text-decoration: none; color: inherit; font-weight: bold;">Cloudflare</a> 
                         & 
@@ -237,7 +258,7 @@
                     </p>
                 </div>      
                 
-                <div style="color: #555555; font-size: 0.7em; font-weight: 600; letter-spacing: 1px; border-right: 1px solid rgba(255,255,255,0.1); padding-right: 20px; white-space: nowrap !important; display: inline-block;">
+                <div id="footer-text-right" style="color: #555555; font-size: 0.7em; font-weight: 600; letter-spacing: 1px; padding-right: 5px; display: inline-block;">
                     &copy; 2026 JOSECAST 
                     <span style="margin: 0 8px; opacity: 0.4;">|</span>
                     <a href="terms.html" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='inherit'">Terms</a>
