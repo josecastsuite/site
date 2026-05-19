@@ -1,13 +1,14 @@
 <div style="max-width: 500px; margin: 30px auto; font-family: Arial, sans-serif; padding: 25px; border: 1px solid #ddd; border-radius: 10px;">
   
   <h3 style="margin-top:0; color:#333;">JoseCast Otomatik Lisans Teslimi</h3>
-  <p style="font-size:13px; color:#666;">Paddle faturanızı (PDF) aşağıdaki alana yükleyerek lisansınızı anında üretebilirsiniz.</p>
+  <p style="font-size:13px; color:#666;">Paddle işlem numaranızı (txn_... veya inv_...) girerek lisansınızı anında alın.</p>
   
-  <form id="uploadForm" enctype="multipart/form-data">
-    <input type="file" id="dekontFile" name="dekont" accept=".pdf" required style="margin-bottom: 15px; display: block; width: 100%;">
-    <button type="submit" id="btnUpload" style="width: 100%; padding: 12px; background: #007bff; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer;">Lisansımı Doğrula ve Ver</button>
+  <form id="licenseForm">
+    <input type="email" id="lcEmail" placeholder="Paddle'daki e-posta adresiniz" required style="width: 100%; padding: 10px; margin-bottom: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+    <input type="text" id="lcTxn" placeholder="İşlem No (örn: txn_01h8...)" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+    <button type="submit" id="btnLicense" style="width: 100%; padding: 12px; background: #007bff; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer;">Lisansımı Doğrula ve Ver</button>
   </form>
-  <p id="uploadResponse" style="margin-top: 15px; font-size: 14px; font-weight: bold;"></p>
+  <p id="licenseResponse" style="margin-top: 15px; font-size: 14px; font-weight: bold;"></p>
 
   <hr style="margin: 30px 0; border: 0; border-top: 1px solid #eee;">
 
@@ -20,36 +21,49 @@
 </div>
 
 <script>
-  // BURAYA RENDER'IN SANA VERDİĞİ LİNK GELECEK
   const RENDER_URL = "https://exopicy-bottle.onrender.com"; 
 
-  document.getElementById('uploadForm').addEventListener('submit', function(e) {
+  // LİSANS VER
+  document.getElementById('licenseForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append('dekont', document.getElementById('dekontFile').files[0]);
-    const resp = document.getElementById('uploadResponse');
-    resp.innerText = "Faturanız doğrulanıyor, lütfen bekleyin...";
+    const email = document.getElementById('lcEmail').value.trim();
+    const txn = document.getElementById('lcTxn').value.trim();
+    const resp = document.getElementById('licenseResponse');
+    const btn = document.getElementById('btnLicense');
+    
+    resp.innerText = "Paddle doğrulanıyor, lütfen bekleyin...";
     resp.style.color = "#333";
+    btn.disabled = true;
 
-    fetch(`${RENDER_URL}/lisans-ver`, { method: 'POST', body: formData })
+    fetch(`${RENDER_URL}/lisans-ver`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, islem_no: txn })
+    })
     .then(res => res.json())
     .then(data => {
       if(data.ok) {
-        resp.innerHTML = `✅ Başarılı! Lisans anahtarınız <b>${data.key}</b> üretime girdi ve <b>${data.email}</b> adresine gönderildi.`;
+        resp.innerHTML = `✅ Başarılı! Lisans anahtarınız: <b>${data.key}</b><br>${data.email} adresine gönderildi.`;
         resp.style.color = "green";
       } else {
         resp.innerText = `❌ Hata: ${data.hata}`;
         resp.style.color = "red";
       }
-    }).catch(err => { resp.innerText = "Sistem bağlantı hatası!"; resp.style.color = "red"; });
+    })
+    .catch(err => { resp.innerText = "Sistem bağlantı hatası!"; resp.style.color = "red"; })
+    .finally(() => btn.disabled = false);
   });
 
+  // LİSANS HATIRLAT
   document.getElementById('forgetForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const email = document.getElementById('forgetEmail').value;
     const resp = document.getElementById('forgetResponse');
+    const btn = document.getElementById('btnForget');
+    
     resp.innerText = "Sistem taranıyor...";
     resp.style.color = "#333";
+    btn.disabled = true;
 
     fetch(`${RENDER_URL}/remember-license`, {
       method: 'POST',
@@ -59,12 +73,17 @@
     .then(res => res.json())
     .then(data => {
       if(data.status === "success") {
-          resp.innerText = data.message;
+          resp.innerText = "✅ Lisanslarınız e-posta adresinize gönderildi.";
           resp.style.color = "green";
+      } else if(data.status === "not_found") {
+          resp.innerText = "❌ Bu e-posta ile kayıtlı lisans bulunamadı.";
+          resp.style.color = "red";
       } else {
-          resp.innerText = data.message || "Bir hata oluştu.";
+          resp.innerText = "❌ Bir hata oluştu.";
           resp.style.color = "red";
       }
-    }).catch(err => { resp.innerText = "Sistem bağlantı hatası!"; resp.style.color = "red"; });
+    })
+    .catch(err => { resp.innerText = "Sistem bağlantı hatası!"; resp.style.color = "red"; })
+    .finally(() => btn.disabled = false);
   });
 </script>
