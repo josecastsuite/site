@@ -1,138 +1,467 @@
-<div style="max-width: 500px; margin: 30px auto; font-family: Arial, sans-serif; padding: 25px; border: 1px solid #ddd; border-radius: 10px; background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-  
-  <h3 style="margin-top:0; color:#333; text-align: center;">JoseCast Lisans Paneli</h3>
-  <p style="font-size:13px; color:#666; text-align: center;">Satın alma e-postanızı ve faturadaki işlem numarasını girerek lisansınızı anında üretebilirsiniz.</p>
-  
-  <form id="uploadForm">
-    <label style="font-size: 14px; font-weight: bold; color: #555;">E-Posta Adresiniz</label>
-    <input type="email" id="emailInput" placeholder="ornek@email.com" required style="width: 100%; padding: 10px; margin-top: 5px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Download - JoseCast Suite</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+        
+<style>
+    @media (max-width:768px){
+ #footer>div{flex-direction:column!important;justify-content:center!important;align-items:center!important;gap:15px!important;padding:0 15px!important}
+ #footer>div>div:first-child{width:100%!important;text-align:center!important;font-size:.8em!important}
+ a[href^="mailto:"]{color:#00d2ff!important;word-break:break-all!important}
+}
+    /* BEYAZ HEADER'I KESİN OLARAK YOK EDEN KOD */
+    body.page-inner #page-wrapper #header,
+    body #page-wrapper #header {
+        background-color: #1e2226 !important;
+        background-image: none !important;
+        border-bottom: 1px solid rgba(0, 210, 255, 0.2) !important;
+        box-shadow: none !important;
+    }
     
-    <label style="font-size: 14px; font-weight: bold; color: #555;">İşlem Numarası (Paddle)</label>
-    <input type="text" id="islemInput" placeholder="txn_..." required style="width: 100%; padding: 10px; margin-top: 5px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
-
-    <button type="submit" id="btnUpload" style="width: 100%; padding: 12px; background: #007bff; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 15px;">Lisansımı Doğrula ve Ver</button>
-  </form>
-  
-  <div id="uploadResponse" style="margin-top: 15px; font-size: 14px; padding: 10px; border-radius: 5px; display: none;"></div>
-
-  <hr style="margin: 30px 0; border: 0; border-top: 1px dashed #ccc;">
-
-  <h4 style="margin-top:0; color:#333; text-align: center;">Lisansımı Unuttum</h4>
-  <p style="font-size:13px; color:#666; text-align: center;">Mevcut lisans anahtarınızı e-posta adresinize tekrar gönderin.</p>
-  
-  <form id="forgetForm">
-    <input type="email" id="forgetEmail" placeholder="E-posta adresinizi girin" required style="width: 100%; padding: 10px; margin-bottom: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
-    <button type="submit" id="btnForget" style="width: 100%; padding: 10px; background: #28a745; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">Lisansları Tekrar Gönder</button>
-  </form>
-  <div id="forgetResponse" style="margin-top: 15px; font-size: 14px; padding: 10px; border-radius: 5px; display: none;"></div>
-
-  <hr style="margin: 30px 0; border: 0; border-top: 1px dashed #ccc;">
-
-  <!-- YENİ: HWID SİLME BÖLÜMÜ -->
-  <h4 style="margin-top:0; color:#d9534f; text-align: center;">HWID Sıfırla (Cihaz Değiştir)</h4>
-  <p style="font-size:13px; color:#666; text-align: center;">Format attıysan veya bilgisayar değiştirdiysen, eski HWID kaydını buradan silebilirsin. (Max 3 hak)</p>
-  
-  <form id="hwidForm">
-    <label style="font-size: 14px; font-weight: bold; color: #555;">E-Posta</label>
-    <input type="email" id="hwidEmail" placeholder="ornek@email.com" required style="width: 100%; padding: 10px; margin-top: 5px; margin-bottom: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+    body #page-wrapper #header nav#nav {
+        background-color: transparent !important;
+    }
     
-    <label style="font-size: 14px; font-weight: bold; color: #555;">Lisans Anahtarı</label>
-    <input type="text" id="hwidKey" placeholder="JSC-XXXX-XXXX-..." required style="width: 100%; padding: 10px; margin-top: 5px; margin-bottom: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+    body #page-wrapper #header nav#nav > ul > li > a {
+        color: #cccccc !important;
+        text-shadow: none !important;
+    }
+    
+    body #page-wrapper #header nav#nav > ul > li:hover > a, 
+    body #page-wrapper #header nav#nav > ul > li.current > a {
+        color: #00d2ff !important;
+        background-color: rgba(0, 210, 255, 0.05) !important;
+    }
 
-    <label style="font-size: 14px; font-weight: bold; color: #555;">Mevcut HWID (isteğe bağlı)</label>
-    <input type="text" id="hwidValue" placeholder="Boş bırakırsan sistem siler" style="width: 100%; padding: 10px; margin-top: 5px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+    /* FOOTER IKON ANİMASYON DÜZELTMESİ */
+    #footer .icons a.custom-footer-icon {
+        color: #888888 !important;
+        font-size: 1.5em !important;
+        transition: all 0.3s ease-in-out !important;
+        display: inline-block;
+    }
+    
+    #footer .icons a.custom-footer-icon:hover {
+        color: #00d2ff !important;
+        transform: scale(1.2);
+    }
 
-    <button type="submit" id="btnHwid" style="width: 100%; padding: 10px; background: #dc3545; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">HWID'i Sıfırla</button>
-  </form>
-  <div id="hwidResponse" style="margin-top: 15px; font-size: 14px; padding: 10px; border-radius: 5px; display: none;"></div>
-</div>
+    /* ANA İNDİRME BUTONU ANİMASYONU */
+
+    .btn-download-main.btn-green {
+        background: linear-gradient(135deg, #28a745 0%, #20c997 100%) !important;
+        color: #ffffff !important;
+        box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4), 0 0 0 1px rgba(40,167,69,0.2) inset !important;
+        border: 2px solid transparent !important;
+        position: relative;
+        overflow: hidden;
+    }
+    .btn-download-main.btn-green::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: left 0.6s;
+    }
+    .btn-download-main.btn-green:hover {
+        background: linear-gradient(135deg, #20c997 0%, #28a745 100%) !important;
+        color: #ffffff !important;
+        box-shadow: 0 8px 30px rgba(40, 167, 69, 0.6), 0 0 40px rgba(40, 167, 69, 0.3) !important;
+        transform: translateY(-3px) scale(1.02);
+    }
+    .btn-download-main.btn-green:hover::before {
+        left: 100%;
+    }
+    .btn-download-main.btn-green:active {
+        transform: translateY(-1px) scale(0.99);
+    }
+
+    .btn-download-main {
+        display: inline-block;
+        background-color: #00d2ff !important;
+        color: #1a1a1a !important;
+        font-weight: 900;
+        font-size: 1.2em;
+        padding: 18px 45px;
+        text-decoration: none;
+        border-radius: 4px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+        transition: all 0.3s ease-in-out !important;
+        border: 2px solid transparent !important;
+        cursor: pointer;
+    }
+
+    .btn-download-main:hover {
+        background-color: #ffffff !important;
+        color: #00d2ff !important;
+        box-shadow: 0 0 30px rgba(0, 210, 255, 0.8) !important;
+        transform: translateY(-3px);
+    }
+</style>
+    </head>
+<body class="no-sidebar is-preload page-inner" style="background-color: #1e2226 !important;">
+    <div id="page-wrapper" style="background-color: #1e2226 !important;">
+        
+        <div id="header">
+            <nav id="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="method.html">Method</a></li>
+                    <li class="current"><a href="download.html">Download</a></li>
+                    <li><a href="Contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="wrapper style1" style="background-color: #1e2226 !important; background-image: linear-gradient(rgba(0, 210, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 210, 255, 0.1) 1px, transparent 1px) !important; background-size: 80px 80px !important; color: #cccccc !important; padding: 50px 0 !important; border-top: none !important;">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-12" id="content">
+                        
+                        <article id="main" style="max-width: 900px; margin: 0 auto; background-color: transparent !important; color: #cccccc !important;">
+                            
+                            
+                            <header style="text-align: center; margin-bottom: 50px;">
+                                <h1 style="color: #ffffff !important; font-weight: 900; font-size: 2.5em; letter-spacing: -1px; margin-bottom: 5px; text-shadow: 0px 2px 10px rgba(0,0,0,0.5);">DOWNLOAD JOSECAST SUITE</h1>
+                                <p style="font-weight: 600; color: #00d2ff !important; font-size: 1.1em; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px;">
+                                    Professional Foundry Simulation & Preliminary Design Tool
+                                </p>
+
+                                <a id="buy-button" class="btn-download-main">
+                                   GET LIFETIME LICENSE - $100
+                                </a>
+                                
+                                <p style="margin-top: 20px; font-size: 1em; color: #00d2ff !important; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 0 10px rgba(0, 210, 255, 0.65);">
+                                    SECURE LIFETIME LICENSE • INSTANT ACTIVATION • PROFESSIONAL SUPPORT
+                                </p>
+                            </header>
+
+                            
+                            
+                            <!-- LICENSE PANEL - TABBED -->
+                            <div style="background-color: rgba(0, 0, 0, 0.4) !important; padding: 0; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(0, 210, 255, 0.1); margin-bottom: 40px; overflow: hidden;">
+                                <h3 style="color: #ffffff !important; font-weight: 800; border-bottom: 2px solid #00d2ff; padding: 20px 35px 12px; margin: 0; text-align: center; font-size: 1.3em; background: rgba(0,0,0,0.2); letter-spacing: 0.5px;">LICENSE ACTIVATION CENTER</h3>
+                                
+                                <!-- TABS -->
+                                <div style="display: flex; background: rgba(0,0,0,0.3); border-bottom: 1px solid rgba(0,210,255,0.15);">
+                                    <button class="tab-btn active" data-tab="generate" style="flex:1; padding: 14px; background: transparent; border: none; color: #00d2ff; font-weight: 700; cursor: pointer; border-bottom: 2px solid #00d2ff; transition: all 0.2s; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">Activate License</button>
+                                    <button class="tab-btn" data-tab="forgot" style="flex:1; padding: 14px; background: transparent; border: none; color: #aaa; font-weight: 600; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">Recover License</button>
+                                    <button class="tab-btn" data-tab="hwid" style="flex:1; padding: 14px; background: transparent; border: none; color: #aaa; font-weight: 600; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">Transfer Device</button>
+                                </div>
+
+                                <div style="padding: 30px 35px 35px;">
+                                    <div style="max-width: 520px; margin: 0 auto;">
+                                        <!-- TAB 1 -->
+                                        <div class="tab-content" id="tab-generate" style="display: block;">
+                                            <p style="font-size: 0.95em; color: #ccc; margin: 0 0 20px; line-height: 1.6; text-align: center;">After completing your purchase through Paddle, enter the details below to instantly generate your permanent license key.</p>
+                                            <form id="licenseForm">
+                                                <label style="display:block; font-size:12px; color:#888; margin-bottom:4px; text-transform:uppercase; letter-spacing:0.5px;">Purchase Email Address</label>
+                                                <input type="email" id="emailInput" placeholder="your@email.com" required style="width: 100%; padding: 12px; margin-bottom: 14px; background: rgba(255,255,255,0.04); border: 1px solid rgba(0,210,255,0.25); border-radius: 4px; color: #fff; font-size: 14px;">
+                                                
+                                                <label style="display:block; font-size:12px; color:#888; margin-bottom:4px; text-transform:uppercase; letter-spacing:0.5px;">Paddle Transaction ID</label>
+                                                <input type="text" id="txnInput" placeholder="txn_01h..." required style="width: 100%; padding: 12px; margin-bottom: 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(0,210,255,0.25); border-radius: 4px; color: #fff; font-size: 14px;">
+                                                
+                                                <button type="submit" id="btnLicense" style="width: 100%; padding: 13px; background: #00d2ff; color: #000; border: none; border-radius: 4px; font-weight: 800; cursor: pointer; text-transform: uppercase; letter-spacing: 0.8px; font-size: 14px;">Generate License Key</button>
+                                            </form>
+                                            <div id="licenseResponse" style="margin-top: 14px; font-size: 13px; padding: 12px; border-radius: 4px; display: none;"></div>
+                                        </div>
+
+                                        <!-- TAB 2 -->
+                                        <div class="tab-content" id="tab-forgot" style="display: none;">
+                                            <p style="font-size: 0.95em; color: #ccc; margin: 0 0 20px; line-height: 1.6; text-align: center;">Lost your license key? Enter your email address and we will resend all active licenses associated with your account.</p>
+                                            <form id="forgetForm">
+                                                <label style="display:block; font-size:12px; color:#888; margin-bottom:4px; text-transform:uppercase; letter-spacing:0.5px;">Registered Email</label>
+                                                <input type="email" id="forgetEmail" placeholder="your@email.com" required style="width: 100%; padding: 12px; margin-bottom: 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(40,167,69,0.3); border-radius: 4px; color: #fff; font-size: 14px;">
+                                                <button type="submit" id="btnForget" style="width: 100%; padding: 13px; background: #28a745; color: white; border: none; border-radius: 4px; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 0.8px; font-size: 14px;">Resend My Licenses</button>
+                                            </form>
+                                            <div id="forgetResponse" style="margin-top: 14px; font-size: 13px; padding: 12px; border-radius: 4px; display: none;"></div>
+                                        </div>
+
+                                        <!-- TAB 3 -->
+                                        <div class="tab-content" id="tab-hwid" style="display: none;">
+                                            <p style="font-size: 0.9em; color: #ccc; margin: 0 0 15px; line-height: 1.6;">JoseCast licenses are securely bound to your computer's hardware. You will need to transfer your license if you:</p>
+                                            <ul style="font-size: 0.85em; color: #aaa; margin: 0 0 18px 18px; line-height: 1.5;">
+                                                <li>Reinstall Windows or format your PC</li>
+                                                <li>Purchase a new computer</li>
+                                                <li>Upgrade major hardware components</li>
+                                            </ul>
+                                            <p style="font-size: 0.85em; color: #888; margin: 0 0 18px; font-style: italic;">You have 3 lifetime device transfers included with your license.</p>
+                                            
+                                            <form id="hwidForm">
+                                                <input type="email" id="hwidEmail" placeholder="Purchase Email" required style="width: 100%; padding: 11px; margin-bottom: 10px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,107,107,0.25); border-radius: 4px; color: #fff; font-size: 13px;">
+                                                <input type="text" id="hwidKey" placeholder="License Key" required style="width: 100%; padding: 11px; margin-bottom: 10px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,107,107,0.25); border-radius: 4px; color: #fff; font-size: 13px;">
+                                                <input type="text" id="hwidValue" placeholder="Current Hardware ID (required)" required style="width: 100%; padding: 11px; margin-bottom: 12px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,107,107,0.25); border-radius: 4px; color: #fff; font-size: 13px;">
+                                                <button type="submit" id="btnHwid" style="width: 100%; padding: 12px; background: #dc3545; color: white; border: none; border-radius: 4px; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 0.8px; font-size: 14px;">Transfer License</button>
+                                            </form>
+                                            <p style="font-size: 11px; color: #ff9999; margin-top: 12px; text-align: center; line-height: 1.4;">Hardware ID is required for security. If you cannot access your old device, please contact josecastsuite@gmail.com with proof of purchase.</p>
+                                            <div id="hwidResponse" style="margin-top: 12px; font-size: 13px; padding: 12px; border-radius: 4px; display: none;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- SINGLE DOWNLOAD BUTTON -->
+                            <div style="text-align: center; margin-bottom: 50px;">
+                                <h3 style="color: #ffffff !important; font-weight: 800; margin-bottom: 20px;">📥 DOWNLOAD</h3>
+                                <a href="YOUR_B2_LINK_HERE" class="btn-download-main btn-green" style="background-color: #28a745 !important; box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);">
+                                   DOWNLOAD JOSECAST SUITE
+                                </a>
+                                <p style="margin-top: 15px; font-size: 0.9em; color: #888;">After verifying your license above</p>
+                            </div>
+
+
+
+                            <div style="display: flex; flex-wrap: wrap; gap: 30px; margin-bottom: 40px; background-color: rgba(0, 0, 0, 0.4) !important; padding: 30px; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(0, 210, 255, 0.1);">
+                                <div style="flex: 1; min-width: 300px;">
+                                    <h3 style="color: #ffffff !important; font-weight: 800; border-bottom: 2px solid #00d2ff; padding-bottom: 10px; margin-bottom: 20px;">📦 What's Included?</h3>
+                                    <ul style="padding-left: 20px; margin-bottom: 0; font-size: 1em; line-height: 1.7; color: #cccccc !important;">
+                                        <li><strong style="color:#fff;">Setup Assets:</strong> JoseCast Suite multi-part high-speed direct deployment files.</li>
+                                        <li><strong style="color:#fff;">Commercial License:</strong> Lifetime environment credentials tied directly to your active e-mail address.</li>
+                                    </ul>
+                                </div>
+                                <div style="flex: 1; min-width: 300px;">
+                                    <h3 style="color: #ffffff !important; font-weight: 800; border-bottom: 2px solid #00d2ff; padding-bottom: 10px; margin-bottom: 20px;">💻 System Requirements</h3>
+                                    <ul style="padding-left: 20px; margin-bottom: 0; font-size: 1em; line-height: 1.7; color: #cccccc !important;">
+                                        <li><strong style="color:#fff;">OS:</strong> Windows 7 / Windows 10 / Windows 11</li>
+                                        <li><strong style="color:#fff;">Processor (CPU):</strong> Min. Intel Pentium 4 or equivalent</li>
+                                        <li><strong style="color:#fff;">Memory (RAM):</strong> Min. 1 GB RAM</li>
+                                        <li><strong style="color:#fff;">Dependencies:</strong> None. Highly optimized standalone binary execution.</li>
+                                        <li><strong style="color:#fff;">Internet:</strong> Required for initial license activation and updates</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <section style="margin-bottom: 40px; background-color: rgba(0, 0, 0, 0.4) !important; border-left: 4px solid #00d2ff; padding: 30px; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                                <h3 style="color: #ffffff !important; font-weight: 800; margin-bottom: 20px; display: flex; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
+                                    <span style="font-size: 1.5em; margin-right: 10px;">⚠️</span> Legal Disclaimer & Terms of Use
+                                </h3>
+                                <p style="margin-bottom: 15px; line-height: 1.7; font-size: 1em; color: #cccccc !important;">
+                                Josecast Suite is software developed to guide engineers during the casting simulation and preliminary design stages. The data provided constitutes preliminary design results based on theoretical metallurgical models and logarithmic calculations.
+                                </p>
+                                <ul style="list-style-type: none; padding: 0; margin: 0; font-size: 1em;">
+                                    <li style="margin-bottom: 15px; line-height: 1.7; color: #cccccc !important;">
+                                        <strong style="color: #ffffff !important;">Variables:</strong> Calculated temperatures and superheat values are presented based on standard parameters. However, field conditions unique to each foundry—such as charge material, lining type, ladle transfer time, inoculant effect, and ambient humidity—can directly impact the results.
+                                    </li>
+                                    <li style="margin-bottom: 15px; line-height: 1.7; color: #cccccc !important;">
+                                        <strong style="color: #ffffff !important;">Verification:</strong> Therefore, the presented results should not be considered "final and absolute truth"; users are advised to verify/calibrate these data according to their own operating conditions, experiences, and specific recipes.
+                                    </li>
+                                    <li style="line-height: 1.7; color: #cccccc !important;">
+                                        <strong style="color: #ffffff !important;">Liability:</strong> The software and its developer cannot be held responsible for casting defects, faulty productions, or financial losses that may occur as a result of using the software.
+                                    </li>
+                                </ul>
+                            </section>
+
+                            <section style="margin-bottom: 30px; background-color: rgba(0, 0, 0, 0.4) !important; padding: 40px; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(0, 210, 255, 0.1);">
+                                <h3 style="color: #ffffff !important; font-weight: 900; text-align: center; margin-bottom: 40px; letter-spacing: 1px;">FREQUENTLY ASKED QUESTIONS</h3>
+                                
+                                <div style="margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px;">
+                                    <h4 style="color: #ffffff !important; font-weight: 700; margin-bottom: 10px; font-size: 1.1em;">Q: Do I get an invoice? Can I expense it to my company?</h4>
+                                    <p style="margin: 0; line-height: 1.7; font-size: 1em; color: #cccccc !important;"><strong style="color:#fff;">A:</strong> Yes. A formal PDF invoice is attached to your verification e-mail immediately following successful confirmation from Paddle. It is officially generated and structured for standard corporate accounting.</p>
+                                </div>
+
+                                <div style="margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px;">
+                                    <h4 style="color: #ffffff !important; font-weight: 700; margin-bottom: 10px; font-size: 1.1em;">Q: How and when will I receive the software download link?</h4>
+                                    <p style="margin: 0; line-height: 1.7; font-size: 1em; color: #cccccc !important;"><strong style="color:#fff;">A:</strong> Delivery is fully automated and instant. As soon as Paddle confirms the payment transaction, our infrastructure automatically dispatches your dedicated multi-part download links and secure verification keys directly to your inbox within seconds.</p>
+                                </div>
+
+                                <div style="margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px;">
+                                    <h4 style="color: #ffffff !important; font-weight: 700; margin-bottom: 10px; font-size: 1.1em;">Q: Is there a refund?</h4>
+                                    <p style="margin: 0; line-height: 1.7; font-size: 1em; color: #cccccc !important;"><strong style="color:#fff;">A:</strong> Due to the digital distribution nature of this commercial engineering tool, all sales are final. However, if you experience a critical execution failure or environment installation roadblock, submit a ticket to <strong style="color:#00d2ff;">josecastsuite@gmail.com</strong>. We will resolve or assist within 24 hours.</p>
+                                </div>
+
+                                <div style="margin-bottom: 10px;">
+                                    <h4 style="color: #ffffff !important; font-weight: 700; margin-bottom: 10px; font-size: 1.1em;">Q: What if the delivery email doesn't arrive instantly?</h4>
+                                    <p style="margin: 0; line-height: 1.7; font-size: 1em; color: #cccccc !important;"><strong style="color:#fff;">A:</strong> Please audit your spam directory or the "Promotions" tab in your mail interface first. If it remains missing after 5 minutes, contact us immediately at <strong style="color:#00d2ff;">josecastsuite@gmail.com</strong> with your transactional receipt, and we will verify and dispatch credentials immediately.</p>
+                                </div>
+                            </section>
+
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="clear: both; margin-bottom: -40px !important; padding-bottom: 0 !important;"></div>
+
+        <div id="footer" style="padding: 8px 0; margin: 0; background: #0d0f12; clear: both; border-top: 1px solid rgba(0, 210, 255, 0.1); width: 100%;">
+            <div style="width: 100%; padding: 0 30px; display: flex; align-items: center; justify-content: flex-end; gap: 20px;">
+                <div style="text-align: left !important; display: block !important; width: 100% !important; margin: 0 !important; padding: 0 !important;">
+                    <p style="font-size: 0.85em; opacity: 0.8; margin: 20px 0 0 0 !important; padding: 0 !important; text-align: left !important;">
+                        Powered by 
+                        <a href="https://www.cloudflare.com" target="_blank" style="text-decoration: none; color: inherit; font-weight: bold;">Cloudflare</a> 
+                        & 
+                        <a href="https://www.paddle.com" target="_blank" style="text-decoration: none; color: inherit; font-weight: bold;">Paddle</a>
+                    </p>
+                </div>      
+                
+                <div style="color: #555555; font-size: 0.7em; font-weight: 600; letter-spacing: 1px; border-right: 1px solid rgba(255,255,255,0.1); padding-right: 20px; white-space: nowrap !important; display: inline-block;">
+                    &copy; 2026 JOSECAST 
+                    <span style="margin: 0 8px; opacity: 0.4;">|</span>
+                    <a href="terms.html" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='inherit'">Terms</a>
+                    <span style="margin: 0 8px; opacity: 0.4;">|</span>
+                    <a href="privacy.html" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='inherit'">Privacy</a>
+                    <span style="margin: 0 8px; opacity: 0.4;">|</span>
+                    <a href="refund.html" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='inherit'">Refund</a>
+                </div>
+
+                <h3 style="color: #ffffff; margin: 0; font-size: 0.8em; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; white-space: nowrap; opacity: 0.9;">
+                    FOLLOW JOSECAST
+                </h3>
+
+                <div style="display: flex; gap: 10px;">
+                    <a href="https://www.linkedin.com/company/josecast-suite" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; background-color: #1a1e22; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 2px; color: #888888; font-size: 1em; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#00d2ff'; this.style.color='#00d2ff';" onmouseout="this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.color='#888888';">
+                        <i class="icon brands fa-linkedin-in" style="background: none; border: none; margin: 0; padding: 0;"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.dropotron.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
+<script type="module">
+import { initializePaddle } from 'https://cdn.jsdelivr.net/npm/@paddle/paddle-js/+esm';
+
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const paddle = await initializePaddle({  
+            environment: 'production',  
+            token: 'YOUR_PADDLE_LIVE_TOKEN' 
+        });                    
+
+        const buyButton = document.getElementById('buy-button');
+        if (buyButton) {
+            buyButton.addEventListener('click', (e) => {
+                e.preventDefault(); 
+                
+                paddle?.Checkout.open({  
+                    settings: {
+                        displayMode: "overlay",
+                        theme: "dark"
+                    },
+                    items: [      
+                        {        
+                            priceId: 'YOUR_PRICE_ID'
+                        }    
+                    ]
+                });            
+            });
+        }
+    } catch (error) {
+        console.error("Paddle başlatılırken bir sorun oluştu:", error);
+    }
+});
+</script>
+
 
 <script>
-  const RENDER_URL = "https://exopicy-bottle.onrender.com"; 
+  const RENDER_URL = "https://exopicy-bottle.onrender.com";
 
-  // 1. LİSANS ALMA
-  document.getElementById('uploadForm').addEventListener('submit', async function(e) {
+  
+  // TAB SWITCHING
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active'); b.style.color='#888'; b.style.borderBottom='2px solid transparent'; });
+      btn.classList.add('active'); btn.style.color='#00d2ff'; btn.style.borderBottom='2px solid #00d2ff';
+      document.querySelectorAll('.tab-content').forEach(c => c.style.display='none');
+      document.getElementById('tab-'+btn.dataset.tab).style.display='block';
+    });
+  });
+
+  // LICENSE GENERATE
+  document.getElementById('licenseForm')?.addEventListener('submit', async function(e) {
     e.preventDefault();
     const email = document.getElementById('emailInput').value.trim();
-    const islem_no = document.getElementById('islemInput').value.trim();
-    const btn = document.getElementById('btnUpload');
-    const resp = document.getElementById('uploadResponse');
+    const txn = document.getElementById('txnInput').value.trim();
+    const btn = document.getElementById('btnLicense');
+    const resp = document.getElementById('licenseResponse');
     
-    btn.disabled = true; btn.innerText = "Faturanız sorgulanıyor...";
-    resp.style.display = "block"; resp.style.backgroundColor = "#f8f9fa"; resp.style.color = "#333"; resp.innerText = "Lütfen bekleyin...";
+    btn.disabled = true; btn.innerText = "VERIFYING...";
+    resp.style.display = "block"; resp.style.background = "rgba(0,210,255,0.1)"; resp.style.color = "#00d2ff"; resp.style.border = "1px solid rgba(0,210,255,0.3)"; resp.innerText = "Please wait...";
 
     try {
-      const response = await fetch(`${RENDER_URL}/lisans-ver`, {
-        method: 'POST', headers: {'Content-Type': 'application/json','Accept': 'application/json'},
-        body: JSON.stringify({ email, islem_no })
+      const r = await fetch(`${RENDER_URL}/lisans-ver`, {
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ email, islem_no: txn })
       });
-      const data = await response.json();
+      const data = await r.json();
       if(data.ok) {
-        resp.style.backgroundColor = "#d4edda"; resp.style.color = "#155724"; resp.style.border = "1px solid #c3e6cb";
-        resp.innerHTML = `✅ <b>Başarılı!</b> Lisans anahtarınız:<br><br>
-                          <span style="font-family:monospace; font-size:16px; background:#fff; padding:6px; border:1px dashed #155724; display:block; text-align:center;">${data.key}</span>`;
+        resp.style.background = "rgba(40,167,69,0.15)"; resp.style.color = "#7CFC00"; resp.style.border = "1px solid rgba(40,167,69,0.4)";
+        resp.innerHTML = `✅ <b>SUCCESS!</b> Your license:<br><br><span style="font-family:monospace; font-size:15px; background:rgba(0,0,0,0.5); padding:8px; border:1px dashed #7CFC00; display:block; text-align:center; color:#fff;">${data.key}</span><br><span style="font-size:12px; opacity:0.8;">Check your email for details</span>`;
       } else {
-        resp.style.backgroundColor = "#f8d7da"; resp.style.color = "#721c24"; resp.style.border = "1px solid #f5c6cb";
-        resp.innerHTML = `❌ <b>Hata:</b> ${data.hata}`;
+        resp.style.background = "rgba(220,53,69,0.15)"; resp.style.color = "#ff6b6b"; resp.style.border = "1px solid rgba(220,53,69,0.4)";
+        resp.innerHTML = `❌ <b>Error:</b> ${data.hata || 'Verification failed'}`;
       }
-    } catch (err) {
-      resp.style.backgroundColor = "#f8d7da"; resp.style.color = "#721c24"; resp.innerHTML = `❌ <b>Bağlantı Hatası</b>`;
-    } finally { btn.disabled = false; btn.innerText = "Lisansımı Doğrula ve Ver"; }
+    } catch(err) {
+      resp.style.background = "rgba(220,53,69,0.15)"; resp.style.color = "#ff6b6b"; resp.innerHTML = `❌ <b>Connection Error</b>`;
+    } finally { btn.disabled = false; btn.innerText = "VERIFY & GENERATE"; }
   });
 
-  // 2. LİSANS UNUTMA
-  document.getElementById('forgetForm').addEventListener('submit', async function(e) {
+  // FORGOT
+  document.getElementById('forgetForm')?.addEventListener('submit', async function(e) {
     e.preventDefault();
     const email = document.getElementById('forgetEmail').value.trim();
-    const btn = document.getElementById('btnForget'); const resp = document.getElementById('forgetResponse');
-    btn.disabled = true; btn.innerText = "Sistem taranıyor...";
-    resp.style.display = "block"; resp.style.backgroundColor = "#f8f9fa"; resp.innerText = "Lütfen bekleyin...";
+    const btn = document.getElementById('btnForget');
+    const resp = document.getElementById('forgetResponse');
+    btn.disabled = true; btn.innerText = "SENDING...";
+    resp.style.display = "block"; resp.style.background = "rgba(0,210,255,0.1)"; resp.style.color = "#00d2ff"; resp.innerText = "Please wait...";
     try {
-      const response = await fetch(`${RENDER_URL}/remember-license`, {
-        method: 'POST', headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ email })
-      });
-      const data = await response.json();
-      if(data.status === "success" || data.ok) {
-          resp.style.backgroundColor = "#d4edda"; resp.style.color = "#155724";
-          resp.innerHTML = `✅ <b>Başarılı!</b> Lisanslarınız ${email} adresine gönderildi.`;
+      const r = await fetch(`${RENDER_URL}/remember-license`, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ email }) });
+      const data = await r.json();
+      if(data.status === 'success') {
+        resp.style.background = "rgba(40,167,69,0.15)"; resp.style.color = "#7CFC00"; resp.innerHTML = "✅ Licenses sent to your email!";
       } else {
-          resp.style.backgroundColor = "#f8d7da"; resp.style.color = "#721c24";
-          resp.innerHTML = `❌ <b>Hata:</b> ${data.hata || "Lisans bulunamadı."}`;
+        resp.style.background = "rgba(220,53,69,0.15)"; resp.style.color = "#ff6b6b"; resp.innerHTML = "❌ Email not found";
       }
-    } catch (err) {
-      resp.style.backgroundColor = "#f8d7da"; resp.style.color = "#721c24"; resp.innerHTML = `❌ <b>Bağlantı Hatası</b>`;
-    } finally { btn.disabled = false; btn.innerText = "Lisansları Tekrar Gönder"; }
+    } catch { resp.style.color = "#ff6b6b"; resp.innerHTML = "❌ Error"; }
+    finally { btn.disabled = false; btn.innerText = "RESEND LICENSES"; }
   });
 
-  // 3. HWID SIFIRLAMA - YENİ
-  document.getElementById('hwidForm').addEventListener('submit', async function(e) {
+  // HWID RESET
+  document.getElementById('hwidForm')?.addEventListener('submit', async function(e) {
     e.preventDefault();
     const email = document.getElementById('hwidEmail').value.trim();
-    const key = document.getElementById('hwidKey').value.trim().toUpperCase();
-    const hwid = document.getElementById('hwidValue').value.trim() || "MANUAL_RESET"; // app.py boş istemiyor
-    const btn = document.getElementById('btnHwid'); const resp = document.getElementById('hwidResponse');
+    const key = document.getElementById('hwidKey').value.trim();
+    const hwid = document.getElementById('hwidValue').value.trim();
+    const btn = document.getElementById('btnHwid');
+    const resp = document.getElementById('hwidResponse');
     
-    btn.disabled = true; btn.innerText = "Sıfırlanıyor...";
-    resp.style.display = "block"; resp.style.backgroundColor = "#f8f9fa"; resp.style.color = "#333"; resp.innerText = "Lütfen bekleyin...";
-
+    if(!hwid) { resp.style.display="block"; resp.style.background="rgba(220,53,69,0.15)"; resp.style.color="#ff6b6b"; resp.innerHTML="❌ HWID is required"; return; }
+    
+    btn.disabled = true; btn.innerText = "RESETTING...";
+    resp.style.display = "block"; resp.style.background = "rgba(0,210,255,0.1)"; resp.style.color = "#00d2ff"; resp.innerText = "Processing...";
     try {
-      // NOT: app.py'de endpoint '/lisans-tasi' - ASCII karakter sorun çıkarırsa app.py'de '/lisans-tasi' yap
-      const response = await fetch(`${RENDER_URL}/lisans-tasi`, {
-        method: 'POST', headers: {'Content-Type': 'application/json','Accept': 'application/json'},
-        body: JSON.stringify({ email, key, hwid })
-      });
-      const data = await response.json();
+      const r = await fetch(`${RENDER_URL}/lisans-tasi`, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ email, key, hwid }) });
+      const data = await r.json();
       if(data.ok) {
-        resp.style.backgroundColor = "#d4edda"; resp.style.color = "#155724"; resp.style.border = "1px solid #c3e6cb";
-        resp.innerHTML = `✅ <b>Başarılı!</b> ${data.mesaj || 'HWID sıfırlandı. Yeni bilgisayarda aktivasyon yapabilirsin.'}`;
+        resp.style.background = "rgba(40,167,69,0.15)"; resp.style.color = "#7CFC00"; resp.innerHTML = "✅ HWID reset successful! You can now activate on new device.";
       } else {
-        resp.style.backgroundColor = "#f8d7da"; resp.style.color = "#721c24"; resp.style.border = "1px solid #f5c6cb";
-        resp.innerHTML = `❌ <b>Hata:</b> ${data.hata || data.mesaj}`;
+        resp.style.background = "rgba(220,53,69,0.15)"; resp.style.color = "#ff6b6b"; resp.innerHTML = `❌ ${data.hata || 'Failed'}`;
       }
-    } catch (err) {
-      console.error(err);
-      resp.style.backgroundColor = "#f8d7da"; resp.style.color = "#721c24"; resp.innerHTML = `❌ <b>Sistem Hatası:</b> Sunucuya ulaşılamadı. Endpoint adını kontrol et.`;
-    } finally { btn.disabled = false; btn.innerText = "HWID'i Sıfırla"; }
+    } catch { resp.innerHTML = "❌ Connection error"; }
+    finally { btn.disabled = false; btn.innerText = "RESET HWID"; }
   });
 </script>
+
+</body>
+</html>
