@@ -24,177 +24,115 @@
     <input type="email" id="forgetEmail" placeholder="E-posta adresinizi girin" required style="width: 100%; padding: 10px; margin-bottom: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
     <button type="submit" id="btnForget" style="width: 100%; padding: 10px; background: #28a745; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">Lisansları Tekrar Gönder</button>
   </form>
-  
   <div id="forgetResponse" style="margin-top: 15px; font-size: 14px; padding: 10px; border-radius: 5px; display: none;"></div>
 
   <hr style="margin: 30px 0; border: 0; border-top: 1px dashed #ccc;">
 
-  <h4 style="margin-top:0; color:#333; text-align: center;">Lisansımı Taşı / Sıfırla</h4>
-  <p style="font-size:13px; color:#666; text-align: center;">Cihaz değiştirdiyseniz veya format attıysanız, eski cihaz kaydınızı silip lisansınızı yeni bir kurulum için boşa çıkartabilirsiniz.</p>
+  <!-- YENİ: HWID SİLME BÖLÜMÜ -->
+  <h4 style="margin-top:0; color:#d9534f; text-align: center;">HWID Sıfırla (Cihaz Değiştir)</h4>
+  <p style="font-size:13px; color:#666; text-align: center;">Format attıysan veya bilgisayar değiştirdiysen, eski HWID kaydını buradan silebilirsin. (Max 3 hak)</p>
   
-  <form id="resetForm">
-    <input type="email" id="resetEmail" placeholder="E-posta adresinizi girin" required style="width: 100%; padding: 10px; margin-bottom: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
-    <input type="text" id="resetKey" placeholder="Lisans Anahtarı (JSC-....)" required style="width: 100%; padding: 10px; margin-bottom: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+  <form id="hwidForm">
+    <label style="font-size: 14px; font-weight: bold; color: #555;">E-Posta</label>
+    <input type="email" id="hwidEmail" placeholder="ornek@email.com" required style="width: 100%; padding: 10px; margin-top: 5px; margin-bottom: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
     
-    <button type="submit" id="btnReset" style="width: 100%; padding: 10px; background: #dc3545; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">Cihaz Kaydımı Sil (Lisansı Boşa Çıkar)</button>
+    <label style="font-size: 14px; font-weight: bold; color: #555;">Lisans Anahtarı</label>
+    <input type="text" id="hwidKey" placeholder="JSC-XXXX-XXXX-..." required style="width: 100%; padding: 10px; margin-top: 5px; margin-bottom: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+
+    <label style="font-size: 14px; font-weight: bold; color: #555;">Mevcut HWID (isteğe bağlı)</label>
+    <input type="text" id="hwidValue" placeholder="Boş bırakırsan sistem siler" style="width: 100%; padding: 10px; margin-top: 5px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+
+    <button type="submit" id="btnHwid" style="width: 100%; padding: 10px; background: #dc3545; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">HWID'i Sıfırla</button>
   </form>
-
-  <div id="resetResponse" style="margin-top: 15px; font-size: 14px; padding: 10px; border-radius: 5px; display: none;"></div>
-
+  <div id="hwidResponse" style="margin-top: 15px; font-size: 14px; padding: 10px; border-radius: 5px; display: none;"></div>
 </div>
 
 <script>
-  // Kendi Render sunucunun adresi
   const RENDER_URL = "https://exopicy-bottle.onrender.com"; 
 
-  // 1. LİSANS ALMA FORMU
+  // 1. LİSANS ALMA
   document.getElementById('uploadForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    
     const email = document.getElementById('emailInput').value.trim();
     const islem_no = document.getElementById('islemInput').value.trim();
     const btn = document.getElementById('btnUpload');
     const resp = document.getElementById('uploadResponse');
     
-    btn.disabled = true;
-    btn.innerText = "Faturanız sorgulanıyor...";
-    resp.style.display = "block";
-    resp.style.backgroundColor = "#f8f9fa";
-    resp.style.color = "#333";
-    resp.innerText = "Lütfen bekleyin...";
+    btn.disabled = true; btn.innerText = "Faturanız sorgulanıyor...";
+    resp.style.display = "block"; resp.style.backgroundColor = "#f8f9fa"; resp.style.color = "#333"; resp.innerText = "Lütfen bekleyin...";
 
     try {
       const response = await fetch(`${RENDER_URL}/lisans-ver`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ email: email, islem_no: islem_no })
+        method: 'POST', headers: {'Content-Type': 'application/json','Accept': 'application/json'},
+        body: JSON.stringify({ email, islem_no })
       });
       const data = await response.json();
-
       if(data.ok) {
-        resp.style.backgroundColor = "#d4edda";
-        resp.style.color = "#155724";
-        resp.style.border = "1px solid #c3e6cb";
+        resp.style.backgroundColor = "#d4edda"; resp.style.color = "#155724"; resp.style.border = "1px solid #c3e6cb";
         resp.innerHTML = `✅ <b>Başarılı!</b> Lisans anahtarınız:<br><br>
-                          <span style="font-family:monospace; font-size:16px; background:#fff; padding:6px; border:1px dashed #155724; display:block; text-align:center;">${data.key}</span><br>
-                          Bu anahtar aynı zamanda <b>${data.email}</b> adresine e-posta olarak gönderildi.`;
+                          <span style="font-family:monospace; font-size:16px; background:#fff; padding:6px; border:1px dashed #155724; display:block; text-align:center;">${data.key}</span>`;
       } else {
-        resp.style.backgroundColor = "#f8d7da";
-        resp.style.color = "#721c24";
-        resp.style.border = "1px solid #f5c6cb";
+        resp.style.backgroundColor = "#f8d7da"; resp.style.color = "#721c24"; resp.style.border = "1px solid #f5c6cb";
         resp.innerHTML = `❌ <b>Hata:</b> ${data.hata}`;
       }
     } catch (err) {
-      console.error(err);
-      resp.style.backgroundColor = "#f8d7da";
-      resp.style.color = "#721c24";
-      resp.style.border = "1px solid #f5c6cb";
-      resp.innerHTML = `❌ <b>Sistem Bağlantı Hatası:</b> Sunucuya ulaşılamıyor veya engellendi.`;
-    } finally {
-      btn.disabled = false;
-      btn.innerText = "Lisansımı Doğrula ve Ver";
-    }
+      resp.style.backgroundColor = "#f8d7da"; resp.style.color = "#721c24"; resp.innerHTML = `❌ <b>Bağlantı Hatası</b>`;
+    } finally { btn.disabled = false; btn.innerText = "Lisansımı Doğrula ve Ver"; }
   });
 
-  // 2. LİSANS UNUTMA FORMU
+  // 2. LİSANS UNUTMA
   document.getElementById('forgetForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    
     const email = document.getElementById('forgetEmail').value.trim();
-    const btn = document.getElementById('btnForget');
-    const resp = document.getElementById('forgetResponse');
-    
-    btn.disabled = true;
-    btn.innerText = "Sistem taranıyor...";
-    resp.style.display = "block";
-    resp.style.backgroundColor = "#f8f9fa";
-    resp.style.color = "#333";
-    resp.innerText = "Lütfen bekleyin...";
-
+    const btn = document.getElementById('btnForget'); const resp = document.getElementById('forgetResponse');
+    btn.disabled = true; btn.innerText = "Sistem taranıyor...";
+    resp.style.display = "block"; resp.style.backgroundColor = "#f8f9fa"; resp.innerText = "Lütfen bekleyin...";
     try {
       const response = await fetch(`${RENDER_URL}/remember-license`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ email: email })
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ email })
       });
-
       const data = await response.json();
-
       if(data.status === "success" || data.ok) {
-          resp.style.backgroundColor = "#d4edda";
-          resp.style.color = "#155724";
-          resp.style.border = "1px solid #c3e6cb";
-          resp.innerHTML = `✅ <b>Başarılı!</b> Kayıtlı lisanslarınız ${email} adresine gönderildi. Lütfen spam klasörünü de kontrol edin.`;
+          resp.style.backgroundColor = "#d4edda"; resp.style.color = "#155724";
+          resp.innerHTML = `✅ <b>Başarılı!</b> Lisanslarınız ${email} adresine gönderildi.`;
       } else {
-          resp.style.backgroundColor = "#f8d7da";
-          resp.style.color = "#721c24";
-          resp.style.border = "1px solid #f5c6cb";
-          resp.innerHTML = `❌ <b>Hata:</b> ${data.hata || data.message || "Bu e-posta adresine ait bir lisans bulunamadı."}`;
+          resp.style.backgroundColor = "#f8d7da"; resp.style.color = "#721c24";
+          resp.innerHTML = `❌ <b>Hata:</b> ${data.hata || "Lisans bulunamadı."}`;
       }
     } catch (err) {
-      console.error(err);
-      resp.style.backgroundColor = "#f8d7da";
-      resp.style.color = "#721c24";
-      resp.style.border = "1px solid #f5c6cb";
-      resp.innerHTML = `❌ <b>Sistem Bağlantı Hatası:</b> Sunucuya ulaşılamıyor.`;
-    } finally {
-      btn.disabled = false;
-      btn.innerText = "Lisansları Tekrar Gönder";
-    }
+      resp.style.backgroundColor = "#f8d7da"; resp.style.color = "#721c24"; resp.innerHTML = `❌ <b>Bağlantı Hatası</b>`;
+    } finally { btn.disabled = false; btn.innerText = "Lisansları Tekrar Gönder"; }
   });
 
- // 3. LİSANS SIFIRLAMA FORMU
-  document.getElementById('resetForm').addEventListener('submit', async function(e) {
+  // 3. HWID SIFIRLAMA - YENİ
+  document.getElementById('hwidForm').addEventListener('submit', async function(e) {
     e.preventDefault();
+    const email = document.getElementById('hwidEmail').value.trim();
+    const key = document.getElementById('hwidKey').value.trim().toUpperCase();
+    const hwid = document.getElementById('hwidValue').value.trim() || "MANUAL_RESET"; // app.py boş istemiyor
+    const btn = document.getElementById('btnHwid'); const resp = document.getElementById('hwidResponse');
     
-    const email = document.getElementById('resetEmail').value.trim();
-    const key = document.getElementById('resetKey').value.trim();
-    const btn = document.getElementById('btnReset');
-    const resp = document.getElementById('resetResponse');
-    
-    btn.disabled = true;
-    btn.innerText = "İşlem yapılıyor...";
-    resp.style.display = "block";
-    resp.style.backgroundColor = "#f8f9fa";
-    resp.style.color = "#333";
-    resp.innerText = "Lütfen bekleyin...";
+    btn.disabled = true; btn.innerText = "Sıfırlanıyor...";
+    resp.style.display = "block"; resp.style.backgroundColor = "#f8f9fa"; resp.style.color = "#333"; resp.innerText = "Lütfen bekleyin...";
 
     try {
-      // DİKKAT: URL'yi lisans-tasi olarak düzelttik
+      // NOT: app.py'de endpoint '/lisans-tasi' - ASCII karakter sorun çıkarırsa app.py'de '/lisans-tasi' yap
       const response = await fetch(`${RENDER_URL}/lisans-tasi`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ email: email, key: key, hwid: "WEB_RESET" })
+        method: 'POST', headers: {'Content-Type': 'application/json','Accept': 'application/json'},
+        body: JSON.stringify({ email, key, hwid })
       });
-
-      // Sunucu HTML hata sayfası döndürürse (Örn: 429 Too Many Requests) çökmesini engelliyoruz
-      const textData = await response.text(); 
-      let data;
-      try {
-          data = JSON.parse(textData);
-      } catch (err) {
-          throw new Error(`Sunucu JSON döndürmedi. Hata Kodu: ${response.status}`);
-      }
-
-      if(data.ok || data.status === "success") {
-          resp.style.backgroundColor = "#d4edda";
-          resp.style.color = "#155724";
-          resp.style.border = "1px solid #c3e6cb";
-          resp.innerHTML = `✅ <b>Başarılı!</b> ${data.mesaj || "Lisans boşa çıkartıldı."}`;
+      const data = await response.json();
+      if(data.ok) {
+        resp.style.backgroundColor = "#d4edda"; resp.style.color = "#155724"; resp.style.border = "1px solid #c3e6cb";
+        resp.innerHTML = `✅ <b>Başarılı!</b> ${data.mesaj || 'HWID sıfırlandı. Yeni bilgisayarda aktivasyon yapabilirsin.'}`;
       } else {
-          resp.style.backgroundColor = "#f8d7da";
-          resp.style.color = "#721c24";
-          resp.style.border = "1px solid #f5c6cb";
-          resp.innerHTML = `❌ <b>Hata:</b> ${data.hata}`;
+        resp.style.backgroundColor = "#f8d7da"; resp.style.color = "#721c24"; resp.style.border = "1px solid #f5c6cb";
+        resp.innerHTML = `❌ <b>Hata:</b> ${data.hata || data.mesaj}`;
       }
     } catch (err) {
       console.error(err);
-      resp.style.backgroundColor = "#f8d7da";
-      resp.style.color = "#721c24";
-      resp.style.border = "1px solid #f5c6cb";
-      resp.innerHTML = `❌ <b>Sistem Bağlantı Hatası:</b> ${err.message}`;
-    } finally {
-      btn.disabled = false;
-      btn.innerText = "Cihaz Kaydımı Sil (Lisansı Boşa Çıkar)";
-    }
+      resp.style.backgroundColor = "#f8d7da"; resp.style.color = "#721c24"; resp.innerHTML = `❌ <b>Sistem Hatası:</b> Sunucuya ulaşılamadı. Endpoint adını kontrol et.`;
+    } finally { btn.disabled = false; btn.innerText = "HWID'i Sıfırla"; }
   });
+</script>
