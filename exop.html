@@ -1,3 +1,4 @@
+
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -452,7 +453,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
     } catch(err) {
       console.error(err);
-      resp.style.background = "#2d0f0f"; resp.style.color = "#ff8080"; resp.innerHTML = `❌ <b>Connection Error:</b> Could not reach server`;
+      resp.style.background = "#ffebee"; resp.style.color = "#b71c1c"; resp.style.border = "1px solid #f44336"; resp.innerHTML = `❌ <b>Connection Error:</b> Could not reach server`;
     } finally { btn.disabled = false; btn.innerText = "GENERATE LICENSE KEY"; }
   });
 
@@ -463,7 +464,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const btn = document.getElementById('btnForget');
     const resp = document.getElementById('forgetResponse');
     btn.disabled = true; btn.innerText = "SENDING...";
-    resp.style.display = "block"; resp.style.background = "#0f1e2a"; resp.style.color = "#00d2ff"; resp.innerText = "Verifying your purchase, please wait...";
+    resp.style.display = "block"; resp.style.background = "#ffffff"; resp.style.color = "#0d47a1"; resp.style.border = "1px solid #2196f3"; resp.innerText = "Verifying your purchase, please wait...";
     try {
       const r = await fetch(`${RENDER_URL}/remember-license`, { 
         method: 'POST', 
@@ -472,13 +473,13 @@ document.addEventListener('DOMContentLoaded', async () => {
       });
       const data = await r.json();
       if(data.status === 'success' || data.ok) {
-        resp.style.background = "#0d2818"; resp.style.color = "#7CFC00"; resp.innerHTML = "✅ Licenses sent to your email!";
+        resp.style.background = "#e8f5e9"; resp.style.color = "#1b5e20"; resp.style.border = "1px solid #4caf50"; resp.innerHTML = "✅ Licenses sent to your email!";
       } else {
-        resp.style.background = "#2d0f0f"; resp.style.color = "#ff8080"; resp.innerHTML = "❌ Email not found";
+        resp.style.background = "#ffebee"; resp.style.color = "#b71c1c"; resp.style.border = "1px solid #f44336"; resp.innerHTML = "❌ Email not found";
       }
     } catch(err) { 
       console.error(err);
-      resp.style.color = "#ff8080"; resp.innerHTML = "❌ Connection error"; 
+      resp.style.background = "#ffebee"; resp.style.color = "#b71c1c"; resp.style.border = "1px solid #f44336"; resp.innerHTML = "❌ Connection error"; 
     }
     finally { btn.disabled = false; btn.innerText = "RESEND MY LICENSES"; }
   });
@@ -495,7 +496,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if(!hwid) { resp.style.display="block"; resp.style.background="#ffebee"; resp.style.color="#b71c1c"; resp.style.border="1px solid #f44336"; resp.innerHTML="❌ HWID is required"; return; }
     
     btn.disabled = true; btn.innerText = "PROCESSING...";
-    resp.style.display = "block"; resp.style.background = "#0f1e2a"; resp.style.color = "#00d2ff"; resp.innerText = "Processing transfer request...";
+    resp.style.display = "block"; resp.style.background = "#ffffff"; resp.style.color = "#0d47a1"; resp.style.border = "1px solid #2196f3"; resp.innerText = "Processing transfer request...";
     try {
       const r = await fetch(`${RENDER_URL}/lisans-tasi`, { 
         method: 'POST', 
@@ -504,13 +505,13 @@ document.addEventListener('DOMContentLoaded', async () => {
       });
       const data = await r.json();
       if(data.ok) {
-        resp.style.background = "#0d2818"; resp.style.color = "#7CFC00"; resp.innerHTML = "✅ HWID reset successful! You can now activate on new device.";
+        resp.style.background = "#e8f5e9"; resp.style.color = "#1b5e20"; resp.style.border = "1px solid #4caf50"; resp.innerHTML = "✅ HWID reset successful! You can now activate on new device.";
       } else {
-        resp.style.background = "#2d0f0f"; resp.style.color = "#ff8080"; resp.innerHTML = `❌ ${data.hata || 'Failed'}`;
+        resp.style.background = "#ffebee"; resp.style.color = "#b71c1c"; resp.style.border = "1px solid #f44336"; resp.innerHTML = `❌ ${data.hata || 'Failed'}`;
       }
     } catch(err) { 
       console.error(err);
-      resp.innerHTML = "❌ Connection error: Could not reach server"; 
+      resp.style.background = "#ffebee"; resp.style.color = "#b71c1c"; resp.style.border = "1px solid #f44336"; resp.innerHTML = "❌ Connection error: Could not reach server"; 
     }
     finally { btn.disabled = false; btn.innerText = "TRANSFER LICENSE"; }
   });
