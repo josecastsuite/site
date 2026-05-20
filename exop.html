@@ -1,89 +1,172 @@
-<div style="max-width: 500px; margin: 30px auto; font-family: Arial, sans-serif; padding: 25px; border: 1px solid #ddd; border-radius: 10px;">
-  
-  <h3 style="margin-top:0; color:#333;">JoseCast Otomatik Lisans Teslimi</h3>
-  <p style="font-size:13px; color:#666;">Paddle işlem numaranızı (txn_... veya inv_...) girerek lisansınızı anında alın.</p>
-  
-  <form id="licenseForm">
-    <input type="email" id="lcEmail" placeholder="Paddle'daki e-posta adresiniz" required style="width: 100%; padding: 10px; margin-bottom: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
-    <input type="text" id="lcTxn" placeholder="İşlem No (örn: txn_01h8...)" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
-    <button type="submit" id="btnLicense" style="width: 100%; padding: 12px; background: #007bff; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer;">Lisansımı Doğrula ve Ver</button>
-  </form>
-  <p id="licenseResponse" style="margin-top: 15px; font-size: 14px; font-weight: bold;"></p>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Josecast Suite - Lisans Talep Testi</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+            color: #555;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #004494;
+        }
+        button:disabled {
+            background-color: #999;
+            cursor: not-allowed;
+        }
+        #resultBox {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            display: none;
+            text-align: center;
+            font-size: 14px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .key-display {
+            font-family: monospace;
+            font-size: 18px;
+            font-weight: bold;
+            background: #fff;
+            padding: 8px;
+            margin-top: 10px;
+            border: 1px dashed #155724;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
 
-  <hr style="margin: 30px 0; border: 0; border-top: 1px solid #eee;">
+<div class="container">
+    <h2>Lisansını Al</h2>
+    <form id="licenseForm">
+        <label for="email">Satın Alırken Kullanılan E-Posta</label>
+        <input type="email" id="email" placeholder="ornek@email.com" required>
 
-  <h4 style="margin-top:0; color:#333;">Lisansımı Unuttum</h4>
-  <form id="forgetForm">
-    <input type="email" id="forgetEmail" placeholder="E-posta adresinizi girin" required style="width: 100%; padding: 10px; margin-bottom: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
-    <button type="submit" id="btnForget" style="width: 100%; padding: 10px; background: #28a745; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">Lisansları Tekrar Gönder</button>
-  </form>
-  <p id="forgetResponse" style="margin-top: 15px; font-size: 14px; font-weight: bold;"></p>
+        <label for="islem_no">İşlem (Fatura) Numarası</label>
+        <input type="text" id="islem_no" placeholder="txn_..." required>
+
+        <button type="submit" id="submitBtn">Lisansımı Getir</button>
+    </form>
+
+    <div id="resultBox"></div>
 </div>
 
 <script>
-  const RENDER_URL = "https://exopicy-bottle.onrender.com"; 
+    document.getElementById('licenseForm').addEventListener('submit', async function(e) {
+        e.preventDefault(); // Sayfanın yenilenmesini engelle
+        
+        const email = document.getElementById('email').value.trim();
+        const islem_no = document.getElementById('islem_no').value.trim();
+        const btn = document.getElementById('submitBtn');
+        const resultBox = document.getElementById('resultBox');
 
-  // LİSANS VER
-  document.getElementById('licenseForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const email = document.getElementById('lcEmail').value.trim();
-    const txn = document.getElementById('lcTxn').value.trim();
-    const resp = document.getElementById('licenseResponse');
-    const btn = document.getElementById('btnLicense');
-    
-    resp.innerText = "Paddle doğrulanıyor, lütfen bekleyin...";
-    resp.style.color = "#333";
-    btn.disabled = true;
+        // Butonu kilitliyoruz ki adam 10 kere tıklayıp spama düşmesin
+        btn.disabled = true;
+        btn.innerText = "Sorgulanıyor, Lütfen Bekleyin...";
+        resultBox.style.display = "none";
+        resultBox.className = "";
+        resultBox.innerHTML = "";
 
-    fetch(`${RENDER_URL}/lisans-ver`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, islem_no: txn })
-    })
-    .then(res => res.json())
-    .then(data => {
-      if(data.ok) {
-        resp.innerHTML = `✅ Başarılı! Lisans anahtarınız: <b>${data.key}</b><br>${data.email} adresine gönderildi.`;
-        resp.style.color = "green";
-      } else {
-        resp.innerText = `❌ Hata: ${data.hata}`;
-        resp.style.color = "red";
-      }
-    })
-    .catch(err => { resp.innerText = "Sistem bağlantı hatası!"; resp.style.color = "red"; })
-    .finally(() => btn.disabled = false);
-  });
+        // BURAYA KENDİ RENDER ADRESİNİ YAZACAKSIN
+        const RENDER_URL = "https://SENIN-RENDER-ADRESIN.onrender.com/lisans-ver";
 
-  // LİSANS HATIRLAT
-  document.getElementById('forgetForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const email = document.getElementById('forgetEmail').value;
-    const resp = document.getElementById('forgetResponse');
-    const btn = document.getElementById('btnForget');
-    
-    resp.innerText = "Sistem taranıyor...";
-    resp.style.color = "#333";
-    btn.disabled = true;
+        try {
+            const response = await fetch(RENDER_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ 
+                    email: email, 
+                    islem_no: islem_no 
+                })
+            });
 
-    fetch(`${RENDER_URL}/remember-license`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email })
-    })
-    .then(res => res.json())
-    .then(data => {
-      if(data.status === "success") {
-          resp.innerText = "✅ Lisanslarınız e-posta adresinize gönderildi.";
-          resp.style.color = "green";
-      } else if(data.status === "not_found") {
-          resp.innerText = "❌ Bu e-posta ile kayıtlı lisans bulunamadı.";
-          resp.style.color = "red";
-      } else {
-          resp.innerText = "❌ Bir hata oluştu.";
-          resp.style.color = "red";
-      }
-    })
-    .catch(err => { resp.innerText = "Sistem bağlantı hatası!"; resp.style.color = "red"; })
-    .finally(() => btn.disabled = false);
-  });
+            const data = await response.json();
+
+            if (data.ok) {
+                // Her şey başarılıysa yeşil kutuyu göster
+                resultBox.classList.add("success");
+                resultBox.innerHTML = `
+                    <strong>Lisansınız Onaylandı!</strong><br>
+                    <div class="key-display">${data.key}</div><br>
+                    <small>Bu anahtar aynı zamanda ${data.email} adresine mail olarak gönderildi.</small>
+                `;
+            } else {
+                // Backend'den hata (ok=False) dönerse kırmızı kutuyu göster
+                resultBox.classList.add("error");
+                resultBox.innerHTML = `<strong>HATA:</strong> ${data.hata}`;
+            }
+
+        } catch (error) {
+            // Sunucu çökmüş veya CORS hatası varsa burası çalışır
+            console.error("Fetch Hatası:", error);
+            resultBox.classList.add("error");
+            resultBox.innerHTML = `<strong>BAĞLANTI HATASI:</strong> Sunucuya ulaşılamıyor. Lütfen bağlantınızı kontrol edin.`;
+        } finally {
+            // İşlem bitince butonu eski haline getir
+            btn.disabled = false;
+            btn.innerText = "Lisansımı Getir";
+            resultBox.style.display = "block";
+        }
+    });
 </script>
+
+</body>
+</html>
