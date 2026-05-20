@@ -24,7 +24,23 @@
     <input type="email" id="forgetEmail" placeholder="E-posta adresinizi girin" required style="width: 100%; padding: 10px; margin-bottom: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
     <button type="submit" id="btnForget" style="width: 100%; padding: 10px; background: #28a745; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">Lisansları Tekrar Gönder</button>
   </form>
+  
   <div id="forgetResponse" style="margin-top: 15px; font-size: 14px; padding: 10px; border-radius: 5px; display: none;"></div>
+
+  <hr style="margin: 30px 0; border: 0; border-top: 1px dashed #ccc;">
+
+  <h4 style="margin-top:0; color:#333; text-align: center;">Lisansımı Taşı / Sıfırla</h4>
+  <p style="font-size:13px; color:#666; text-align: center;">Cihaz değiştirdiyseniz veya format attıysanız, eski cihaz kaydınızı silip lisansınızı yeni bir kurulum için boşa çıkartabilirsiniz.</p>
+  
+  <form id="resetForm">
+    <input type="email" id="resetEmail" placeholder="E-posta adresinizi girin" required style="width: 100%; padding: 10px; margin-bottom: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+    <input type="text" id="resetKey" placeholder="Lisans Anahtarı (JSC-....)" required style="width: 100%; padding: 10px; margin-bottom: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+    
+    <button type="submit" id="btnReset" style="width: 100%; padding: 10px; background: #dc3545; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">Cihaz Kaydımı Sil (Lisansı Boşa Çıkar)</button>
+  </form>
+
+  <div id="resetResponse" style="margin-top: 15px; font-size: 14px; padding: 10px; border-radius: 5px; display: none;"></div>
+
 </div>
 
 <script>
@@ -50,13 +66,9 @@
     try {
       const response = await fetch(`${RENDER_URL}/lisans-ver`, {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({ email: email, islem_no: islem_no })
       });
-
       const data = await response.json();
 
       if(data.ok) {
@@ -102,10 +114,7 @@
     try {
       const response = await fetch(`${RENDER_URL}/remember-license`, {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({ email: email })
       });
 
@@ -131,6 +140,55 @@
     } finally {
       btn.disabled = false;
       btn.innerText = "Lisansları Tekrar Gönder";
+    }
+  });
+
+  // 3. LİSANS SIFIRLAMA FORMU (YENİ EKLENDİ)
+  document.getElementById('resetForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const email = document.getElementById('resetEmail').value.trim();
+    const key = document.getElementById('resetKey').value.trim();
+    const btn = document.getElementById('btnReset');
+    const resp = document.getElementById('resetResponse');
+    
+    btn.disabled = true;
+    btn.innerText = "İşlem yapılıyor...";
+    resp.style.display = "block";
+    resp.style.backgroundColor = "#f8f9fa";
+    resp.style.color = "#333";
+    resp.innerText = "Lütfen bekleyin...";
+
+    try {
+      const response = await fetch(`${RENDER_URL}/lisans-taşı`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        // "WEB_RESET" temsili bir HWID'dir, Python hata fırlatmasın diye eklenmiştir.
+        body: JSON.stringify({ email: email, key: key, hwid: "WEB_RESET" })
+      });
+
+      const data = await response.json();
+
+      if(data.ok) {
+          resp.style.backgroundColor = "#d4edda";
+          resp.style.color = "#155724";
+          resp.style.border = "1px solid #c3e6cb";
+          resp.innerHTML = `✅ <b>Başarılı!</b> ${data.mesaj}`;
+      } else {
+          resp.style.backgroundColor = "#f8d7da";
+          resp.style.color = "#721c24";
+          resp.style.border = "1px solid #f5c6cb";
+          resp.innerHTML = `❌ <b>Hata:</b> ${data.hata}`;
+      }
+    } catch (err) {
+      console.error(err);
+      resp.style.backgroundColor = "#f8d7da";
+      resp.style.color = "#721c24";
+      resp.style.border = "1px solid #f5c6cb";
+      resp.innerHTML = `❌ <b>Sistem Bağlantı Hatası:</b> Sunucuya ulaşılamıyor.`;
+    } finally {
+      btn.disabled = false;
+      btn.innerText = "Cihaz Kaydımı Sil (Lisansı Boşa Çıkar)";
     }
   });
 </script>
