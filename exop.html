@@ -1,3 +1,4 @@
+
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -412,7 +413,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const resp = document.getElementById('licenseResponse');
     
     btn.disabled = true; btn.innerText = "VERIFYING...";
-    resp.style.display = "block"; resp.style.background = "rgba(0,210,255,0.1)"; resp.style.color = "#00d2ff"; resp.style.border = "1px solid rgba(0,210,255,0.3)"; resp.innerText = "Please wait...";
+    resp.style.display = "block"; resp.style.background = "rgba(10, 25, 35, 0.9)"; resp.style.color = "#00d2ff"; resp.style.border = "1px solid rgba(0,210,255,0.3)"; resp.innerText = "Please wait...";
 
     try {
       const r = await fetch(`${RENDER_URL}/lisans-ver`, {
@@ -422,15 +423,15 @@ document.addEventListener('DOMContentLoaded', async () => {
       });
       const data = await r.json();
       if(data.ok) {
-        resp.style.background = "rgba(40,167,69,0.15)"; resp.style.color = "#7CFC00"; resp.style.border = "1px solid rgba(40,167,69,0.4)";
+        resp.style.background = "rgba(20, 40, 20, 0.9)"; resp.style.color = "#7CFC00"; resp.style.border = "1px solid rgba(40,167,69,0.4)";
         resp.innerHTML = `✅ <b>SUCCESS!</b> Your license:<br><br><span style="font-family:monospace; font-size:15px; background:rgba(0,0,0,0.5); padding:8px; border:1px dashed #7CFC00; display:block; text-align:center; color:#fff;">${data.key}</span><br><span style="font-size:12px; opacity:0.8;">Check your email for details</span>`;
       } else {
-        resp.style.background = "rgba(220,53,69,0.15)"; resp.style.color = "#ff6b6b"; resp.style.border = "1px solid rgba(220,53,69,0.4)";
+        resp.style.background = "rgba(40, 15, 15, 0.9)"; resp.style.color = "#ff8080"; resp.style.border = "1px solid rgba(220,53,69,0.4)";
         resp.innerHTML = `❌ <b>Error:</b> ${data.hata || 'Verification failed'}`;
       }
     } catch(err) {
       console.error(err);
-      resp.style.background = "rgba(220,53,69,0.15)"; resp.style.color = "#ff6b6b"; resp.innerHTML = `❌ <b>Connection Error:</b> Could not reach server`;
+      resp.style.background = "rgba(40, 15, 15, 0.9)"; resp.style.color = "#ff8080"; resp.innerHTML = `❌ <b>Connection Error:</b> Could not reach server`;
     } finally { btn.disabled = false; btn.innerText = "GENERATE LICENSE KEY"; }
   });
 
@@ -441,7 +442,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const btn = document.getElementById('btnForget');
     const resp = document.getElementById('forgetResponse');
     btn.disabled = true; btn.innerText = "SENDING...";
-    resp.style.display = "block"; resp.style.background = "rgba(0,210,255,0.1)"; resp.style.color = "#00d2ff"; resp.innerText = "Please wait...";
+    resp.style.display = "block"; resp.style.background = "rgba(10, 25, 35, 0.9)"; resp.style.color = "#00d2ff"; resp.innerText = "Please wait...";
     try {
       const r = await fetch(`${RENDER_URL}/remember-license`, { 
         method: 'POST', 
@@ -450,13 +451,13 @@ document.addEventListener('DOMContentLoaded', async () => {
       });
       const data = await r.json();
       if(data.status === 'success' || data.ok) {
-        resp.style.background = "rgba(40,167,69,0.15)"; resp.style.color = "#7CFC00"; resp.innerHTML = "✅ Licenses sent to your email!";
+        resp.style.background = "rgba(20, 40, 20, 0.9)"; resp.style.color = "#7CFC00"; resp.innerHTML = "✅ Licenses sent to your email!";
       } else {
-        resp.style.background = "rgba(220,53,69,0.15)"; resp.style.color = "#ff6b6b"; resp.innerHTML = "❌ Email not found";
+        resp.style.background = "rgba(40, 15, 15, 0.9)"; resp.style.color = "#ff8080"; resp.innerHTML = "❌ Email not found";
       }
     } catch(err) { 
       console.error(err);
-      resp.style.color = "#ff6b6b"; resp.innerHTML = "❌ Connection error"; 
+      resp.style.color = "#ff8080"; resp.innerHTML = "❌ Connection error"; 
     }
     finally { btn.disabled = false; btn.innerText = "RESEND MY LICENSES"; }
   });
@@ -473,7 +474,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if(!hwid) { resp.style.display="block"; resp.style.background="rgba(220,53,69,0.15)"; resp.style.color="#ff6b6b"; resp.innerHTML="❌ HWID is required"; return; }
     
     btn.disabled = true; btn.innerText = "PROCESSING...";
-    resp.style.display = "block"; resp.style.background = "rgba(0,210,255,0.1)"; resp.style.color = "#00d2ff"; resp.innerText = "Processing...";
+    resp.style.display = "block"; resp.style.background = "rgba(10, 25, 35, 0.9)"; resp.style.color = "#00d2ff"; resp.innerText = "Processing...";
     try {
       const r = await fetch(`${RENDER_URL}/lisans-tasi`, { 
         method: 'POST', 
@@ -482,9 +483,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       });
       const data = await r.json();
       if(data.ok) {
-        resp.style.background = "rgba(40,167,69,0.15)"; resp.style.color = "#7CFC00"; resp.innerHTML = "✅ HWID reset successful! You can now activate on new device.";
+        resp.style.background = "rgba(20, 40, 20, 0.9)"; resp.style.color = "#7CFC00"; resp.innerHTML = "✅ HWID reset successful! You can now activate on new device.";
       } else {
-        resp.style.background = "rgba(220,53,69,0.15)"; resp.style.color = "#ff6b6b"; resp.innerHTML = `❌ ${data.hata || 'Failed'}`;
+        resp.style.background = "rgba(40, 15, 15, 0.9)"; resp.style.color = "#ff8080"; resp.innerHTML = `❌ ${data.hata || 'Failed'}`;
       }
     } catch(err) { 
       console.error(err);
