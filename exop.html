@@ -108,7 +108,23 @@
         transform: translateY(-3px);
     }
 </style>
-    </head>
+    
+<style>
+/* FORCE TEXT VISIBILITY IN LICENSE PANEL */
+#tab-generate p, #tab-forgot p, #tab-hwid p,
+#tab-generate li, #tab-hwid li {
+    color: #e0e0e0 !important;
+}
+#tab-generate label, #tab-forgot label {
+    color: #bbbbbb !important;
+}
+.tab-content input::placeholder {
+    color: #777 !important;
+    opacity: 1 !important;
+}
+</style>
+
+</head>
 <body class="no-sidebar is-preload page-inner" style="background-color: #1e2226 !important;">
     <div id="page-wrapper" style="background-color: #1e2226 !important;">
         
@@ -157,21 +173,21 @@
                                 <!-- TABS -->
                                 <div style="display: flex; background: rgba(0,0,0,0.3); border-bottom: 1px solid rgba(0,210,255,0.15);">
                                     <button class="tab-btn active" data-tab="generate" style="flex:1; padding: 14px; background: transparent; border: none; color: #00d2ff; font-weight: 700; cursor: pointer; border-bottom: 2px solid #00d2ff; transition: all 0.2s; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">Activate License</button>
-                                    <button class="tab-btn" data-tab="forgot" style="flex:1; padding: 14px; background: transparent; border: none; color: #aaa; font-weight: 600; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">Recover License</button>
-                                    <button class="tab-btn" data-tab="hwid" style="flex:1; padding: 14px; background: transparent; border: none; color: #aaa; font-weight: 600; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">Transfer Device</button>
+                                    <button class="tab-btn" data-tab="forgot" style="flex:1; padding: 14px; background: transparent; border: none; color: #cccccc !important; font-weight: 600; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">Recover License</button>
+                                    <button class="tab-btn" data-tab="hwid" style="flex:1; padding: 14px; background: transparent; border: none; color: #cccccc !important; font-weight: 600; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">Transfer Device</button>
                                 </div>
 
                                 <div style="padding: 30px 35px 35px;">
                                     <div style="max-width: 520px; margin: 0 auto;">
                                         <!-- TAB 1 -->
                                         <div class="tab-content" id="tab-generate" style="display: block;">
-                                            <p style="font-size: 0.95em; color: #ccc; margin: 0 0 20px; line-height: 1.6; text-align: center;">After completing your purchase through Paddle, enter the details below to instantly generate your permanent license key.</p>
+                                            <p style="font-size: 0.95em; color: #e0e0e0 !important; margin: 0 0 20px; line-height: 1.6; text-align: center;">After completing your purchase through Paddle, enter the details below to instantly generate your permanent license key.</p>
                                             <form id="licenseForm">
-                                                <label style="display:block; font-size:12px; color:#888; margin-bottom:4px; text-transform:uppercase; letter-spacing:0.5px;">Purchase Email Address</label>
-                                                <input type="email" id="emailInput" placeholder="your@email.com" required style="width: 100%; padding: 12px; margin-bottom: 14px; background: rgba(255,255,255,0.04); border: 1px solid rgba(0,210,255,0.25); border-radius: 4px; color: #fff; font-size: 14px;">
+                                                <label style="display:block; font-size:12px; color:#bbbbbb !important; margin-bottom:4px; text-transform:uppercase; letter-spacing:0.5px;">Purchase Email Address</label>
+                                                <input type="email" id="emailInput" placeholder="your@email.com" required style="width: 100%; padding: 12px; margin-bottom: 14px; background: rgba(255,255,255,0.04); border: 1px solid rgba(0,210,255,0.25); border-radius: 4px; color: #ffffff !important; font-size: 14px;">
                                                 
-                                                <label style="display:block; font-size:12px; color:#888; margin-bottom:4px; text-transform:uppercase; letter-spacing:0.5px;">Paddle Transaction ID</label>
-                                                <input type="text" id="txnInput" placeholder="txn_01h..." required style="width: 100%; padding: 12px; margin-bottom: 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(0,210,255,0.25); border-radius: 4px; color: #fff; font-size: 14px;">
+                                                <label style="display:block; font-size:12px; color:#bbbbbb !important; margin-bottom:4px; text-transform:uppercase; letter-spacing:0.5px;">Paddle Transaction ID</label>
+                                                <input type="text" id="txnInput" placeholder="txn_01h..." required style="width: 100%; padding: 12px; margin-bottom: 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(0,210,255,0.25); border-radius: 4px; color: #ffffff !important; font-size: 14px;">
                                                 
                                                 <button type="submit" id="btnLicense" style="width: 100%; padding: 13px; background: #00d2ff; color: #000; border: none; border-radius: 4px; font-weight: 800; cursor: pointer; text-transform: uppercase; letter-spacing: 0.8px; font-size: 14px;">Generate License Key</button>
                                             </form>
@@ -180,10 +196,10 @@
 
                                         <!-- TAB 2 -->
                                         <div class="tab-content" id="tab-forgot" style="display: none;">
-                                            <p style="font-size: 0.95em; color: #ccc; margin: 0 0 20px; line-height: 1.6; text-align: center;">Lost your license key? Enter your email address and we will resend all active licenses associated with your account.</p>
+                                            <p style="font-size: 0.95em; color: #e0e0e0 !important; margin: 0 0 20px; line-height: 1.6; text-align: center;">Lost your license key? Enter your email address and we will resend all active licenses associated with your account.</p>
                                             <form id="forgetForm">
-                                                <label style="display:block; font-size:12px; color:#888; margin-bottom:4px; text-transform:uppercase; letter-spacing:0.5px;">Registered Email</label>
-                                                <input type="email" id="forgetEmail" placeholder="your@email.com" required style="width: 100%; padding: 12px; margin-bottom: 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(40,167,69,0.3); border-radius: 4px; color: #fff; font-size: 14px;">
+                                                <label style="display:block; font-size:12px; color:#bbbbbb !important; margin-bottom:4px; text-transform:uppercase; letter-spacing:0.5px;">Registered Email</label>
+                                                <input type="email" id="forgetEmail" placeholder="your@email.com" required style="width: 100%; padding: 12px; margin-bottom: 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(40,167,69,0.3); border-radius: 4px; color: #ffffff !important; font-size: 14px;">
                                                 <button type="submit" id="btnForget" style="width: 100%; padding: 13px; background: #28a745; color: white; border: none; border-radius: 4px; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 0.8px; font-size: 14px;">Resend My Licenses</button>
                                             </form>
                                             <div id="forgetResponse" style="margin-top: 14px; font-size: 13px; padding: 12px; border-radius: 4px; display: none;"></div>
@@ -191,18 +207,18 @@
 
                                         <!-- TAB 3 -->
                                         <div class="tab-content" id="tab-hwid" style="display: none;">
-                                            <p style="font-size: 0.9em; color: #ccc; margin: 0 0 15px; line-height: 1.6;">JoseCast licenses are securely bound to your computer's hardware. You will need to transfer your license if you:</p>
-                                            <ul style="font-size: 0.85em; color: #aaa; margin: 0 0 18px 18px; line-height: 1.5;">
+                                            <p style="font-size: 0.9em; color: #e0e0e0 !important; margin: 0 0 15px; line-height: 1.6;">JoseCast licenses are securely bound to your computer's hardware. You will need to transfer your license if you:</p>
+                                            <ul style="font-size: 0.85em; color: #cccccc !important; margin: 0 0 18px 18px; line-height: 1.5;">
                                                 <li>Reinstall Windows or format your PC</li>
                                                 <li>Purchase a new computer</li>
                                                 <li>Upgrade major hardware components</li>
                                             </ul>
-                                            <p style="font-size: 0.85em; color: #888; margin: 0 0 18px; font-style: italic;">You have 3 lifetime device transfers included with your license.</p>
+                                            <p style="font-size: 0.85em; color: #bbbbbb !important; margin: 0 0 18px; font-style: italic;">You have 3 lifetime device transfers included with your license.</p>
                                             
                                             <form id="hwidForm">
-                                                <input type="email" id="hwidEmail" placeholder="Purchase Email" required style="width: 100%; padding: 11px; margin-bottom: 10px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,107,107,0.25); border-radius: 4px; color: #fff; font-size: 13px;">
-                                                <input type="text" id="hwidKey" placeholder="License Key" required style="width: 100%; padding: 11px; margin-bottom: 10px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,107,107,0.25); border-radius: 4px; color: #fff; font-size: 13px;">
-                                                <input type="text" id="hwidValue" placeholder="Current Hardware ID (required)" required style="width: 100%; padding: 11px; margin-bottom: 12px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,107,107,0.25); border-radius: 4px; color: #fff; font-size: 13px;">
+                                                <input type="email" id="hwidEmail" placeholder="Purchase Email" required style="width: 100%; padding: 11px; margin-bottom: 10px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,107,107,0.25); border-radius: 4px; color: #ffffff !important; font-size: 13px;">
+                                                <input type="text" id="hwidKey" placeholder="License Key" required style="width: 100%; padding: 11px; margin-bottom: 10px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,107,107,0.25); border-radius: 4px; color: #ffffff !important; font-size: 13px;">
+                                                <input type="text" id="hwidValue" placeholder="Current Hardware ID (required)" required style="width: 100%; padding: 11px; margin-bottom: 12px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,107,107,0.25); border-radius: 4px; color: #ffffff !important; font-size: 13px;">
                                                 <button type="submit" id="btnHwid" style="width: 100%; padding: 12px; background: #dc3545; color: white; border: none; border-radius: 4px; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 0.8px; font-size: 14px;">Transfer License</button>
                                             </form>
                                             <p style="font-size: 11px; color: #ff9999; margin-top: 12px; text-align: center; line-height: 1.4;">Hardware ID is required for security. If you cannot access your old device, please contact josecastsuite@gmail.com with proof of purchase.</p>
@@ -218,7 +234,7 @@
                                 <a href="YOUR_B2_LINK_HERE" class="btn-download-main btn-green" style="background-color: #28a745 !important; box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);">
                                    DOWNLOAD JOSECAST SUITE
                                 </a>
-                                <p style="margin-top: 15px; font-size: 0.9em; color: #888;">After verifying your license above</p>
+                                <p style="margin-top: 15px; font-size: 0.9em; color: #bbbbbb !important;">After verifying your license above</p>
                             </div>
 
 
