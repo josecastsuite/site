@@ -15,43 +15,59 @@
  a[href^="mailto:"]{color:#00d2ff!important;word-break:break-all!important}
 }   
     /* 🔥 AKTİF SAYFA SEKME RENGİ (CURRENT) 🔥 */
-        #nav > ul > li.current > a, #nav > ul > li > a:hover { 
-                color: #00d2ff !important;
-                border-color: #00d2ff !important;
-                background-color: rgba(0, 210, 255, 0.1) !important;
-                box-shadow: 0 0 15px rgba(0, 210, 255, 0.3) !important;
-                transform: translateY(-2px);
-                transition: all 0.2s ease;
-        }
-        /* NAV ÜSTTE KALSIN */
-        #nav { position: relative !important; z-index: 200 !important; }
-        #header { padding-top: 0 !important; }
+	#nav > ul > li.current > a, #nav > ul > li > a:hover { 
+		color: #00d2ff !important; /* Neon Mavi */
+		border-color: #00d2ff !important;
+		background-color: rgba(0, 210, 255, 0.1) !important;
+		box-shadow: 0 0 15px rgba(0, 210, 255, 0.3) !important;
+		transform: translateY(-2px);
+	}
+	
+    /* NAV ÜSTTE SABİT */
+    #header { position: relative !important; padding-top: 80px !important; }
+    #nav { 
+        position: absolute !important; 
+        top: 0 !important; 
+        left: 0 !important;
+        width: 100% !important; 
+        z-index: 500 !important;
+        background: rgba(10,17,26,0.7) !important;
+        backdrop-filter: blur(6px);
+    }
+    #nav > ul { justify-content: center; }
+    #nav > ul > li.current > a, #nav > ul > li > a:hover { 
+        color: #00d2ff !important;
+        border-color: #00d2ff !important;
+        background-color: rgba(0, 210, 255, 0.1) !important;
+        box-shadow: 0 0 15px rgba(0, 210, 255, 0.3) !important;
+        transform: translateY(-2px);
+        transition: all 0.2s ease;
+    }
+    .hero-box { margin: 20px auto 0 auto !important; }
 
-        /* RESPONSIVE */
-        @media (max-width:1200px){
-          .hero-box{ width: 90% !important; padding: 25px !important; }
-          .hero-box h2{ font-size: 2em !important; }
-        }
-        @media (max-width:900px){
-          .btn-wrap{ flex-direction: column !important; width: 100% !important; padding: 0 20px !important; }
-          .btn-wrap a{ min-width: unset !important; width: 100% !important; max-width: 400px !important; margin: 0 auto !important; }
-        }
-        @media (max-width:1100px){
-          #footer > div{ flex-direction: column !important; justify-content: center !important; text-align: center !important; gap: 10px !important; }
-        }
-        </style>
+</style>
 	<body class="homepage is-preload">
 		<div id="page-wrapper">
 
 			<!-- Header -->
 				<div id="header">
 
-					<!-- Inner -->
+					
+<!-- Nav -->
+						<nav id="nav">
+    <ul>
+        <li class="current"><a href="index.html">Home</a></li> <li><a href="features.html">Features</a></li>
+        <li><a href="method.html">Method</a></li>
+        <li><a href="download.html">Download</a></li>
+        <li><a href="Contact.html">Contact</a></li>
+    </ul>
+</nav>
+<!-- Inner -->
 						<div class="inner">
 							<header>
 <div class="inner hero-box" style="
     /* 1. KONUMLANDIRMA (AYAR NOKTASI) */
-    margin: 40px auto 0 auto !important; /* Kutuyu yukarı çeker */
+    margin: 20px auto 0 auto !important; /* Kutuyu yukarı çeker */
     position: relative !important;
     transform: none !important;
     z-index: 100 !important;
@@ -120,37 +136,11 @@
 </div>
 
 <style>
-        @media (max-width:768px){
- #footer>div{flex-direction:column!important;justify-content:center!important;align-items:center!important;gap:15px!important;padding:0 15px!important}
- #footer>div>div:first-child{width:100%!important;text-align:center!important;font-size:.8em!important}
- a[href^="mailto:"]{color:#00d2ff!important;word-break:break-all!important}
-}   
-    /* 🔥 AKTİF SAYFA SEKME RENGİ (CURRENT) 🔥 */
-        #nav > ul > li.current > a, #nav > ul > li > a:hover { 
-                color: #00d2ff !important;
-                border-color: #00d2ff !important;
-                background-color: rgba(0, 210, 255, 0.1) !important;
-                box-shadow: 0 0 15px rgba(0, 210, 255, 0.3) !important;
-                transform: translateY(-2px);
-                transition: all 0.2s ease;
-        }
-        /* NAV ÜSTTE KALSIN */
-        #nav { position: relative !important; z-index: 200 !important; }
-        #header { padding-top: 0 !important; }
-
-        /* RESPONSIVE */
-        @media (max-width:1200px){
-          .hero-box{ width: 90% !important; padding: 25px !important; }
-          .hero-box h2{ font-size: 2em !important; }
-        }
-        @media (max-width:900px){
-          .btn-wrap{ flex-direction: column !important; width: 100% !important; padding: 0 20px !important; }
-          .btn-wrap a{ min-width: unset !important; width: 100% !important; max-width: 400px !important; margin: 0 auto !important; }
-        }
-        @media (max-width:1100px){
-          #footer > div{ flex-direction: column !important; justify-content: center !important; text-align: center !important; gap: 10px !important; }
-        }
-        </style>
+    /* Sadece üstüne gelince rengi değiştiren minik kod */
+    .jose-hover:hover {
+        background: rgba(0, 210, 255, 0.6) !important; /* Arka plan mavisi koyulaşır */
+    }
+</style>
 
 <div style="text-align: center; margin-top: 30px; width: 100%; clear: both;">
     
@@ -221,17 +211,7 @@
 							</footer>
 						</div>
 
-					<!-- Nav -->
-						<nav id="nav">
-    <ul>
-        <li class="current"><a href="index.html">Home</a></li> <li><a href="features.html">Features</a></li>
-        <li><a href="method.html">Method</a></li>
-        <li><a href="download.html">Download</a></li>
-        <li><a href="Contact.html">Contact</a></li>
-    </ul>
-</nav>
-
-				</div>
+					</div>
 				</div>
 
 					</section>
