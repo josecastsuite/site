@@ -1,325 +1,245 @@
 
 <!DOCTYPE HTML>
-<html lang="en">
-<head>
-    <title>JoseCast Suite - Professional Foundry Software</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-    
-    <style>
-    /* ===== JOSECAST TEMİZ STİL - !important YOK ===== */
-    
-    /* Nav üstte sabit */
-    #header {
-        position: relative;
-        padding-top: 70px;
-    }
-    
+<html>
+	<head>
+		<title>JoseCast Suite - Professional Foundry Software</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<style>
+    /* NAV - ÜSTTE */
+    #header { position: relative; padding-top: 70px; }
     #nav {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 100;
-        background: rgba(10, 17, 26, 0.85);
-        backdrop-filter: blur(8px);
+        position: absolute; top: 0; left: 0; width: 100%; z-index: 500;
+        background: rgba(10,17,26,0.85); backdrop-filter: blur(8px);
     }
-    
-    #nav > ul {
-        display: flex;
-        justify-content: center;
-        gap: 0.5rem;
-        padding: 0.8rem 1rem;
-    }
-    
-    #nav > ul > li > a {
-        transition: all 0.25s ease;
-        border: 1px solid transparent;
-    }
-    
-    #nav > ul > li.current > a,
-    #nav > ul > li > a:hover {
-        color: #00d2ff;
-        border-color: #00d2ff;
+    #nav > ul { display: flex; justify-content: center; flex-wrap: wrap; }
+    #nav > ul > li > a { transition: all 0.25s ease; }
+    #nav > ul > li.current > a, #nav > ul > li > a:hover {
+        color: #00d2ff; border-color: #00d2ff;
         background-color: rgba(0, 210, 255, 0.1);
         box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
         transform: translateY(-2px);
     }
     
-    /* Hero kutusu */
-    .hero-box {
-        width: min(95%, 1350px);
-        margin: 2rem auto 0;
-        padding: 2.2rem;
-        text-align: center;
-        background: rgba(10, 17, 26, 0.45);
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
-        border-radius: 15px;
-        border: 1px solid rgba(0, 210, 255, 0.2);
-        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-        position: relative;
-        z-index: 10;
+    /* HERO - !important temizlendi */
+    .hero-main { margin: 0 auto; position: relative; z-index: 100;
+        width: 95%; max-width: 1350px; text-align: center;
+        background: rgba(10,17,26,0.45); backdrop-filter: blur(4px);
+        padding: 35px; border-radius: 15px;
+        border: 1px solid rgba(0,210,255,0.2); box-shadow: 0 20px 50px rgba(0,0,0,0.5);
     }
+    .hero-main h2 { margin-bottom: 25px; font-size: clamp(1.8rem,4vw,2.6rem);
+        font-weight: 800; color: #fff; text-shadow: 0 0 15px rgba(0,210,255,0.6); }
     
-    .hero-box h2 {
-        margin-bottom: 1.5rem;
-        font-size: clamp(1.8rem, 4vw, 2.6rem);
-        font-weight: 800;
-        color: #fff;
-        text-shadow: 0 0 15px rgba(0, 210, 255, 0.6);
+    /* BUTONLAR */
+    .btn-wrap { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;
+        margin-top: 30px; padding: 0 20px; }
+    .btn-jose { display: flex; align-items: center; justify-content: center;
+        background: rgba(0,210,255,0.2); color: #fff; border: 2px solid #00d2ff;
+        border-radius: 0.5em; padding: 15px 45px; text-decoration: none;
+        font-weight: 900; font-size: 18px; text-transform: uppercase;
+        letter-spacing: 1px; min-width: 260px; max-width: 100%;
+        transition: 0.3s; box-sizing: border-box; }
+    .btn-jose:hover { background: rgba(0,210,255,0.6); }
+    
+    /* RESPONSIVE */
+    @media (max-width:1200px){ .hero-main{ width:92%; padding:25px; } }
+    @media (max-width:900px){ .btn-wrap{ flex-direction:column; align-items:center; }
+        .btn-jose{ width:100%; max-width:400px; min-width:auto; } }
+    @media (max-width:768px){
+        #footer>div{ flex-direction:column; justify-content:center; align-items:center;
+            gap:15px; padding:0 15px; }
+        #footer>div>div:first-child{ width:100%; text-align:center; font-size:.8em; }
     }
+</style>
+	<body class="homepage is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+<nav id="nav">
+    <ul>
+        <li class="current"><a href="index.html">Home</a></li> <li><a href="features.html">Features</a></li>
+        <li><a href="method.html">Method</a></li>
+        <li><a href="download.html">Download</a></li>
+        <li><a href="Contact.html">Contact</a></li>
+    </ul>
+</nav>
+
+					<!-- Inner -->
+						<div class="inner">
+							<header>
+<div class="inner hero-main">
     
-    .hero-content {
-        color: #fff;
-        line-height: 1.7;
-        font-size: clamp(1rem, 1.8vw, 1.1rem);
-        text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    <header style="margin: 0 !important; padding: 0 !important; background: transparent !important;">
+        <h2>JOSECAST SUITE</h2>
+        
+        <div style="color:#fff;line-height:1.7;font-size:1.1em;text-shadow:1px 1px 3px rgba(0,0,0,0.8)">
+            <p style="margin-bottom: 15px !important;">
+                An analytical engineering calculation software that eliminates trial-and-error and time waste in casting design.
+            </p>
+            <p style="margin-bottom: 15px !important;">
+                JoseCast is not a 3D fluid simulation software; it is an optimization tool that eliminates high-cost errors and hours of iteration cycles before the simulation phase.
+            </p>
+            <p style="margin-bottom: 20px !important;">
+                Determine gating cross-sectional areas, feeder dimensions, and ideal filling times based on hydraulics and thermodynamics laws in seconds, instead of days spent on traditional methods.
+            </p>
+			<p style="margin-bottom: 20px !important;">
+                Ensure part quality with proven casting formulas while minimizing raw material costs using the advanced furnace charge optimization module.
+            </p>
+			<p style="margin-bottom: 20px !important;">
+               Reduce your simulation overhead, catch design flaws at the very first step, and maximize your overall casting yield.
+            </p>
+        </div>
+
+        <p style="
+            margin-top: 25px !important; 
+            font-weight: 700; 
+            font-style: italic; 
+            color: #b1e9ba; 
+            text-shadow: 0 0 12px rgba(0, 0, 0, 0.969);
+            border-top: 1px solid rgba(0, 0, 0, 0.15);
+            padding-top: 20px;
+        ">
+            No illusions, just engineering formulas. Calculate fast, cast with confidence. Get a lifetime license for just $100
+        </p>
+    </header>
+</div>
+
+<style>
+    /* NAV - ÜSTTE */
+    #header { position: relative; padding-top: 70px; }
+    #nav {
+        position: absolute; top: 0; left: 0; width: 100%; z-index: 500;
+        background: rgba(10,17,26,0.85); backdrop-filter: blur(8px);
     }
-    
-    .hero-content p {
-        margin-bottom: 1rem;
-    }
-    
-    .hero-tagline {
-        margin-top: 1.5rem;
-        padding-top: 1.25rem;
-        font-weight: 700;
-        font-style: italic;
-        color: #b1e9ba;
-        text-shadow: 0 0 12px rgba(0,0,0,0.97);
-        border-top: 1px solid rgba(0,0,0,0.15);
-    }
-    
-    /* Butonlar */
-    .btn-wrap {
-        display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-top: 2rem;
-        padding: 0 1rem;
-    }
-    
-    .btn-jose {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba(0, 210, 255, 0.2);
-        color: #fff;
-        border: 2px solid #00d2ff;
-        border-radius: 0.5em;
-        padding: 0.9rem 2.5rem;
-        text-decoration: none;
-        font-weight: 900;
-        font-size: 1.05rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        min-width: 260px;
-        transition: all 0.3s ease;
-    }
-    
-    .btn-jose:hover {
-        background: rgba(0, 210, 255, 0.35);
-        box-shadow: 0 0 20px rgba(0,210,255,0.4);
+    #nav > ul { display: flex; justify-content: center; flex-wrap: wrap; }
+    #nav > ul > li > a { transition: all 0.25s ease; }
+    #nav > ul > li.current > a, #nav > ul > li > a:hover {
+        color: #00d2ff; border-color: #00d2ff;
+        background-color: rgba(0, 210, 255, 0.1);
+        box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
         transform: translateY(-2px);
     }
     
-    /* Footer */
-    #footer {
-        padding: 0.5rem 0;
-        background: #0d0f12;
-        border-top: 1px solid rgba(0, 210, 255, 0.1);
+    /* HERO - !important temizlendi */
+    .hero-main { margin: 0 auto; position: relative; z-index: 100;
+        width: 95%; max-width: 1350px; text-align: center;
+        background: rgba(10,17,26,0.45); backdrop-filter: blur(4px);
+        padding: 35px; border-radius: 15px;
+        border: 1px solid rgba(0,210,255,0.2); box-shadow: 0 20px 50px rgba(0,0,0,0.5);
     }
+    .hero-main h2 { margin-bottom: 25px; font-size: clamp(1.8rem,4vw,2.6rem);
+        font-weight: 800; color: #fff; text-shadow: 0 0 15px rgba(0,210,255,0.6); }
     
-    .footer-inner {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 1.25rem;
-        padding: 0 1.875rem;
-        flex-wrap: wrap;
-    }
+    /* BUTONLAR */
+    .btn-wrap { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;
+        margin-top: 30px; padding: 0 20px; }
+    .btn-jose { display: flex; align-items: center; justify-content: center;
+        background: rgba(0,210,255,0.2); color: #fff; border: 2px solid #00d2ff;
+        border-radius: 0.5em; padding: 15px 45px; text-decoration: none;
+        font-weight: 900; font-size: 18px; text-transform: uppercase;
+        letter-spacing: 1px; min-width: 260px; max-width: 100%;
+        transition: 0.3s; box-sizing: border-box; }
+    .btn-jose:hover { background: rgba(0,210,255,0.6); }
     
-    .footer-left {
-        font-size: 0.85em;
-        opacity: 0.8;
+    /* RESPONSIVE */
+    @media (max-width:1200px){ .hero-main{ width:92%; padding:25px; } }
+    @media (max-width:900px){ .btn-wrap{ flex-direction:column; align-items:center; }
+        .btn-jose{ width:100%; max-width:400px; min-width:auto; } }
+    @media (max-width:768px){
+        #footer>div{ flex-direction:column; justify-content:center; align-items:center;
+            gap:15px; padding:0 15px; }
+        #footer>div>div:first-child{ width:100%; text-align:center; font-size:.8em; }
     }
-    
-    .footer-left a {
-        color: inherit;
-        font-weight: bold;
-        text-decoration: none;
-    }
-    
-    .footer-center {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        color: #555;
-        font-size: 0.7em;
-        font-weight: 600;
-        letter-spacing: 1px;
-        white-space: nowrap;
-    }
-    
-    .footer-center a {
-        color: inherit;
-        text-decoration: none;
-        transition: color 0.3s;
-    }
-    
-    .footer-center a:hover {
-        color: #00d2ff;
-    }
-    
-    .footer-right {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-    }
-    
-    .footer-right h3 {
-        color: #fff;
-        margin: 0;
-        font-size: 0.8em;
-        font-weight: 800;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        opacity: 0.9;
-    }
-    
-    .social-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 30px;
-        height: 30px;
-        background: #1a1e22;
-        border: 1px solid rgba(255,255,255,0.1);
-        border-radius: 2px;
-        color: #888;
-        transition: all 0.3s;
-    }
-    
-    .social-btn:hover {
-        border-color: #00d2ff;
-        color: #00d2ff;
-    }
-    
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 1200px) {
-        .hero-box { padding: 1.8rem; }
-    }
-    
-    @media (max-width: 992px) {
-        #header { padding-top: 60px; }
-        .footer-inner { justify-content: center; text-align: center; }
-    }
-    
-    @media (max-width: 900px) {
-        .btn-wrap { flex-direction: column; align-items: center; }
-        .btn-jose { width: 100%; max-width: 400px; min-width: auto; }
-    }
-    
-    @media (max-width: 768px) {
-        #nav > ul { flex-wrap: wrap; }
-        .hero-box { width: 92%; padding: 1.5rem; margin-top: 1rem; }
-        .footer-inner { flex-direction: column; gap: 0.75rem; padding: 0 1rem; }
-        .footer-left, .footer-center { text-align: center; }
-    }
-    
-    @media (max-width: 480px) {
-        .btn-jose { font-size: 0.95rem; padding: 0.8rem 1.5rem; }
-    }
-    </style>
-</head>
+</style>
 
-<body class="homepage is-preload">
-    <div id="page-wrapper">
+<div style="text-align: center; margin-top: 30px; width: 100%; clear: both;">
+    
+    <div class="btn-wrap">
 
-        <!-- Header -->
-        <div id="header">
-            <!-- Nav -->
-            <nav id="nav">
-                <ul>
-                    <li class="current"><a href="index.html">Home</a></li>
-                    <li><a href="features.html">Features</a></li>
-                    <li><a href="method.html">Method</a></li>
-                    <li><a href="download.html">Download</a></li>
-                    <li><a href="Contact.html">Contact</a></li>
-                </ul>
-            </nav>
+        <a href="download.html" class="btn-jose">Support & Download</a>
 
-            <!-- Inner -->
-            <div class="inner">
-                <header>
-                    <div class="hero-box">
-                        <h2>JOSECAST SUITE</h2>
-                        
-                        <div class="hero-content">
-                            <p>An analytical engineering calculation software that eliminates trial-and-error and time waste in casting design.</p>
-                            <p>JoseCast is not a 3D fluid simulation software; it is an optimization tool that eliminates high-cost errors and hours of iteration cycles before the simulation phase.</p>
-                            <p>Determine gating cross-sectional areas, feeder dimensions, and ideal filling times based on hydraulics and thermodynamics laws in seconds, instead of days spent on traditional methods.</p>
-                            <p>Ensure part quality with proven casting formulas while minimizing raw material costs using the advanced furnace charge optimization module.</p>
-                            <p>Reduce your simulation overhead, catch design flaws at the very first step, and maximize your overall casting yield.</p>
-                        </div>
+        <a href="features.html" class="btn-jose">Technical Specs</a>
 
-                        <p class="hero-tagline">
-                            No illusions, just engineering formulas. Calculate fast, cast with confidence. Get a lifetime license for just $100
-                        </p>
-                    </div>
+        <a href="https://www.linkedin.com/in/yusuf-furkan-atci-9a137a19b" target="_blank" class="btn-jose">Contact Creator</a>
 
-                    <div class="btn-wrap">
-                        <a href="download.html" class="btn-jose">Support & Download</a>
-                        <a href="features.html" class="btn-jose">Technical Specs</a>
-                        <a href="https://www.linkedin.com/in/yusuf-furkan-atci-9a137a19b" target="_blank" class="btn-jose">Contact Creator</a>
-                    </div>
-                </header>
-                
-                <footer>
-                    <a href="#banner" class="button circled scrolly">Start</a>
-                </footer>
-            </div>
-        </div>
+    </div>
+</div>
+							</header>
+							<footer>
+								<a href="#banner" class="button circled scrolly">Start</a>
+							</footer>
+						</div>
 
-        <!-- Footer -->
-        <div id="footer">
-            <div class="footer-inner">
-                <div class="footer-left">
-                    Powered by <a href="https://www.cloudflare.com" target="_blank">Cloudflare</a> & <a href="https://www.paddle.com" target="_blank">Paddle</a>
-                </div>
-                
-                <div class="footer-center">
-                    &copy; 2026 JOSECAST
-                    <span style="opacity:0.4;margin:0 8px">|</span>
-                    <a href="terms.html">Terms</a>
-                    <span style="opacity:0.4;margin:0 8px">|</span>
-                    <a href="privacy.html">Privacy</a>
-                    <span style="opacity:0.4;margin:0 8px">|</span>
-                    <a href="refund.html">Refund</a>
+					
+
+				</div>
+				</div>
+
+					</section>
+
                 </div>
 
-                <div class="footer-right">
-                    <h3>FOLLOW JOSECAST</h3>
-                    <a href="https://www.linkedin.com/company/josecast-suite" target="_blank" class="social-btn">
-                        <i class="icon brands fa-linkedin-in"></i>
-                    </a>
-                </div>
-            </div>
+            <div id="footer" style="padding: 8px 0; margin: 0; background: #0d0f12; clear: both; border-top: 1px solid rgba(0, 210, 255, 0.1); width: 100%;">
+    <div style="width: 100%; padding: 0 30px; display: flex; align-items: center; justify-content: flex-end; gap: 20px;">
+  <div style="text-align: left !important; display: block !important; width: 100% !important; margin: 0 !important; padding: 0 !important;">
+    <p style="font-size: 0.85em; opacity: 0.8; margin: 20px 0 0 0 !important; padding: 0 !important; text-align: left !important;">
+        Powered by 
+        <a href="https://www.cloudflare.com" target="_blank" style="text-decoration: none; color: inherit; font-weight: bold;">Cloudflare</a> 
+        & 
+        <a href="https://www.paddle.com" target="_blank" style="text-decoration: none; color: inherit; font-weight: bold;">Paddle</a>
+    </p>
+    </div>      
+    
+    <div style="color: #555555; font-size: 0.7em; font-weight: 600; letter-spacing: 1px; border-right: 1px solid rgba(255,255,255,0.1); padding-right: 20px; white-space: nowrap !important; display: inline-block;">
+    &copy; 2026 JOSECAST 
+    <span style="margin: 0 8px; opacity: 0.4;">|</span>
+    <a href="terms.html" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='inherit'">Terms</a>
+    <span style="margin: 0 8px; opacity: 0.4;">|</span>
+    <a href="privacy.html" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='inherit'">Privacy</a>
+    <span style="margin: 0 8px; opacity: 0.4;">|</span>
+    <a href="refund.html" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='inherit'">Refund</a>
+    </div>
+
+        <h3 style="color: #ffffff; margin: 0; font-size: 0.8em; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; white-space: nowrap; opacity: 0.9;">
+            FOLLOW JOSECAST
+        </h3>
+
+        <div style="display: flex; gap: 10px;">
+            <a href="https://www.linkedin.com/company/josecast-suite" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; background-color: #1a1e22; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 2px; color: #888888; font-size: 1em; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#00d2ff'; this.style.color='#00d2ff';" onmouseout="this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.color='#888888';">
+                <i class="icon brands fa-linkedin-in" style="background: none; border: none; margin: 0; padding: 0;"></i>
+            </a>
+
         </div>
 
     </div>
+</div>
+    </div>
+</div>
 
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.dropotron.min.js"></script>
-    <script src="assets/js/jquery.scrolly.min.js"></script>
-    <script src="assets/js/jquery.scrollex.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
-</body>
+
+</section>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+
+        <script src="assets/js/jquery.min.js"></script>
+            <script src="assets/js/jquery.dropotron.min.js"></script>
+            <script src="assets/js/jquery.scrolly.min.js"></script>
+            <script src="assets/js/jquery.scrollex.min.js"></script>
+            <script src="assets/js/browser.min.js"></script>
+            <script src="assets/js/breakpoints.min.js"></script>
+            <script src="assets/js/util.js"></script>
+            <script src="assets/js/main.js"></script>
+
+    </body>
 </html>
